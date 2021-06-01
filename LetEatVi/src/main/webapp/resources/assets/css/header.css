@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro';
+}
+
+/* 헤더 메뉴들 */
+
+.menu-content {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    height: 75px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+/* 로고 아이콘 */
+
+.navbar__logo {
+    font-size: 20px;
+    color: black;
+    font-family: 'Permanent Marker', cursive;
+    margin-top: -6px;
+    margin-left: 200px;
+}
+
+.navbar__logo a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* navbar 메뉴 */
+
+.navbar__menu {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    margin-right: 200px;
+    margin-top: 7px;
+}
+
+/* 메뉴 요소들 */
+
+.navbar__menu li {
+    padding: 8px 12px;
+}
+
+.navbar__menu li:hover {
+    border-radius: 4px;
+}
+
+.navbar__menu a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* 검색창 */
+
+.search-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+/* 검색 박스 */
+
+.search-wrapper .input-holder {
+    height: 35px;
+    width: 35px;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    margin-left: 250px;
+}
+
+.search-wrapper.active .input-holder {
+    width: 180px;
+    border-radius: 50px;
+    top: -3px;
+    transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    border: 2px solid rgba(63, 62, 62, 0.678);
+    margin-left: 40px;
+}
+
+/* 검색 박스 내부 텍스트 */
+
+.search-wrapper .input-holder .search-input {
+    width: 200px;
+    padding: 0px 70px 0 20px;
+    opacity: 0;
+    position: absolute;
+    top: -4px;
+    left: 0px;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: "Open Sans", Arial, Verdana;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: black;
+    transform: translate(0, 60px);
+    transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.3s;
+}
+
+.search-wrapper.active .input-holder .search-input {
+    opacity: 1;
+    transform: translate(0, 10px);
+}
+
+/* 검색 박스 나타나기 전 돋보기 영역 */
+
+.search-wrapper .input-holder .search-icon {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    float: right;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 검색 박스 나타난 후 돋보기 영역 */
+
+.search-wrapper.active .input-holder .search-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0);
+    border-left: 2px solid rgba(63, 62, 62, 0.678);
+}
+
+.search-wrapper .input-holder .search-icon span {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    transform: rotate(45deg);
+    transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+}
+
+.search-wrapper.active .input-holder .search-icon span {
+    transform: rotate(-45deg);
+}
+
+.search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+    position: absolute;
+    content: '';
+}
+
+/* 돋보기 막대 */
+
+.search-wrapper .input-holder .search-icon span::before {
+    width: 3px;
+    height: 8px;
+    left: 9px;
+    top: 15px;
+    border-radius: 2px;
+    background: rgba(63, 62, 62, 0.678);
+}
+
+/* 돋보기 원 */
+
+.search-wrapper .input-holder .search-icon span::after {
+    width: 23px;
+    height: 23px;
+    left: -1px;
+    top: -7px;
+    border-radius: 50px;
+    border: 2px solid rgba(63, 62, 62, 0.678);
+}
+
+.search-wrapper .close {
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    right: 1px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transform: rotate(-180deg);
+    transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+    transition-delay: 0.2s;
+}
+
+/* X 버튼 */
+
+.search-wrapper.active .close {
+    right: -40px;
+    top: 2px;
+    transform: rotate(45deg);
+    transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+    transition-delay: 0.5s;
+}
+
+.search-wrapper .close::before, .search-wrapper .close::after {
+    position: absolute;
+    content: '';
+    background: #FE5F55;
+    border-radius: 2px;
+}
+
+.search-wrapper .close::before {
+    width: 5px;
+    height: 25px;
+    left: 10px;
+    top: 0px;
+}
+
+.search-wrapper .close::after {
+    width: 25px;
+    height: 5px;
+    left: 0px;
+    top: 10px;
+}

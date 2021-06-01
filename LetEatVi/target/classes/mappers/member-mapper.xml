@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member-mapper">
+	
+		<resultMap type="Member" id="resultMember">
+		<result property="enrollDate" column="enroll_date" />
+		<result property="lastDate" column="last_date" />
+	</resultMap>
+	
+	<!-- 회원 가입 -->
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO MEMBER VALUES (
+			#{ userId }, 2, #{ password }, #{ userName }, 
+			 #{ age }, #{ gender }, #{ email },
+			#{ phone }, #{ address },
+			 SYSDATE, SYSDATE, 'Y'
+		)
+	</insert>
+	
+	<!-- 회원 한 명 조회 ( 로그인, 회원 정보 수정, 회원 탈퇴 등 ) -->
+	<select id="selectOne" parameterType="string" resultMap="resultMember">
+		SELECT * FROM MEMBER
+		WHERE USERID = #{ userId }
+	</select>
+	
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER SET EMAIL= #{ email }, USERNAME = #{ userName },
+		                  AGE = #{ age }, PHONE = #{ phone },
+		                  ADDRESS = #{ address }
+		WHERE USERID = #{ userId } 
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteMember" parameterType="string">
+		DELETE FROM MEMBER
+		WHERE USERID = #{ userId }
+	</delete>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="checkIdDuplicate" statementType="CALLABLE" parameterType="hashmap">
+		{ CALL ID_DUP_CHECK( 
+		    #{userId, mode=IN, jdbcType=VARCHAR}, 
+		    #{result, mode=OUT, jdbcType=NUMERIC, javaType=integer} ) }
+	</select>
+		
+	<!-- 
+		프로시저 작성 내용
+		프로시저 (PL/SQL)
+			CREATE OR REPLACE PROCEDURE ID_DUP_CHECK
+			( VAR_ID IN MEMBER.USERID%TYPE,
+			  PR_RESULT OUT NUMBER)
+			 IS
+			 BEGIN
+			    SELECT COUNT(*) INTO PR_RESULT
+			    FROM MEMBER
+			    WHERE USERID = VAR_ID;
+			 END;
+			/
+			
+			SET SERVEROUTPUT ON;
+			
+			DECLARE
+			    RESULT NUMBER;
+			BEGIN
+			    ID_DUP_CHECK('user007', RESULT);
+			    DBMS_OUTPUT.PUT_LINE('RESULT :: ' || RESULT);
+			END;
+			/
+	 -->
+	
+</mapper>
+
+
+
+
+
