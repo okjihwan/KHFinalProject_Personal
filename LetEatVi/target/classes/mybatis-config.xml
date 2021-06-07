@@ -9,8 +9,8 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.leteatvi.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.leteatvi.store.model.vo.Product" alias="Prod" />
+		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Cart" />
 	</typeAliases>
 
-	
-	
 </configuration>

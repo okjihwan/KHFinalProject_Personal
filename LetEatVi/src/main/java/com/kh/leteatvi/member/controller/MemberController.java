@@ -166,7 +166,6 @@ public class MemberController {
 	 * */
 	@RequestMapping("/member/memberLogout.do")
 	public String memberLogout(SessionStatus status) {
-		
 
 		if( ! status.isComplete() ) {
 			status.setComplete();
@@ -174,7 +173,6 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
 	
 	@RequestMapping("/member/memberDelete.do")
 	public String memberDelete(SessionStatus status, Model model, Member member) {

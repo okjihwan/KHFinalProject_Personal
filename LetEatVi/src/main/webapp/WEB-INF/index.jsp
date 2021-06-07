@@ -68,14 +68,8 @@ LAST-UPDATE : 2021-06-02
 
 
 
-  	<!-- 로그인처리  ( 로그인,회원가입 버튼 ) 지우지 마세요!
-	<div>
-	       
-	       <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${pageContext.request.contextPath}/member/memberLogin.do'">로그인</button>
-	       &nbsp;
-	       <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${pageContext.request.contextPath}/member/memberEnroll.do'">회원가입</button>
-	</div>
-	-->
+  	<!-- 로그인처리  ( 로그인,회원가입 버튼 ) 지우지 마세요! -->
+
 	
 	
 	
@@ -98,7 +92,7 @@ LAST-UPDATE : 2021-06-02
 
       <!-- 메뉴 -->
       <ul class="navbar__menu">
-        <li><a href="" class="menu-content">스토어</a></li>
+        <li><a href="${pageContext.request.contextPath}/store/goStore.do" class="menu-content">스토어</a></li>
         <li><a href="" class="menu-content">영양제</a></li>
         <li><a href="" class="menu-content">이벤트</a></li>
         <li><a href="" class="menu-content">스토리</a></li>
@@ -120,7 +114,11 @@ LAST-UPDATE : 2021-06-02
     </div>
   </div>
   
-
+	<div>
+	       <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${pageContext.request.contextPath}/member/memberLogin.do'">로그인</button>
+	       &nbsp;
+	       <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${pageContext.request.contextPath}/member/memberEnroll.do'">회원가입</button>
+	</div>
 
   <div class="slide-box">
     <p class="content-slide-fix">어떻게 선택하셨었나요?</p>
