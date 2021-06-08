@@ -106,10 +106,8 @@
                             
                             
                             <div class="row">
-                                <div class="col-3 card-text"><button type="button" class="btn btn-secondary btn-lg" id=addChart onclick="test();"
+                                <div class="col-6 card-text"><button type="button" class="btn btn-secondary btn-lg" id=addChart onclick="addCartWithQuantity();"
                                         style="width:100%">장바구니</button></div>
-                                <div class="col-3 card-text"><button type="button" class="btn btn-secondary btn-lg" id=addMypage
-                                        style="width:100%">찜하기</button></div>
                                 <div class="col-6 card-text"><button type="button" class="btn btn-dark btn-lg" onclick="goPayment();"
                                         style="width:100%">바로구매</button></div>
                             </div> <br>
@@ -177,6 +175,21 @@
             	console.log(qno);
             	location.href="${pageContext.request.contextPath}/store/goPayment.do?pno=${pno}&qno="+qno
             }
+        </script>
+        
+        <script>
+	        function addCartWithQuantity(){
+	    		var qno = $("select[name=quantity]").val();
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/store/addCartWithQuantity.do",
+		            data : { pno : ${pno}, userId : '${member.userId}', qno : qno}, 
+		            type : "get",
+		            success : function(data){
+		                alert("장바구니에 추가했습니다.");
+		            }
+	        	}); 
+	    	}
         </script>
 
     </section>

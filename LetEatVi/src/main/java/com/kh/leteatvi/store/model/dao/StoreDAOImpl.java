@@ -38,11 +38,23 @@ public class StoreDAOImpl implements StoreDAO {
 	public List selectCategory(int cno) {
 		return sqlSession.selectList("store.selectCategory", cno);
 	}
+	
+	@Override
+	public List selectAllCategory() {
+		return sqlSession.selectList("store.selectAllCategory");
+	}
 
 	@Override
 	public int insertOneProduct(Cart cartProduct2) {
 		return sqlSession.insert("store.insertOneProduct", cartProduct2);
 	}
+
+	@Override
+	public int insertOneProductWithQuantity(Cart cartProductWithQuantity) {
+		return sqlSession.insert("store.insertOnePrdocutWithQuantity", cartProductWithQuantity);
+	}
+
+	
 
 
 }

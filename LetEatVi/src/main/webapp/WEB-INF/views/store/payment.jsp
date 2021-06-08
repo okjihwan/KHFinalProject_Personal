@@ -277,9 +277,11 @@
                         0
                     </div>
 
-                    <div class="col-1"></div>
+                    <div class="col-1">
+                    	<img src="${pageContext.request.contextPath}/resources/images/equal.png" style="width: 30px;">
+                    </div>
 
-                    <div class="col-2 buyProductText">
+                    <div class="col-2 buyTotalProductText">
                         42000
                     </div>
                 </div> <br><br>
@@ -370,28 +372,24 @@
 		<script>
 			$("#minusQuantity").on("click", function () {
 				
-				console.log("minus 실행");
-				console.log($("#quantity").text());
-				
-/*  				if($("#quantity").text() > 1){
-					${"#quantity"}.text($("#quantity").text() - 1);
-				}  */
+  				if($("#quantity").text() > 1){
+					$("#quantity").text($("#quantity").text() - 1);
+					$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+				}  
 			});
+			
 			$("#addQuantity").on("click", function () {
+				console.log($("#quantity").text() + 1);
 				
-				console.log("add 실행");
-				console.log($("#quantity").text());
-				console.log(${selectProduct.pprice});
-				console.log($("#quantity").text() * ${selectProduct.pprice} + "￦");
-				
-/* 				${"#finalPrice"}.text($("#quantity").text() * ${selectProduct.pprice} + "￦"); */
+				$("#quantity").text(parseInt($("#quantity").text()) + 1);
+				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦"); 
 			});
 		</script>
 		
 		<script>
 			 $(document).ready(function () {
-				 console.log((${qno} * ${selectProduct.pprice}) + "￦");
-				 /* ${"#finalPrice"}.text((${qno} * ${selectProduct.pprice}) + "￦"); */
+				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $("#buyTotalProductText").text((${qno} * ${selectProduct.pprice}) + "￦");
 	         });
 		</script>
 		

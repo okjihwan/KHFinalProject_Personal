@@ -23,4 +23,12 @@ public class Cart implements Serializable{
 		this.pno = pno;
 	}
 
+	public Cart(String userId, int pno, int cquantity) {
+		this.userId = userId;
+		this.pno = pno;
+		this.cquantity = cquantity;
+	}
+	
+	
+
 }
