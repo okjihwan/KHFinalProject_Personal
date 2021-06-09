@@ -1,350 +1,326 @@
 /* 첫번째 영역 */
-
 .main-img {
-  background-image: url(../images/main_cover.jpeg);
-  position: relative;
-  height: 100vh;
-  background-size: cover;
+	background-image: url(../images/main_cover.jpeg);
+	position: relative;
+	height: 100vh;
+	background-size: cover;
 }
 
 .main-title>h1 {
-  color: black;
-  font-family: 'GongGothicMedium';
-  text-align: right;
-  margin-right: 220px;
-  font-size: 65px;
-  line-height: 110px;
-  letter-spacing: 2px;
+	color: black;
+	font-family: 'GongGothicMedium';
+	text-align: right;
+	margin-right: 220px;
+	font-size: 65px;
+	line-height: 110px;
+	letter-spacing: 2px;
 }
 
 /* CHECK 버튼 */
-
 .vitamin-btn {
-  background-color: #263343;
-  border-radius: 45px;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: 'Source Sans Pro';
-  text-decoration: none;
-  margin-left: 950px;
-  padding: 30px 60px;
-  font-size: 35px;
-  letter-spacing: 6px;
-  box-shadow: 4px 6px 3px rgb(128, 128, 128);
+	background-color: #263343;
+	border-radius: 45px;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: 'Source Sans Pro';
+	text-decoration: none;
+	margin-left: 1500px;
+	padding: 30px 60px;
+	font-size: 35px;
+	letter-spacing: 6px;
+	box-shadow: 4px 6px 3px rgb(128, 128, 128);
 }
 
 .vitamin-btn:hover {
-  text-decoration: none;
-  background-color: #263343;
-  color: white;
+	text-decoration: none;
+	background-color: #263343;
+	color: white;
 }
 
 .vitamin-btn:focus {
-  outline: none;
+	outline: none;
 }
-
-/* 버튼 전체 형식
-
-.btn {
-  background-color: #263343;
-  border-radius: 28px;
-  border: 1px solid white;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  text-decoration: none;
-}
-
-.btn:hover {
-  background-color: #263343b4
-}
-
-.btn:focus {
-  outline: none;
-}
-*/
 
 /* 두번째 영역 - 슬라이드 */
-
 .content-slide-fix {
-  text-align: center;
-  font-family: 'Source Sans Pro';
-  font-size: 20px;
-  padding-top: 100px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  color: black;
+	text-align: center;
+	font-family: 'Source Sans Pro';
+	font-size: 20px;
+	padding-top: 100px;
+	font-weight: bold;
+	letter-spacing: 3px;
+	color: black;
 }
 
 .content-slide-img>img {
-  padding-top: 60px;
-  margin-left: -20px;
-  width: 50px;
+	padding-top: 60px;
+	margin-left: -20px;
+	width: 50px;
 }
 
 .content-slide-img>.slide-text {
-  color: black;
-  font-family: 'Do Hyeon', sans-serif;
-  text-align: center;
-  padding-top: 40px;
-  font-size: 60px;
-  line-height: 80px;
+	color: black;
+	font-family: 'Do Hyeon', sans-serif;
+	text-align: center;
+	padding-top: 40px;
+	font-size: 60px;
+	line-height: 80px;
 }
 
 .slide-box {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding-bottom: 80px;
-  background: rgb(255, 232, 184);
-  height: 600px;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 80px;
+	background: rgb(255, 232, 184);
+	height: 600px;
 }
 
 .slider-container {
-  position: absolute;
-  width: 100%;
-  left: 0;
+	position: absolute;
+	width: 100%;
+	left: 0;
 }
 
 .slide {
-  position: absolute;
-  width: 100%;
-  padding: 0 10%;
-  box-sizing: border-box;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  overflow: hidden;
+	position: absolute;
+	width: 100%;
+	padding: 0 10%;
+	box-sizing: border-box;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	overflow: hidden;
 }
 
 .slider-container.animated {
-  -webkit-transition: left .3s ease-in;
-  transition: left .3s ease-in;
+	-webkit-transition: left .3s ease-in;
+	transition: left .3s ease-in;
 }
 
 blockquote {
-  font-style: italic;
+	font-style: italic;
 }
 
 cite {
-  font-size: .8em;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: 1px;
+	font-size: .8em;
+	font-weight: 700;
+	font-style: normal;
+	letter-spacing: 1px;
 }
 
 .simple-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* 슬라이드 버튼 */
-
 #prev, #next {
-  position: absolute;
-  top: 63%;
-  left: 50%;
-  transform: translateY(-50%);
-  display: inline-block;
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-transition: all .3s ease-in;
-  transition: all .3s ease-in;
-  border: 3px solid rgb(255, 232, 184);
+	position: absolute;
+	top: 63%;
+	left: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	border-radius: 50%;
+	height: 70px;
+	width: 70px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+	border: 3px solid rgb(255, 232, 184);
 }
 
 #prev.disabled, #next.disabled {
-  display: none;
+	display: none;
 }
 
 #prev {
-  background-image: url('../images/arrow-left-out.png');
-  margin-left: -460px;
+	background-image: url('../images/arrow-left-out.png');
+	margin-left: -460px;
 }
 
 #prev:hover {
-  background-image: url('../images/arrow-left-over.png');
+	background-image: url('../images/arrow-left-over.png');
 }
 
 #next {
-  margin-left: 400px;
-  background-image: url('../images/arrow-right-out.png');
+	margin-left: 400px;
+	background-image: url('../images/arrow-right-out.png');
 }
 
 #next:hover {
-  background-image: url('../images/arrow-right-over.png');
+	background-image: url('../images/arrow-right-over.png');
 }
 
 /* 세번째 영역 */
-
 .rowrow {
-  margin-left: 230px;
-  margin-right: 230px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .vi-content {
-  text-align: center;
-  font-size: 23px;
-  padding-top: 100px;
-  font-weight: bold;
-  letter-spacing: 2px;
+	text-align: center;
+	font-size: 23px;
+	padding-top: 100px;
+	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 .col-icon, .col-content {
-  text-align: center;
+	text-align: center;
 }
 
 .col-icon>img {
-  width: 70px;
+	width: 70px;
 }
 
 .content-first {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 .content-second {
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 2px;
+	font-size: 25px;
+	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 .content-third {
-  font-family: 'S-CoreDream-3Light';
-  font-weight: lighter;
-  font-size: 14px;
+	font-family: 'S-CoreDream-3Light';
+	font-weight: lighter;
+	font-size: 14px;
 }
 
 /* 네번째 영역 */
-
 .fourth-area {
-  text-align: center;
-  margin-top: 100px;
+	text-align: center;
+	margin-top: 100px;
 }
 
 .fourth-area>p {
-  font-size: 20px;
-  margin-top: 40px;
-  letter-spacing: 1px;
-  font-family: 'S-CoreDream-3Light';
+	font-size: 20px;
+	margin-top: 40px;
+	letter-spacing: 1px;
+	font-family: 'S-CoreDream-3Light';
 }
 
 /* 다섯번째 영역 */
-
 .fifth-area {
-  background-color: #DA5E3C;
-  width: 100%;
-  height: 500px;
-  margin-top: 180px;
+	background-color: #DA5E3C;
+	width: 100%;
+	height: 500px;
+	margin-top: 180px;
 }
 
 .fifth-area>div>p {
-  font-family: 'S-CoreDream-3Light';
-  font-weight: bolder;
-  color: white
+	font-family: 'S-CoreDream-3Light';
+	font-weight: bolder;
+	color: white
 }
 
 .investigation-btn {
-  background-color: #263343;
-  border-radius: 45px;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: 'Source Sans Pro';
-  text-decoration: none;
-  padding: 30px 40px;
-  font-size: 25px;
-  letter-spacing: 6px;
-  box-shadow: 0 5px 4px 0 rgb(0 0 0 / 15%);
+	background-color: #263343;
+	border-radius: 45px;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: 'Source Sans Pro';
+	text-decoration: none;
+	padding: 30px 40px;
+	font-size: 25px;
+	letter-spacing: 6px;
+	box-shadow: 0 5px 4px 0 rgb(0 0 0/ 15%);
 }
 
 .investigation-btn:hover {
-  text-decoration: none;
-  background-color: #263343;
-  color: white;
+	text-decoration: none;
+	background-color: #263343;
+	color: white;
 }
 
 .investigation-btn:focus {
-  outline: none;
+	outline: none;
 }
 
 /* 여섯번째 영역 */
-
 .sixth-area {
-  margin-top: 80px;
+	margin-top: 80px;
 }
 
 .pill-search>.col {
-  text-align: center;
+	text-align: center;
 }
 
 .lev-content {
-  text-align: center;
-  font-family: 'S-CoreDream-3Light';
-  padding: 70px;
-  font-size: 30px;
-  letter-spacing: 3px;
+	text-align: center;
+	font-family: 'S-CoreDream-3Light';
+	padding: 70px;
+	font-size: 30px;
+	letter-spacing: 3px;
 }
 
 .pill-search-box {
-  padding-top: -10px;
-  padding-bottom: 50px;
+	padding-top: -10px;
+	padding-bottom: 50px;
 }
 
-.pill-search-box>input {
-  width: 380px;
-  height: 60px;
-  border: 2px solid rgba(0, 0, 0, 0);
-  border-bottom: 2px solid black;
+.pill-search-box>div {
+	width: 380px;
+	height: 80px;
+	border: 2px solid rgba(0, 0, 0, 0);
+	border-bottom: 2px solid black;
 }
 
-.pill-search-box:active {
-  border: rgba(0, 0, 0, 0);
+#search-basic {
+	width: 290px;
+	height: 60px;
+	margin-top: 15px;
+	border: 2px solid rgba(0, 0, 0, 0);
+	font-size: 25px;
+	margin-left: 10px;
+	font-weight: lighter;
 }
 
-.pill-search-box>.submit-btn {
-  font-family: FontAwesome;
-  width: 30px;
-  height: 30px;
+input:focus {
+	outline: none;
+}
 
+.loupe-btn {
+	width: 40px;
+	height: 40px;
 }
 
 .pill-search-btn>button {
-  width: 100px;
-  height: 100px;
-  background: rgba(0, 0, 0, 0);
-  border: 1px solid rgb(129, 128, 128);
+	width: 130px;
+	height: 130px;
+	background: rgba(0, 0, 0, 0);
+	border: 1px solid rgb(129, 128, 128);
 }
 
 /**/
-
 .rowarea {
-  margin-left: 200px;
-  margin-right: 200px;
+	margin-left: 200px;
+	margin-right: 200px;
 }
 
 .selfi-area {
-  text-align: center;
-  margin-top: 100px;
+	text-align: center;
+	margin-top: 100px;
 }
 
 .text-area {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 20px;
-  font-family: 'MapoGoldenPier';
-  font-weight: bold;
+	text-align: center;
+	margin-top: 40px;
+	font-size: 20px;
+	font-family: 'MapoGoldenPier';
+	font-weight: bold;
 }
 
 .selfi {
-  width: 150px;
-  height: 150px;
-  background-size: contain;
-  border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	background-size: contain;
+	border-radius: 50%;
 }
-

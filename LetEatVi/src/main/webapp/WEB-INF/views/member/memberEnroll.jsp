@@ -113,8 +113,10 @@
 
 				<!-- 이메일 -->
 				<div class="form-group" id="eamilBox">
-					<label for="email">이메일</label> <input type="email" name="email"
-						id="email" class="form-control" placeholder="이메일을 입력하세요.">
+					<label for="email">이메일</label>
+					<input type="email" name="email"
+						id="email" class="form-control" placeholder="이메일을 입력하세요."
+						style="width: 480px;">
 				</div>
 				<!-- //이메일 -->
 

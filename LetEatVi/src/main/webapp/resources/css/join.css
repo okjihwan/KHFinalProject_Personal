@@ -1,120 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
-    background-color: #f8f9fa;
-}
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
+
 /* input label hidden 설정 */
-label
-{
-    display: none;
+label {
+	display: none;
+	font-weight: bold;
 }
-/* 전체 박스 */
+
+.login-img {
+	background-image: url(../images/lime.jpg);
+	position: relative;
+	height: 300px;
+	background-size: cover;
+}
 
 /* 로고 이미지*/
-.logoBox
-{
-    margin-top: 100px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#logo
-{
-    width: 100px;
+.logoBox {
+	margin-top: 100px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-/* Form 박스 */ 
-
-.formBox
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#logo {
+	width: 480px;
 }
-form
-{
-    margin: auto;
-    width: 50%;
-    max-width: 480px;
+
+/* Form 박스 */
+.formBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	margin: auto;
+	width: 50%;
+	max-width: 480px;
 }
 
 /* input */
-.form-control
-{
-    width: 100%;
-    height: 45px; /* input height 조절 */
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    justify-content: center;
-    align-items: center;
+.form-control {
+	width: 100%;
+	height: 45px; /* input height 조절 */
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.form-control:focus
-{
-    color: #495057;
-    background-color: #fff;
-    border-color: #fff;
-    outline: 0;
+.form-control:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #fff;
+	outline: 0;
 }
 
 /* 로그인 버튼 */
-#loginBtn
-{
-    display: block;
-    width: 100%;
-    margin-top: 20px;
+#loginBtn {
+	display: block;
+	width: 100%;
+	margin-top: 20px;
 }
 
 /* 비밀번호 찾기, 회원가입 */
-.findBox
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 30px;
-    padding-bottom: 50px;
+.findBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 30px;
+	padding-bottom: 50px;
 }
-.findBox a,
-.findBox span
-{
-    color: #999;
+
+.findBox a, .findBox span {
+	color: #999;
 }
 
 /* Api 로그인 버튼 */
-.bigContainer
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bigContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.joinApiBox
-{
-    margin-top: 0;
-    margin: auto;
-    width: 50%;
-    max-width: 480px;
 
-    padding-top: 50px;
+.joinApiBox {
+	margin-top: 0;
+	margin: auto;
+	width: 50%;
+	max-width: 480px;
+	padding-top: 50px;
 }
 
 /* 버튼 height 공통 설정 */
-.btn
-{
-    height: 45px;
+.btn {
+	height: 45px;
 }
 
 /* email box */
-#eamilBox
-{
-    display: flex;
+#eamilBox {
+	display: inline-block;
 }
-#eamilBox span
-{
-    padding: 5px 5px;
+
+#eamilBox span {
+	padding: 5px 5px;
 }

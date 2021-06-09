@@ -1,7 +1,5 @@
 /* footer */
 
-/* 부산 여행의 모든 것 */
-
 .footer {
     bottom: 0;
 }
@@ -17,19 +15,20 @@ article {
 
 .name {
     font-family: 'S-CoreDream-3Light';
-    font-size: 12px;
+    font-size: 17px;
 }
 
 .end {
-    font-size: 12px;
+    font-size: 17px;
 }
 
 .sub {
     font-family: 'S-CoreDream-3Light';
+    font-size: 20px;
 }
 
 .list-icon {
-    font-size: 14px;
+    font-size: 19px;
 }
 
 .list-icon>div {
@@ -48,5 +47,10 @@ article {
 }
 
 article div a {
+    color: red;
+}
+
+article div a:hover {
+	text-decoration: none;
     color: red;
 }
