@@ -85,7 +85,7 @@
 		<nav class="navbar">
 			<!-- 로고, 아이콘 -->
 			<div class="navbar__logo">
-				<a href="" class="menu-content"><img
+				<a href="http://localhost:8088/leteatvi/" class="menu-content"><img
 					src="${pageContext.request.contextPath}/resources/images/LetEatVi_logo.jpg"
 					style="width: 160px;"></a>
 			</div>

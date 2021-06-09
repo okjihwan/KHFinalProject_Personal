@@ -80,7 +80,7 @@
 </head>
 <body>
 	<!-- footer -->
-	<footer class="footer" style="margin-top: 300px;">
+	<footer class="footer" style="margin-top: 150px;">
 		<div class="top">
 			<div class="container">
 				<div class="row">

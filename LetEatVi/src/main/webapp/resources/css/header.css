@@ -73,7 +73,7 @@ body {
 	border-radius: 6px;
 	position: relative;
 	transition: all 0.3s ease-in-out;
-	margin-left: 550px;
+	margin-left: 430px; /*이거*/
 }
 
 .search-wrapper.active .input-holder {
@@ -82,7 +82,7 @@ body {
 	top: -3px;
 	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
 	border: 2px solid rgba(63, 62, 62, 0.678);
-	margin-left: 340px;
+	margin-left: 230px; /*이거*/
 }
 
 .search-wrapper .input-holder .search-input {
@@ -184,7 +184,7 @@ body {
 }
 
 .search-wrapper.active .close {
-	right: -42px;
+	right: -36px; /*X 버튼*/
 	top: 2px;
 	transform: rotate(45deg);
 	transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
