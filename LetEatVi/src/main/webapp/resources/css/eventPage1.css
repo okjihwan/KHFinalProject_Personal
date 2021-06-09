@@ -1,0 +1,81 @@
+@charset "UTF-8";
+.top-img {
+    background-image: url(../images/storyPage.jpeg);
+    position: relative;
+    height: 85vh;
+    background-size: cover;
+}
+
+.topwords {
+    padding-top: 170px;
+    padding-right: 170px;
+    text-align: right;
+    font-family: 'Inkfree';
+}
+
+.topwords2 {
+    text-align: right;
+    padding-right: 180px;
+    font-weight: bold;
+    margin-top: -20px;
+    font-family: 'S-CoreDream-3Light';
+}
+
+.story-nav {
+    margin-top: -10px;
+    text-align: right;
+    margin-right: 180px;
+    font-weight: bold;
+}
+
+.navspan {
+    padding-left: 20px;
+}
+
+.navspan>a {
+    color: #4B553A;
+    letter-spacing: 1px;
+}
+
+.navspan>a:hover {
+    text-decoration: none;
+    color: #4B553A;
+}
+
+.contentsbox {
+    padding-top: 70px;
+}
+
+.wrapper {
+    position: inherit;
+    margin: 0 auto;
+    width: 1024px;
+}
+
+[id*='img'] {
+    height: 280px;
+    width: 460px;
+    padding: 5px;
+}
+
+.moresee {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#text {
+    line-height: 25px;
+    letter-spacing: -0.4px;
+    font-size: 16px;
+}
+
+.cate {
+    text-decoration: underline;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: -0.4px;
+}
+
+#roulettediv {
+    position: inherit;
+}
