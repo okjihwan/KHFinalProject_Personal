@@ -112,6 +112,10 @@ LAST-UPDATE : 2021-06-02
 			<a href="#" class="vitamin-btn">CHECK</a>
 		</div>
 	</div>
+	
+	<!--  -->
+	<div style="height: 100px;"><a href="http://localhost:8088/leteatvi/views/myPage/myPage.jsp">마이페이지</a></div>
+	<!--  -->
 
 	<div class="slide-box">
 		<p class="content-slide-fix">어떻게 선택하셨었나요?</p>
