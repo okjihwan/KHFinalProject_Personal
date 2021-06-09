@@ -44,9 +44,18 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
+	public List selectAllCategory() {
+		return storeDAO.selectAllCategory();
+	}
+	
+	@Override
 	public int insertOneProduct(Cart cartProduct2) {
 		return storeDAO.insertOneProduct(cartProduct2);
 	}
 
+	@Override
+	public int insertOneProductWithQuantity(Cart cartProductWithQuantity) {
+		return storeDAO.insertOneProductWithQuantity(cartProductWithQuantity);
+	}
 
 }

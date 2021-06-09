@@ -16,5 +16,10 @@ public interface StoreDAO {
 
 	List selectCategory(int cno);
 
+	List selectAllCategory();
+	
 	int insertOneProduct(Cart cartProduct2);
+
+	int insertOneProductWithQuantity(Cart cartProductWithQuantity);
+
 }

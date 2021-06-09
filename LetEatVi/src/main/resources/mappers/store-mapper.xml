@@ -27,7 +27,17 @@
 		AND C.PCTYPE = #{cno}
 	</select>
 	
+	<select id="selectAllCategory" resultType="prod">
+		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
+		FROM PRODUCT P, PCATEGORY C
+		WHERE P.PTYPE = C.PCTYPE
+	</select>
+	
 	<insert id="insertOneProduct" parameterType="Cart">
 		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, DEFAULT)
+	</insert>
+	
+	<insert id="insertOnePrdocutWithQuantity" parameterType="Cart">
+		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
 	</insert>
 </mapper>

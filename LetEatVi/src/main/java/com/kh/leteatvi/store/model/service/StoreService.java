@@ -16,8 +16,13 @@ public interface StoreService {
 
 	Product addCart(int pno);
 
+	// 카테고리 전체 상품
+	List selectAllCategory();
+	
+	// 카테고리 별 상품
 	List selectCategory(int cno);
 
 	int insertOneProduct(Cart cartProduct2);
 
+	int insertOneProductWithQuantity(Cart cartProductWithQuantity);
 }

@@ -24,9 +24,9 @@
   
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/test.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
   
     <script src="${pageContext.request.contextPath}/resources/js/header.js" defer></script>
-    <script src="${pageContext.request.contextPath}/resources/js/header_search_box.js" defer></script>
     <script src="${pageContext.request.contextPath}/resources/js/mainPage.js" defer></script>
   
     <style>
@@ -89,10 +89,10 @@
         </nav>
     </header>
 
-    <div class="main-img" style="border-bottom: 2px solid black;">
+    <div class="main-img" style="border-bottom: 2px solid black; background-image: url(${pageContext.request.contextPath}/resources/images/main_cover3.jpg);">
         <div class="main-title">
           <br><br><br><br><br><br><br><br><br>
-          <h1>내 몸에 필요한 영양제 <br> 궁금하세요?</h1>
+          <h1 style="margin-top: -100px;">내 몸에 필요한 영양제 <br> 궁금하세요?</h1>
         </div>
     </div>
 
@@ -109,14 +109,14 @@
 			style="max-width: 1350px; margin-bottom: 120px;">
 			<nav class="gnb-menu">
 
-				<a href="">
+				<div onclick="selectCartegory(0);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/all-inclusive.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(0);">All</div>
-				</a>
+					<div class="categoryText">All</div>
+				</div>
 
 				<div onclick="selectCartegory(1);">
 					<div class="categoryMenu">
@@ -127,98 +127,121 @@
 					<div class="categoryText">활력 & 피로</div>
 				</div>
 
-				<a href="">
+				<div onclick="selectCartegory(2);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/all-inclusive.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(2);">피부 &
-						모발</div>
-				</a> <a href="">
+					<div class="categoryText">피부 & 모발</div>
+				</div>
+						
+				<div onclick="selectCartegory(3);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/all-inclusive.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(3);">면연력</div>
-				</a> <a href="">
+					<div class="categoryText">면역력</div>
+				</div> 
+				
+				<div onclick="selectCartegory(4);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/liver.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(4);">장 & 간
+					<div class="categoryText">장 & 간
 					</div>
-				</a> <a href="">
+				</div> 
+				
+				<div onclick="selectCartegory(5);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/broken-bone.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(5);">뼈</div>
-				</a> <a href="">
+					<div class="categoryText">뼈</div>
+				</div> 
+				
+				<div onclick="selectCartegory(6);">
 					<div class="categoryMenu">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/eye.png"
 							alt="" style="width: 50px; height: 50px;">
 					</div>
-					<div class="categoryText" onclick="selectCartegory(6);">눈</div>
-				</a>
+					<div class="categoryText">눈</div>
+				</div>
 			</nav>
 		</div>
 
-		<div class="container" style="max-width: 1600px;">
-
+		<div class="container row mx-auto" id="productListDiv" style="max-width: 1600px;">
 			<c:forEach items="${productList}" var="p" varStatus="st">
-				<c:if test="${ st.count % 3 == 1 }">
-					<div class="card-deck bestProduct">
-				</c:if>
-				<div class="card border-secondary cardSetCss">
-					<img
-						src="${pageContext.request.contextPath }/resources/images/${p.pname}.jpg"
-						class="card-img-top bestProductImg" alt="...">
+			<div class="card-deck bestProduct col-4 mx-auto ${ p.pcName }">
+				<div class="card border-secondary cardSetCss productDiv${p.pno}">
+					<img src="${pageContext.request.contextPath }/resources/images/${p.pname}.jpg" class="card-img-top bestProductImg" style="width : 100%;" alt="..." id="img${p.pno}">
+					
 					<div class="card-body cardText">
-						<p>
-							<b>[${p.pname}]</b>
-						</p>
-						<p>${p.pcontent}</p>
-						<p>
-							<b>${p.pprice}￦</b>
-						</p>
+						<p><b id="name${p.pno}">[${p.pname}]</b></p>
+						<p id="content${p.pno}">${p.pcontent}</p>
+						<p><b id="price${p.pno}">${p.pprice}￦</b></p>
 					</div>
+					
 					<div class="card-footer border-secondary">
 						<div class="row bestProductFooterText">
-							<div class="col-6" style="text-align: left;">
-								<button type="button" onclick="addCart(${p.pno})"
-									class="btn btn-light popover-dismiss" data-container="body"
-									data-toggle="popover" data-placement="bottom"
-									data-content="장바구니에 추가하였습니다." style="width: 150px;">ADD TO CART</button>
+							<div class="col-9" style="text-align: left;">
+								<button type="button" onclick="addCart(${p.pno})" class="btn btn-light popover-dismiss" data-container="body"
+									data-toggle="popover" data-placement="bottom" data-content="장바구니에 추가하였습니다." style="width: 250px;">ADD TO CART
+								</button>
 							</div>
 
-							<div class="col-3 choiceProduct${st.count}"
-								onclick="checkProduct(${st.count})">
-								<small class="text-muted"> <i class="far fa-heart fa-3x"></i>
-								</small>
-							</div>
-
-							<div class="col-3"
-								onclick="location.href='${pageContext.request.contextPath}/store/selectProduct.do?pno=${p.pno}'">
-								<small class="text-muted"> <i
-									class="fas fa-search fa-3x"></i>
+							<div class="col-3" onclick="selectProduct(${p.pno})" id="selectProduct${p.pno}" class="test${p.pno}">
+								<small class="text-muted"> 
+									<i class="fas fa-search fa-3x"></i>
 								</small>
 							</div>
 						</div>
 					</div>
+					
 				</div>
-				<c:if
-					test="${ (st.count % 3 == 0) or st.count == allProduct.size() }">
-		</div>
-		</c:if>
-		</c:forEach>
-		<br />
+			</div>
+			</c:forEach><br />
+		</div><br />
 		<c:out value="${pageBar}" escapeXml="false" />
-		</div>
+		
+	<footer class="footer" style="margin-top: 300px;">
+    <div class="top">
+      <div class="container">
+        <div class="row">
+          <article class="col-md-12 col-sm-10">
+            <!-- 페이지 주제 -->
+            <div class="about content">
+              <p class="sub">렛 잇 비</p>
+              <!-- 이름 및 환불규정, 개인정보취급방침 -->
+              <p class="name">
+                KH정보교육원&nbsp;|&nbsp;대표자:
+                유정훈&nbsp;|&nbsp;책임자:&nbsp;박지환&nbsp;이철원&nbsp;전소연&nbsp;구도욱&nbsp;노다비&nbsp;곽민지<br>
+                <a href="refund.html">환불규정</a>&nbsp;|&nbsp;<a href="privacy.html">개인정보취급방침</a>
+              </p>
+              <!-- 주소 및 이메일 -->
+              <div class="list-icon">
+                <div>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;서울특별시 강남구 테헤란로14길 6 남도빌딩</div>
+
+                <div><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;let_eat_vi @ gmail.com</div>
+                <p class="bottom"><span>KH정보교육원</span> Made by 영양실조 <i class="fa fa-copyright" aria-hidden="true"></i> 2021</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 맨 위로 스크롤 버튼 -->
+    <a href="#" class="scroll" style="position:fixed; bottom: 30px; right: 30px;"><img src="${pageContext.request.contextPath}/resources/images/up.png" alt="Top" width="30px" height="30px"></a>
+    <a href="" style="position: fixed; bottom: 180px; right: 26px;"><img src="${pageContext.request.contextPath}/resources/images/kakao.png" style="width: 40px;"></a>
+    <a href="" style="position: fixed; bottom: 124px; right: 29px;"><img src="${pageContext.request.contextPath}/resources/images/store.png" style="width: 35px;"></a>
+    <a href="" style="position: fixed; bottom: 72px; right: 31px;"><img src="${pageContext.request.contextPath}/resources/images/shopping-cart.png" style="width: 35px;"></a>
+  </footer>
 
 		<script>
         function checkProduct(value){
@@ -247,18 +270,52 @@
 
 		<script>
 			function selectCartegory(cno){
-				console.log(cno);
-				
-					$.ajax({
-			            url  : "${pageContext.request.contextPath}/store/selectCategory.do",
-			            data : { cno },
-			            type : "get",
-			            success : function(data){
-			                console.log(data);
+				$.ajax({
+			           url  : "${pageContext.request.contextPath}/store/selectCategory.do",
+			           data : { cno },
+			           type : "get",
+			           success : function(result){
+			        	   $('#productListDiv').empty();
+			                
+			                for(var i = 0 ; i < result.length; i++){
+			                	var productOne = '<div class="card-deck bestProduct col-4 mx-auto ' + result[i].pcName + '">'
+			                				+'<div class="card border-secondary cardSetCss productDiv' + result[i].pno + '">'
+			                    		    +'<img src="${pageContext.request.contextPath }/resources/images/' + result[i].pname
+			                    		    + '.jpg" class="card-img-top bestProductImg" style="width : 100%;" id="img' + result[i].pno + '">'
+			                    		    + '<div class="card-body cardText"><p><b id="name' + result[i].pno + '">[' + result[i].pname + ']</b></p>'
+											+ '<p id="content' + result[i].pno + '">' + result[i].pcontent + '</p>'
+											+ '<p><b id="price' + result[i].pno + '">' +  result[i].pprice + '￦</b></p>'
+									    	+ '</div>'
+									    	+ '<div class="card-footer border-secondary">'
+											+ '<div class="row bestProductFooterText">'
+											+ '<div class="col-9" style="text-align: left;"> '
+											+ '<button type="button" onclick="addCart(' +result[i].pno +')" class="btn btn-light popover-dismiss" data-container="body'
+											+ 'data-toggle="popover" data-placement="bottom" data-content="장바구니에 추가하였습니다." style="width: 250px;">ADD TO CART'
+											+ '</button>'
+											+ '</div>'
+											+ '<div class="col-3" onclick="selectProduct(' +result[i].pno + ')" id="selectProduct' +result[i].pno + '" class="test' +result[i].pno + '">'
+											+ '<small class="text-muted">'
+											+ '<i class="fas fa-search fa-3x"></i>'
+											+ '</small>'
+											+ '</div>'
+											+ '</div>'
+											+ '</div>'
+											+ '</div>'
+											+ '</div>';
+											+ '<br>';
+			                     $('#productListDiv').append(productOne);
+			                }
 			            }
 		        	}); 
 			}
 		</script>
+		
+		<script>
+			function selectProduct(value){
+				console.log("onclick pno 값: " + value);
+			}
+		</script>
+		
 	</section>
 
 	<br><br><br><br><br><br><br><br><br><br>
