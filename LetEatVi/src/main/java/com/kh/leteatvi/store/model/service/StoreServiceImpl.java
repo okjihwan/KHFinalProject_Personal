@@ -6,8 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.dao.StoreDAO;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
 
 @Service
@@ -56,6 +58,16 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public int insertOneProductWithQuantity(Cart cartProductWithQuantity) {
 		return storeDAO.insertOneProductWithQuantity(cartProductWithQuantity);
+	}
+
+	@Override
+	public Member selectOneMember(String userId) {
+		return storeDAO.selectOneMember(userId);
+	}
+
+	@Override
+	public int insertPaymentInfo(Payment p) {
+		return storeDAO.insertPaymentInfo(p);
 	}
 
 }

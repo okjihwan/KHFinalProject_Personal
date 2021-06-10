@@ -40,4 +40,14 @@
 	<insert id="insertOnePrdocutWithQuantity" parameterType="Cart">
 		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
 	</insert>
+	
+	<select id="selectOneMember" parameterType="string" resultType="Member">
+		SELECT USERNAME, EMAIL, PHONE
+		FROM MEMBER
+		WHERE USERID = #{userId}
+	</select>
+	
+<!-- 	<insert id="insertPaymentInfo>
+		
+	</insert> -->
 </mapper>

@@ -124,7 +124,7 @@
 			alt="Top" width="30px" height="30px"></a> <a href=""
 			style="position: fixed; bottom: 180px; right: 26px;"><img
 			src="${pageContext.request.contextPath}/resources/images/kakao.png"
-			style="width: 40px;"></a> <a href=""
+			style="width: 40px;"></a> <a href="${pageContext.request.contextPath}/store/goStore.do"
 			style="position: fixed; bottom: 124px; right: 29px;"><img
 			src="${pageContext.request.contextPath}/resources/images/store.png"
 			style="width: 35px;"></a> <a href=""

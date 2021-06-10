@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
 
 @Repository
@@ -52,6 +54,16 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public int insertOneProductWithQuantity(Cart cartProductWithQuantity) {
 		return sqlSession.insert("store.insertOnePrdocutWithQuantity", cartProductWithQuantity);
+	}
+
+	@Override
+	public Member selectOneMember(String userId) {
+		return sqlSession.selectOne("store.selectOneMember", userId);
+	}
+
+	@Override
+	public int insertPaymentInfo(Payment p) {
+		return sqlSession.insert("store.insertPaymentInfo", p);
 	}
 
 	

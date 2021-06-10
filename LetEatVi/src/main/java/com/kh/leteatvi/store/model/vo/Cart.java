@@ -28,7 +28,41 @@ public class Cart implements Serializable{
 		this.pno = pno;
 		this.cquantity = cquantity;
 	}
-	
-	
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public int getPno() {
+		return pno;
+	}
+
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
+
+	public int getCno() {
+		return cno;
+	}
+
+	public void setCno(int cno) {
+		this.cno = cno;
+	}
+
+	public int getCquantity() {
+		return cquantity;
+	}
+
+	public void setCquantity(int cquantity) {
+		this.cquantity = cquantity;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

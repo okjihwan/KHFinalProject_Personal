@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.leteatvi.common.Utils;
+import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.service.StoreService;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
 
 @Controller
@@ -62,8 +64,11 @@ public class storeController {
 	// 결제하기 버튼 클릭 시
 	// ============================================== //
 	@RequestMapping("/store/goPayment.do")
-	public String goPayment(@RequestParam int pno, @RequestParam int qno, Model model) {
+	public String goPayment(@RequestParam int pno, @RequestParam int qno, @RequestParam String userId, Model model) {
 		Product p = storeService.selectOneProduct(pno);
+		Member m = storeService.selectOneMember(userId);
+		
+		System.out.println("회원 정보 : " + m);
 		
 		model.addAttribute("selectProduct", p);
 		model.addAttribute("qno", qno);
@@ -126,6 +131,15 @@ public class storeController {
 		int addCartWithQuantity = storeService.insertOneProductWithQuantity(cartProductWithQuantity);
 		
 		System.out.println(addCartWithQuantity);
+	}
+	
+	@RequestMapping("/store/insertPaymentInfo.do")
+	public String insertPaymentInfo(Payment p) {
+		System.out.println("결제 정보 : " + p);
+		
+		int addPaymentInfo = storeService.insertPaymentInfo(p);
+		
+		return null;
 	}
 	
 }

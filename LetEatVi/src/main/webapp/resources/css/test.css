@@ -1,84 +1,159 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-header{font-family: 'Jua', sans-serif;}
+header {
+	font-family: 'Jua', sans-serif;
+}
 
-a:visited{color:black;}
+a:visited {
+	color: black;
+}
 
 /* 카테고리 메뉴 배경 관련 */
-.blankArea{ height: 50px; }
-
-/* BEST 항목 관련 */
-.firstText{ text-align: center; font-size: 30px; margin-top: 40px;}
-.bestProduct { margin-top: 40px;}
-.cardHeadText{text-align: center; font-weight: bold; font-size: 22px;}
-.bestProductImg{ width: 500px; height: 400px; }
-.bestProductFooterText{text-align: center; font-weight: bold;}
-.bestProductFooterText button{ font-size: 17px; font-weight: bold; }
-
-.text-muted a:visited{ color: black; }
-
-[class*=choiceProduct] i:hover{ cursor: pointer; }
-
-/* .cardSetCss{box-shadow: 2px 2px 2px black;} */
-.cardSetCss:focus{cursor: pointer;}
-
-.select{color: red;}
-.noSelect{color: black;}
-
-.category{ text-align: center; border: 1px solid black; }
-.categoryText{ margin-top: 20px; margin-bottom: 10px; font-size: 20px;}
-.categoryblank{ border: 1px solid black;}
-.categoryMenu{ margin-top: 15px;}
-
-.gnb-menu{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 2vh;
-    text-align: center;
-    /* background: whitesmoke; */
+.blankArea {
+	height: 50px;
 }
 
-.gnb-menu>div{
-    font-size: 24px;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    padding: 6px 12px;
-    color: black;
+/*상단 이미지*/
+.top-img {
+	background-image: url(../images/lemons.jpg);
+	position: relative;
+	height: 300px;
+	background-size: cover;
 }
 
-.gnb-menu>div::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 4px;
-    background: #f1c40f;
-    transition: all .3s ease-out;
-}
-
-.gnb-menu>div:hover::after{
-    width: 100%;
+.main-title>h1 {
+	text-align: right;
+	margin-right: 220px;
+	padding-top: 130px;
+	font-family: 'Eulyoo1945-Regular';
+	line-height: 50px;
+	letter-spacing: 1px;
 }
 
 [class*=mainText] {
 	text-align: center;
-	margin-top: 80px;
-	font-size: 44px;
+	margin-top: 50px;
+	margin-bottom: 70px;
+	font-size: 50px;
 	font-weight: bold;
+	font-family: 'Eulyoo1945-Regular';
+	letter-spacing: 2px;
 }
 
-[class*=subText] {
+/* BEST 항목 관련 */
+.firstText {
 	text-align: center;
+	font-size: 30px;
+	margin-top: 40px;
+}
+
+.bestProduct {
+	margin-top: 40px;
+}
+
+.cardHeadText {
+	text-align: center;
+	font-weight: bold;
 	font-size: 22px;
-	margin-top: 30px;
-	margin-bottom: 100px;
+}
+
+.bestProductImg {
+	width: 500px;
+	height: 400px;
+}
+
+.bestProductFooterText {
+	text-align: center;
 	font-weight: bold;
 }
 
-.pagebar li{ width: 50px;  text-align: center; }
+.bestProductFooterText button {
+	font-size: 17px;
+	font-weight: bold;
+}
 
-.cardText{ font-size: 24px;}
+.text-muted a:visited {
+	color: black;
+}
+
+[class*=choiceProduct] i:hover {
+	cursor: pointer;
+}
+
+/* .cardSetCss{box-shadow: 2px 2px 2px black;} */
+.cardSetCss:focus {
+	cursor: pointer;
+}
+
+.select {
+	color: red;
+}
+
+.noSelect {
+	color: black;
+}
+
+.category {
+	text-align: center;
+	border: 1px solid black;
+}
+
+.categoryText {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-family: 'S-CoreDream-3Light';
+	font-weight: bold;
+}
+
+.categoryblank {
+	border: 1px solid black;
+}
+
+.categoryMenu {
+	margin-top: 15px;
+	width: 100px;
+}
+
+.gnb-menu {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 2vh;
+	text-align: center;
+	/* background: whitesmoke; */
+}
+
+.gnb-menu>div {
+	font-size: 24px;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	padding: 6px 12px;
+	color: black;
+}
+
+.gnb-menu>div::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 4px;
+	background: #f1c40f;
+	transition: all .3s ease-out;
+}
+
+.gnb-menu>div:hover::after {
+	width: 100%;
+}
+
+.pagebar li {
+	width: 50px;
+	text-align: center;
+}
+
+.cardText {
+	font-size: 24px;
+}

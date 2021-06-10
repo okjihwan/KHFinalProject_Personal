@@ -109,7 +109,7 @@ LAST-UPDATE : 2021-06-02
 			</h1>
 		</div>
 		<div style="margin-top: 90px;">
-			<a href="#" class="vitamin-btn">CHECK</a>
+			<a href="#" class="vitamin-btn" style="color: white;">CHECK</a>
 		</div>
 	</div>
 	
@@ -237,7 +237,7 @@ LAST-UPDATE : 2021-06-02
 			<div style="line-height: 50%;">
 				<br>
 			</div>
-			<a href="#" class="investigation-btn">지금 시작하기</a>
+			<a href="#" class="investigation-btn" style="color: white;">지금 시작하기</a>
 		</div>
 	</div>
 
@@ -269,7 +269,7 @@ LAST-UPDATE : 2021-06-02
 					style="margin-right: -4.5px; border-right-color: rgba(0, 0, 0, 0); border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
 					<img
 						src="${pageContext.request.contextPath}/resources/images/healthcare.png"
-						style="width: 50px; margin-bottom: 15px;"><br> 피로 / 기운
+						style="width: 50px; margin-bottom: 15px;"><br> 활력 / 피로
 				</button>
 				<button
 					style="margin-right: -4px; border-right-color: rgba(0, 0, 0, 0);">
@@ -298,7 +298,7 @@ LAST-UPDATE : 2021-06-02
 				<button
 					style="margin-left: -3.7px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
 					<img
-						src="${pageContext.request.contextPath}/resources/images/botox.png"
+						src="${pageContext.request.contextPath}/resources/images/cells.png"
 						style="width: 50px; margin-bottom: 15px; margin-right: 10px;"><br>
 					면역력 / 노화
 				</button>
