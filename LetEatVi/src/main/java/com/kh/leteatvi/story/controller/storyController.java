@@ -1,8 +1,15 @@
 package com.kh.leteatvi.story.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kh.leteatvi.story.model.service.storyService;
 
 
 
@@ -46,9 +53,9 @@ public class storyController {
 	
 	// 룰렛 페이지로 이동
 	@RequestMapping("/story/goEventPage1.do")
-	public String goEventPage1() {
+	public String goEventPage1(@RequestParam int userId, Model model) {
 		
-		
+		List<Map<String, String>> price = storyService.getPrice("scope", "scopePrice");
 		
 		return "story/eventPage1";
 	}

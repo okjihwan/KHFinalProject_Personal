@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Coupon implements Serializable {
 	
 	private int coupon_Id;
-	private String userid;
+	private String userId;
 	private String coupon_code;
 	private String coupon_name;
 	private int discount_rate;

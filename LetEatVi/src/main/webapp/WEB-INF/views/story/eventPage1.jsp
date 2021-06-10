@@ -147,19 +147,19 @@
 					  center: ["50%", "50%"],
 					  easing: $.easing.easeInOutElastic,
 					  callback: function(){ 
-									var n = $(this).getRotateAngle();
-									endAnimate(n);
+									var scope = $(this).getRotateAngle();
+									endAnimate(scope);
 								},
 					  duration:5000
 				   });
 				}
-			
+				
 				
 				// 룰렛이 끝나고 나서 아래 상품범위를 통하여 결과 뽑아내기
-				function endAnimate($n){
-					var n = $n;
-					$('#result_id').html("<p>움직인각도:" + n + "</p>");
-					var real_angle = n%360+21;
+				function endAnimate($scope){
+					var scope = $scope;
+					$('#result_id').html("<p>움직인각도:" + scope + "</p>");
+					var real_angle = scope%360+21;
 					var part = Math.floor(real_angle/45);
 					
 					$('#result_id2').html("<p>상품범위:" + part + "</p>");
@@ -175,11 +175,23 @@
 					}
 			
 					$('#result_id3').html("<p>당첨내역:" + pArr[part] + "</p>");
+					
+					
+					$.ajax({
+						url:"/story/goEventPage1.do",
+						type:'POST',
+						data: scope, scopePrice
+						success:
+					})
+					
 				}
 			
 				function randomize($min, $max){
 					return Math.floor(Math.random() * ($max - $min + 1)) + $min;
 				}
+				
+				
+				
 			};
 			</script>
 			
