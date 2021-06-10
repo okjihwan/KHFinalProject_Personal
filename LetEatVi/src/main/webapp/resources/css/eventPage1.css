@@ -78,4 +78,8 @@
 
 #roulettediv {
     position: inherit;
+    background-color: #FFEFD5;
+    padding-top: 50px;
+    text-align: center;
 }
+
