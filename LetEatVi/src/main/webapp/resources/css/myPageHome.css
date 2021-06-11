@@ -114,7 +114,7 @@ ul, ol, li {
     color: grey;
 }
 
-.mypagev2-view #mypagev2-home .mypagev2-home-latest .home-latest-header>span {
+.mypagev-view #mypagev-home .mypagev-home-latest .home-latest-header>span {
     float: left;
     padding-right: 16px;
     font-size: 12px;

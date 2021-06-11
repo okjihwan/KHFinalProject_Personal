@@ -108,7 +108,6 @@
 					href="${pageContext.request.contextPath}/store/goStore.do"
 					class="menu-content">스토어</a></li>
 				<li><a href="" class="menu-content">영양제</a></li>
-				<li><a href="" class="menu-content">이벤트</a></li>
 				<li><a href="${pageContext.request.contextPath}/story/goStory.do" class="menu-content">스토리</a></li>
 				<li><a href="" class="menu-content">장바구니</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/memberLogin.do" class="menu-content">Login</a></li>

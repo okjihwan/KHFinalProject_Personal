@@ -106,16 +106,16 @@
             <p class="topwords2" style="font-size: 13px;" id="text">읽다보면 나도 모르게 건강해질 것 같은 그런 기분</p>
             <div class="story-nav">
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goStory.do">All</a>
+                    <a href="${pageContext.request.contextPath}/story/goStory.do" style="color: #4B553A;">All</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goLife.do">Life</a>
+                    <a href="${pageContext.request.contextPath}/story/goLife.do" style="color: #4B553A;">Life</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goNutrition.do">Nutrition</a>
+                    <a href="${pageContext.request.contextPath}/story/goNutrition.do" style="color: #4B553A;">Nutrition</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goEvent.do">Event</a>
+                    <a href="${pageContext.request.contextPath}/story/goEvent.do" style="color: #4B553A;">Event</a>
                 </span>
             </div>
         </div>

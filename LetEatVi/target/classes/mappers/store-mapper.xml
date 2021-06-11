@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="store">
@@ -65,58 +64,4 @@
 	<insert id="insertOneCartWithQuantity" parameterType="Cart">
 		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
 	</insert>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="store">
-
-	<select id="selectAllProductCount" resultType="_int">
-		SELECT COUNT(*)
-		FROM PRODUCT
-	</select>
-	
-	<select id="selectProduct" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-	</select>
-	
-	<select id="selectOneProduct" parameterType="_int" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-		AND P.PNO = #{pno}
-	</select>
-
-	<select id="selectCategory" parameterType="_int" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-		AND C.PCTYPE = #{cno}
-	</select>
-	
-	<select id="selectAllCategory" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-	</select>
-	
-	<insert id="insertOneProduct" parameterType="Cart">
-		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, DEFAULT)
-	</insert>
-	
-	<insert id="insertOnePrdocutWithQuantity" parameterType="Cart">
-		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
-	</insert>
-	
-	<select id="selectOneMember" parameterType="string" resultType="Member">
-		SELECT USERNAME, EMAIL, PHONE
-		FROM MEMBER
-		WHERE USERID = #{userId}
-	</select>
-	
-<!-- 	<insert id="insertPaymentInfo>
-		
-	</insert> -->
->>>>>>> refs/remotes/origin/minmin
 </mapper>

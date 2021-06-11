@@ -162,7 +162,7 @@
 
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
-		<form method="post" action="insertPaymentInfo.do">
+		<form method="post" action="insertPaymentInfo.do" id="insertFrm">
 			<div class="row">
 				<div class="col-2"></div>
 
@@ -317,7 +317,7 @@
 					<br> <br>
 
 					<div class="row">
-						<div class="col-2 buyProductText">42000</div>
+						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
 							<img
@@ -341,7 +341,7 @@
 								style="width: 30px;">
 						</div>
 
-						<div class="col-2 buyTotalProductText">42000</div>
+						<div class="col-2 buyTotalProductPrice">42000</div>
 					</div>
 					<br> <br>
 
@@ -366,7 +366,7 @@
 								id="payBtnCancle" style="width: 100%">주문취소</button>
 						</div>
 						<div class="col-5 card-text">
-							<button type="submit" class="btn btn-dark btn-lg" id="payBtn"
+							<button type="button" class="btn btn-dark btn-lg" id="payBtn"
 								style="width: 100%">주문하기</button>
 						</div>
 						<div class="col-1"></div>
@@ -399,14 +399,15 @@
 			        IMP.request_pay({
 			        	// 필수 항목
 			            merchant_uid : 'merchant_' + new Date().getTime(),
-			            amount : parseInt($('#price').text()) * $('#quan').val(),
+			            amount : parseInt($('.buyTotalProductPrice').text()),
 			            buyer_tel : '${member.phone}',
-
-			            // 추가 항목
 			            
+			            // 추가 항목
+			            name : '${selectProduct.pname}'
 			        }, function(rsp) {
 			            if (rsp.success) {
 			                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+			                /*
 			                $.ajax({
 			                    url : "/test/orderconfirm.do", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
 			                    type : 'POST',
@@ -425,15 +426,15 @@
 			                        paid_at : rsp.paid_at,
 			                        receipt_url : rsp.receipt_url
 			                    //기타 필요한 데이터가 있으면 추가 전달
-			                    }
-			                });
-			                location.href="/test/views/iamport/orderConfirm.jsp?item=toy&pay_method="+rsp.pay_method
-			                        +"&quan=" + $('#quan').val() + "&nick="+rsp.buyer_name + "&price="+ $('#price').text()
-			                        +"&date="+rsp.paid_at+"&price="+rsp.paid_amount;
+			                    }, success : function(data){
+			                    }});
+			                    */
+					                $('#insertFrm').submit();			
+			                
 			            } else {
 			                var msg = '결제에 실패하였습니다. <br>';
 			                msg += '에러내용 : ' + rsp.error_msg;
-			                $("#errorText").html(msg);
+			                $("#errorText").html(rsp.error_msg);
 			                $("#errorModal").trigger("click");
 			            }
 			        });
@@ -446,25 +447,29 @@
   				if($("#quantity").text() > 1){
 					$("#quantity").text($("#quantity").text() - 1);
 					$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+					$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+					$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 				}  
 			});
 			
 			$("#addQuantity").on("click", function () {
-				console.log($("#quantity").text() + 1);
 				
 				$("#quantity").text(parseInt($("#quantity").text()) + 1);
-				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦"); 
+				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+				$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+				$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 			});
 		</script>
-
-	<script>
+		
+		<script>
 			 $(document).ready(function () {
 				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
-				 $("#buyTotalProductText").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 	         });
 		</script>
-
-	<script>
+		
+		<script>
 			function equalMemberinfo(){
 				console.log("${member.userName}");
 				console.log("${member.email}");
@@ -474,7 +479,7 @@
 				$("#orderEmail").attr("value", "${member.email}");
 				$("#orderPhone").attr("value", "${member.phone}");
 			}
-	</script>
+		</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

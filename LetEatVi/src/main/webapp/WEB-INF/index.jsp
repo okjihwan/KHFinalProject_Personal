@@ -114,7 +114,7 @@ LAST-UPDATE : 2021-06-02
 	</div>
 	
 	<!--  -->
-	<div style="height: 100px;"><a href="http://localhost:8088/leteatvi/views/myPage/myPage.jsp">마이페이지</a></div>
+	<div style="height: 100px;"><a href="${pageContext.request.contextPath}/myPage/myPageHome.do">마이페이지</a></div>
 	<!--  -->
 
 	<div class="slide-box">

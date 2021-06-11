@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.kh.leteatvi.store.model.dao;
 
 import java.util.List;
@@ -38,36 +37,3 @@ public interface StoreDAO {
 	int insertOneCartWithQuantity(Cart cartCartWithQuantity);
 	// ================================
 }
-=======
-package com.kh.leteatvi.store.model.dao;
-
-import java.util.List;
-import java.util.Map;
-
-import com.kh.leteatvi.member.model.vo.Member;
-import com.kh.leteatvi.store.model.vo.Cart;
-import com.kh.leteatvi.store.model.vo.Payment;
-import com.kh.leteatvi.store.model.vo.Product;
-
-public interface StoreDAO {
-
-	int selectAllProductCount();
-
-	List<Map<String, String>> selectProduct(int cPage, int numPerPage);
-
-	Product selectOneProduct(int pno);
-
-	List selectCategory(int cno);
-
-	List selectAllCategory();
-	
-	int insertOneProduct(Cart cartProduct2);
-
-	int insertOneProductWithQuantity(Cart cartProductWithQuantity);
-
-	Member selectOneMember(String userId);
-
-	int insertPaymentInfo(Payment p);
-
-}
->>>>>>> refs/remotes/origin/minmin
