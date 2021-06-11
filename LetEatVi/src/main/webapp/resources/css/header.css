@@ -10,7 +10,6 @@ body {
 .menu-content {
 	text-decoration: none;
 	color: black;
-	font-weight: 500;
 }
 
 .navbar {
@@ -43,7 +42,7 @@ body {
 	padding-left: 0;
 	list-style: none;
 	margin-right: 200px;
-	margin-top: 10px;
+	margin-top: 8px;
 }
 
 .navbar__menu li {

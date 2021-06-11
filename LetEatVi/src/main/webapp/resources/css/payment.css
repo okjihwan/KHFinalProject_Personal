@@ -1,0 +1,41 @@
+/*상단 이미지*/
+.top-img {
+	background-image: url(../images/lemons.jpg);
+	position: relative;
+	height: 300px;
+	background-size: cover;
+}
+
+.main-title>h1 {
+	text-align: right;
+	margin-right: 220px;
+	padding-top: 130px;
+	font-family: 'Eulyoo1945-Regular';
+	line-height: 50px;
+	letter-spacing: 1px;
+}
+
+.buyProductText {
+	text-align: center;
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 3px;
+}
+
+.payment_title {
+	text-align: center;
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 7px;
+	font-size: 27px;
+	width: 1440px;
+	margin-left: 216px;
+}
+
+.pay_product_img {
+	width: 100%;
+	height: 100%;
+}
+
+.card-text {
+	text-align: center;
+	font-family: 'IBMPlexSansKR-Regular';
+}
