@@ -18,4 +18,5 @@ public class Product implements Serializable{
 	private int pprice;
 	private String pcontent;
 	private String pcName;
+	
 }                  

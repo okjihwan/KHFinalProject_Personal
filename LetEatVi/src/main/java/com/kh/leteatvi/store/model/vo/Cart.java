@@ -28,7 +28,5 @@ public class Cart implements Serializable{
 		this.pno = pno;
 		this.cquantity = cquantity;
 	}
-	
-	
 
 }

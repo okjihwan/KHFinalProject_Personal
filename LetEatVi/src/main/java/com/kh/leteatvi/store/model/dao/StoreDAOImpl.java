@@ -8,7 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
 
 @Repository
@@ -45,16 +47,33 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public int insertOneProduct(Cart cartProduct2) {
-		return sqlSession.insert("store.insertOneProduct", cartProduct2);
+	public Member selectOneMember(String userId) {
+		return sqlSession.selectOne("store.selectOneMember", userId);
 	}
 
 	@Override
-	public int insertOneProductWithQuantity(Cart cartProductWithQuantity) {
-		return sqlSession.insert("store.insertOnePrdocutWithQuantity", cartProductWithQuantity);
+	public int insertPaymentInfo(Payment p) {
+		return sqlSession.insert("store.insertPaymentInfo", p);
+	}
+	
+	@Override
+	public int insertOneCart(Cart cartProduct) {
+		return sqlSession.insert("store.insertOneCart", cartProduct);
 	}
 
-	
+	@Override
+	public int selectOneCart(Cart cartProduct) {
+		return sqlSession.selectOne("store.selectOneCart", cartProduct);
+	}
 
+	@Override
+	public int deleteCart(Cart cartProduct) {
+		return sqlSession.delete("store.deleteCart", cartProduct);
+	}
+
+	@Override
+	public int insertOneCartWithQuantity(Cart cartCartWithQuantity) {
+		return sqlSession.insert("store.insertOneCartWithQuantity", cartCartWithQuantity);
+	}
 
 }
