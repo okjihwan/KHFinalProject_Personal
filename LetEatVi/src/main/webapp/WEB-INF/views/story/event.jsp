@@ -126,7 +126,7 @@
 						<div class="col ctimg"
 							onclick="location.href='${pageContext.request.contextPath}/story/goEventPage1.do'">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/lotto.JPG"
+								src="${pageContext.request.contextPath}/resources/images/event1img.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
