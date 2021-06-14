@@ -143,26 +143,9 @@
 		</div>
 		<br>
 
-		<%-- 
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-2">
-                <img src="${pageContext.request.contextPath}/resources/images/비타민3.jpg" alt="" style="width: 100%; height: 200px;">
-            </div>
-            <div class="col-1"></div>
-            <div class="col-2" style="margin-top: 85px;">상품 정보</div>
-            <div class="col-2" style="margin-top: 85px;">
-                <img src="${pageContext.request.contextPath}/resources/images/minus.png" style="width: 20px;"> &nbsp;
-                1 &nbsp;
-                <img src="${pageContext.request.contextPath}/resources/images/add.png" style="width: 20px;">
-            </div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-        </div> --%>
-
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
-		<form method="post" action="insertPaymentInfo.do">
+		<form method="post" action="insertPaymentInfo.do" id="insertFrm">
 			<div class="row">
 				<div class="col-2"></div>
 
@@ -189,9 +172,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">이름</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="orderPerson"
-								id="orderPerson" placeholder="주문인" aria-label="Username"
-								aria-describedby="basic-addon1" value="">
+							<input type="text" class="form-control" name="orderPerson" id="orderPerson" placeholder="주문인" aria-label="Username" aria-describedby="basic-addon1" value="">
 						</div>
 					</div>
 					<br>
@@ -200,9 +181,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">이메일</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="orderEmail"
-								id="orderEmail" placeholder="이메일" aria-label="Username"
-								aria-describedby="basic-addon1" value="">
+							<input type="text" class="form-control" name="orderEmail" id="orderEmail" placeholder="이메일" aria-label="Username" aria-describedby="basic-addon1" value="">
 						</div>
 					</div>
 					<br>
@@ -211,9 +190,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="orderPhone"
-								id="orderPhone" placeholder="연락처" aria-label="Username"
-								aria-describedby="basic-addon1" value="">
+							<input type="text" class="form-control" name="orderPhone"	id="orderPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1" value="">
 						</div>
 					</div>
 					<br>
@@ -239,9 +216,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">수령인</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPerson"
-								id="receiptPerson" placeholder="수령인" aria-label="Username"
-								aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="receiptPerson" id="receiptPerson" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -250,9 +225,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPhone"
-								id="receiptPhone" placeholder="연락처" aria-label="Username"
-								aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="receiptPhone" id="receiptPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -261,9 +234,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">배송지</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptAddress"
-								id="receiptAddress" placeholder="배송지" aria-label="Username"
-								aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="receiptAddress" id="receiptAddress" placeholder="배송지" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -274,8 +245,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="pleaseRequest"
-									aria-label="With textarea"></textarea>
+								<textarea class="form-control" name="pleaseRequest" aria-label="With textarea"></textarea>
 							</div>
 						</div>
 					</div>
@@ -317,7 +287,7 @@
 					<br> <br>
 
 					<div class="row">
-						<div class="col-2 buyProductText">42000</div>
+						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
 							<img
@@ -341,7 +311,7 @@
 								style="width: 30px;">
 						</div>
 
-						<div class="col-2 buyTotalProductText">42000</div>
+						<div class="col-2 buyTotalProductPrice">42000</div>
 					</div>
 					<br> <br>
 
@@ -358,6 +328,10 @@
 						</div>
 					</div>
 					<br> <br>
+					
+					<input type="hidden" name="orderId" id="setOrderId"/>
+					<input type="hidden" name="paidAmount" id="setPaidAmout"/>
+					<input type="hidden" name="pno" id="pno"/>
 
 					<div class="row">
 						<div class="col-1"></div>
@@ -366,7 +340,7 @@
 								id="payBtnCancle" style="width: 100%">주문취소</button>
 						</div>
 						<div class="col-5 card-text">
-							<button type="submit" class="btn btn-dark btn-lg" id="payBtn"
+							<button type="button" class="btn btn-dark btn-lg" id="payBtn"
 								style="width: 100%">주문하기</button>
 						</div>
 						<div class="col-1"></div>
@@ -377,6 +351,31 @@
 			<br>
 		</form>
 	</div>
+	
+	<button type="button" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal" style="display:none">
+	  Launch demo modal
+	</button>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" style="margin-top: 150px;">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	       	결제가 완료되었습니다.
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<br>
 	<br>
@@ -384,58 +383,76 @@
 	<br>
 	<br>
 
-	<script type="text/javascript"
-		src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 	<script>
-			var IMP = window.IMP; // 생략가능
+			var IMP = window.IMP;
 			
 			$(function() {
 			    IMP.init('imp77211071');
-			}); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			}); 
 			
 			$('#payBtn').on('click', function(){ 
+				
+/* 				$("#setOrderId").text(orderId);
+                $("#setPaidAmout").text(paidAmount);
+                $("#pno").text(${selectProduct.pno});
+                
+                console.log(orderId);
+                console.log(paidAmount);
+                console.log(${selectProduct.pno});  */
+                
 				console.log("결제 진행");
 			        IMP.request_pay({
 			        	// 필수 항목
 			            merchant_uid : 'merchant_' + new Date().getTime(),
-			            amount : parseInt($('#price').text()) * $('#quan').val(),
+			            amount : parseInt($('.buyTotalProductPrice').text()),
 			            buyer_tel : '${member.phone}',
-
-			            // 추가 항목
 			            
+			            // 추가 항목
+			            name : '${selectProduct.pname}'
 			        }, function(rsp) {
 			            if (rsp.success) {
-			                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-			                $.ajax({
-			                    url : "/test/orderconfirm.do", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
-			                    type : 'POST',
-			                    dataType : 'json',
-			                    data : {
-			                        item : 'toy',
-			                        code : 'P0001',
-			                        quan : $('#quan').val(),
-			                        imp_uid : rsp.imp_uid,
-			                        pay_method : rsp.pay_method,
-			                        price : rsp.paid_amount,
-			                        status : rsp.status,
-			                        title : rsp.name,
-			                        pg_tid : rsp.pg_tid,
-			                        buyer_name : rsp.buyer_name,
-			                        paid_at : rsp.paid_at,
-			                        receipt_url : rsp.receipt_url
-			                    //기타 필요한 데이터가 있으면 추가 전달
-			                    }
-			                });
-			                location.href="/test/views/iamport/orderConfirm.jsp?item=toy&pay_method="+rsp.pay_method
-			                        +"&quan=" + $('#quan').val() + "&nick="+rsp.buyer_name + "&price="+ $('#price').text()
-			                        +"&date="+rsp.paid_at+"&price="+rsp.paid_amount;
+			            	
+			            	var msg = '결제가 완료되었습니다.';
+			                msg += '고유ID : ' + rsp.imp_uid;
+			                msg += '결제 금액 : ' + rsp.paid_amount;
+			                
+/* 			                var orderId = rsp.imp_uid; 
+			                var paidAmount = rsp.paid_amount; */
+			                
+/* 			                console.log(orderId);
+			                console.log(paidAmount);
+			                
+			                $("#setOrderId").text(oderId);
+			                $("#setPaidAmout").text(paidAmount);
+			                
+			                $('#insertFrm').submit(); */
+			                
+			                 $.ajax({
+			                	url  : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
+			                    /* dataType : '',
+			                    data : { }, 
+			                    success : function(data){
+			                    	console.log(data);
+			                    	$(".paySuccess").click();
+			                    	console.log("ajax 성공");
+			                	}, error : function(jqxhr, textStatus, errorThrown){
+					                console.log(jqxhr);
+					                console.log(textStatus);
+					                console.log(errorThrown);
+			                		console.log("ajax 처리 실패");
+			                	}
+			               }); 
+			                    
 			            } else {
 			                var msg = '결제에 실패하였습니다. <br>';
 			                msg += '에러내용 : ' + rsp.error_msg;
-			                $("#errorText").html(msg);
+			                $("#errorText").html(rsp.error_msg);
 			                $("#errorModal").trigger("click");
 			            }
+			            
+			            alert(msg);
 			        });
 			});
 		</script>
@@ -446,25 +463,29 @@
   				if($("#quantity").text() > 1){
 					$("#quantity").text($("#quantity").text() - 1);
 					$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+					$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+					$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 				}  
 			});
 			
 			$("#addQuantity").on("click", function () {
-				console.log($("#quantity").text() + 1);
 				
 				$("#quantity").text(parseInt($("#quantity").text()) + 1);
-				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦"); 
+				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+				$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
+				$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 			});
 		</script>
-
-	<script>
+		
+		<script>
 			 $(document).ready(function () {
 				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
-				 $("#buyTotalProductText").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 	         });
 		</script>
-
-	<script>
+		
+		<script>
 			function equalMemberinfo(){
 				console.log("${member.userName}");
 				console.log("${member.email}");
@@ -474,7 +495,7 @@
 				$("#orderEmail").attr("value", "${member.email}");
 				$("#orderPhone").attr("value", "${member.phone}");
 			}
-	</script>
+		</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>
