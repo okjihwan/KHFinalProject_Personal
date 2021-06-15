@@ -1,5 +1,7 @@
 package com.kh.leteatvi.store.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +11,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Payment {
 
-	private String orderPerson;
-	private String orderEmail;
-	private String orderPhone;
-	private String receiptPerson;
-	private String receiptPhone;
-	private String receiptAddress;
 	
+
+	// == input_form ==
+	private String ono;
+	private int paidAmount;
+	private String userId;
+	private String comment;
+	private String addressee;
+	private String address;
+	private String phone;
+	// == input_form ==
+	
+	private String userName;
+	
+//	private int pid;
+	private Date oenroll;
 }

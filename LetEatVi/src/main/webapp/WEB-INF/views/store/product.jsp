@@ -185,6 +185,8 @@
 				</div>
 			</div>
 
+			
+
 			<div class="row secondRow">
 				<div class="col">
 					<div class="border-dark mb-3">
@@ -195,11 +197,11 @@
 						letter-spacing: 5px;
 						padding-bottom: 23px;">
 						Detail</div>
+						<img src="${pageContext.request.contextPath}/resources/images/결제.jpg" />
 						<div class="card-body text-dark" style="margin-top: 30px;">
 							<p class="card-text">
 								<img
-									src="${pageContext.request.contextPath}/resources/images/상세비타민2.jpg"
-									alt="" style="width: 80%">
+									src="${pageContext.request.contextPath}/resources/images/상세비타민2.jpg"style="width: 80%">
 							</p>
 						</div>
 					</div>
@@ -207,6 +209,8 @@
 			</div>
 
 		</div>
+		
+		<%-- <img src="${pageContext.request.contextPath}/resources/images/결제.jpg" alt="" style="margin-left: 35%"/> --%>
 
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br>

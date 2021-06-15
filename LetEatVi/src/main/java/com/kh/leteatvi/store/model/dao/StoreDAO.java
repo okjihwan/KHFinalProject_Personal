@@ -36,4 +36,7 @@ public interface StoreDAO {
 	// ================================
 	int insertOneCartWithQuantity(Cart cartCartWithQuantity);
 	// ================================
+
+
+	List selectAllCart(String userId);
 }

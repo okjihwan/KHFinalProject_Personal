@@ -1,5 +1,6 @@
 package com.kh.leteatvi.store.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -148,8 +149,8 @@ public class storeController {
 //			int CategoryProductCount = storeService.selectAllProductCount();
 //			
 //			String pageBar = Utils.getPageBar(CategoryProductCount, cPage, numPerPage, "goStore.do");
-
-			System.out.println(cList);
+//
+//			System.out.println(cList);
 			
 			return cList;
 		}
@@ -169,12 +170,30 @@ public class storeController {
 	// 결제 완료 시 페이지 이동 예정
 	// ============================================== //
 	@RequestMapping("/store/insertPaymentInfo.do")
-	public String insertPaymentInfo(Payment p) {
+	@ResponseBody
+	public Payment insertPaymentInfo(Payment p) {
 		System.out.println("결제 정보 : " + p);
 		
 		int addPaymentInfo = storeService.insertPaymentInfo(p);
 		
-		return "redirect:/store/goStore.do";
+		System.out.println("결제 완료 test");
+		
+		return p;
+
+	}
+	
+	@RequestMapping("store/goCart.do")
+	public String goCart(@RequestParam String userId, Model model) {
+		
+		List cartList = new ArrayList();
+		
+		cartList = storeService.selectAllCart(userId);
+		
+		System.out.println(cartList);
+		
+		model.addAttribute("cartList", cartList);
+		
+		return "store/cart";
 	}
 	
 }

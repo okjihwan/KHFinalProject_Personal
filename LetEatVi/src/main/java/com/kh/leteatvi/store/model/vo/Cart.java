@@ -17,6 +17,10 @@ public class Cart implements Serializable{
 	private int pno;
 	private int cno;
 	private int cquantity;
+	private String pname;
+	private int pprice;
+	private String pcontent;
+	private String pcName;
 	
 	public Cart(String userId, int pno) {
 		this.userId = userId;

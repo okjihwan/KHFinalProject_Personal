@@ -80,4 +80,10 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.insertOneCartWithQuantity(cartCartWithQuantity);
 	}
 
+
+	@Override
+	public List selectAllCart(String userId) {
+		return storeDAO.selectAllCart(userId);
+	}
+
 }

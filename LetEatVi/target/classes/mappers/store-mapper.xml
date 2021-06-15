@@ -40,7 +40,7 @@
 	</select>
 	
  	<insert id="insertPaymentInfo" parameterType="Payment">
-		INSERT INTO PAYMENT VALUES(#{orderPerson}, #{orderEmail}, #{orderPhone}, #{receiptPerson}, #{receiptPhone}, #{receiptAddress})	
+		INSERT INTO ORDERLIST VALUES(#{ono}, #{userId} , DEFAULT, #{paidAmount}, #{comment}, #{addressee}, #{address}, #{phone})	
 	</insert>
 	
 	<insert id="insertOneCart" parameterType="Cart">
@@ -51,17 +51,26 @@
 		SELECT COUNT(*)
 		FROM CART
 		WHERE USERID = #{userId}
-		AND PRODUCT_ID = #{pno}
+		AND PNO = #{pno}
 	</select>
 	
 	<delete id="deleteCart" parameterType="Cart">
 		DELETE 
 		FROM CART
 		WHERE USERID = #{userId}
-		AND PRODUCT_ID = #{pno}
+		AND PNO = #{pno}
 	</delete>
 	
 	<insert id="insertOneCartWithQuantity" parameterType="Cart">
 		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
 	</insert>
+
+	
+	<select id="selectAllCart" parameterType="string" resultType="Cart">
+		SELECT * FROM PRODUCT P,
+		(   SELECT *
+    		FROM CART
+    		WHERE USERID = #{userId} ) B
+		WHERE P.PNO = B.PNO
+	</select>
 </mapper>

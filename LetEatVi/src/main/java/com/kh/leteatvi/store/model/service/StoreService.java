@@ -41,4 +41,7 @@ public interface StoreService {
 	// ================================
 	int insertOneCartWithQuantity(Cart cartCartWithQuantity);
 	// ================================
+
+
+	List selectAllCart(String userId);
 }
