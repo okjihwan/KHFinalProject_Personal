@@ -145,7 +145,7 @@
 
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
-		<form method="post" action="insertPaymentInfo.do" id="insertFrm">
+		<form id="insertFrm">
 			<div class="row">
 				<div class="col-2"></div>
 
@@ -190,7 +190,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="orderPhone"	id="orderPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1" value="">
+							<input type="text" class="form-control" name="orderPhone" id="orderPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1" value="">
 						</div>
 					</div>
 					<br>
@@ -207,8 +207,7 @@
 					<br>
 					<div class="row">
 						<div class="col-1"></div>
-						<div class="col-4 card-text"
-							style="font-size: 22px; font-weight: bold;">배송지 정보</div>
+						<div class="col-4 card-text" style="font-size: 22px; font-weight: bold;">배송지 정보</div>
 					</div>
 					<br>
 
@@ -216,7 +215,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">수령인</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPerson" id="receiptPerson" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="addressee" id="addressee" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -225,7 +224,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPhone" id="receiptPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="phone" id="phone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -234,7 +233,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">배송지</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptAddress" id="receiptAddress" placeholder="배송지" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="address" id="address" placeholder="배송지" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -245,7 +244,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="pleaseRequest" aria-label="With textarea"></textarea>
+								<textarea class="form-control" name="comment" aria-label="With textarea"></textarea>
 							</div>
 						</div>
 					</div>
@@ -290,8 +289,7 @@
 						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/add.png"
+							<img src="${pageContext.request.contextPath}/resources/images/add.png"
 								style="width: 30px;">
 						</div>
 
@@ -329,10 +327,6 @@
 					</div>
 					<br> <br>
 					
-					<input type="hidden" name="orderId" id="setOrderId"/>
-					<input type="hidden" name="paidAmount" id="setPaidAmout"/>
-					<input type="hidden" name="pno" id="pno"/>
-
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-5 card-text">
@@ -352,7 +346,7 @@
 		</form>
 	</div>
 	
-	<button type="button" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal" style="display:none">
+	<button type="button" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal">
 	  Launch demo modal
 	</button>
 	
@@ -361,17 +355,26 @@
 	  <div class="modal-dialog" style="margin-top: 150px;">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">결제 확인</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <!-- 닫기버튼 눌렀을 때 스토어홈으로 돌아간다 -->
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body">
-	       	결제가 완료되었습니다.
+	      <div class="modal-body" style="text-align: center;">
+	       	결제가 성공적으로 완료되었습니다. <br />
+	       	기타 문의사항은 채팅 또는 전화문의로 연락주시면 <br />
+	       	답변 드리겠습니다 <br /><br />
+	       	
+	       	-주문 정보- <br />
+	       	<div id="orderer">주문자 명 : 000. </div><br />
+	       	<div id="orderNo">주문 번호 : 000. </div><br />
+	       	<div id="orderPrice">결제 금액 : 000. </div><br />
+	       	
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;">Store Home</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;">주문 내역 확인</button>
 	      </div>
 	    </div>
 	  </div>
@@ -391,17 +394,28 @@
 			$(function() {
 			    IMP.init('imp77211071');
 			}); 
-			
+			function QueryStringToJSON(str) {
+			    var pairs = str.split('&');
+			    var result = {};
+			    pairs.forEach(function (pair) {
+			        pair = pair.split('=');
+			        var name = pair[0]
+			        var value = pair[1]
+			        if (name.length)
+			            if (result[name] !== undefined) {
+			                if (!result[name].push) {
+			                    result[name] = [result[name]];
+			                }
+			                result[name].push(value || '');
+			            } else {
+			                result[name] = value || '';
+			            }
+			    });
+			    return (result);
+			}
+
 			$('#payBtn').on('click', function(){ 
 				
-/* 				$("#setOrderId").text(orderId);
-                $("#setPaidAmout").text(paidAmount);
-                $("#pno").text(${selectProduct.pno});
-                
-                console.log(orderId);
-                console.log(paidAmount);
-                console.log(${selectProduct.pno});  */
-                
 				console.log("결제 진행");
 			        IMP.request_pay({
 			        	// 필수 항목
@@ -412,41 +426,55 @@
 			            // 추가 항목
 			            name : '${selectProduct.pname}'
 			        }, function(rsp) {
-			            if (rsp.success) {
-			            	
+			          if (rsp.success) {
+			        	    var form = $("#insertFrm");        
+			                console.log(QueryStringToJSON(decodeURIComponent(form.serialize())));
+			                var payment = QueryStringToJSON(decodeURIComponent(form.serialize()));
+			                
 			            	var msg = '결제가 완료되었습니다.';
 			                msg += '고유ID : ' + rsp.imp_uid;
 			                msg += '결제 금액 : ' + rsp.paid_amount;
 			                
-/* 			                var orderId = rsp.imp_uid; 
-			                var paidAmount = rsp.paid_amount; */
+			                // 결제 성공 시
+			                // 주문번호와 결제금액 받아와서 hidden 처리된 상태로 입력
+ 			                var orderId = rsp.imp_uid; 
+			                var paidAmount = rsp.paid_amount;
+			                var userId = "${member.userId}";
 			                
-/* 			                console.log(orderId);
+ 			                console.log(orderId);
 			                console.log(paidAmount);
+			                console.log(userId);
 			                
-			                $("#setOrderId").text(oderId);
-			                $("#setPaidAmout").text(paidAmount);
+			                payment['ono'] = orderId;
+			                payment['paidAmount'] = paidAmount;
+			                payment['userId'] = userId;
+			                
+/* 			                $(".paySuccess").click();
 			                
 			                $('#insertFrm').submit(); */
-			                
-			                 $.ajax({
-			                	url  : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
-			                    /* dataType : '',
-			                    data : { }, 
+ 
+			                $.ajax({
+			                	url : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
+			                    type : 'POST', 
+			                    data : payment,
 			                    success : function(data){
-			                    	console.log(data);
-			                    	$(".paySuccess").click();
 			                    	console.log("ajax 성공");
+			                    	console.log(data);
+			                    	$("#orderer").text("주문자 명 : " + $("#orderPerson").val());
+			                    	$("#orderNo").text("주문 번호 : " + data.ono);
+			                    	$("#orderPrice").text("결제 금액 : " + data.paidAmount + "￦");
+					                $(".paySuccess").click();
 			                	}, error : function(jqxhr, textStatus, errorThrown){
 					                console.log(jqxhr);
 					                console.log(textStatus);
 					                console.log(errorThrown);
 			                		console.log("ajax 처리 실패");
 			                	}
-			               }); 
+		              	 	});
 			                    
-			            } else {
-			                var msg = '결제에 실패하였습니다. <br>';
+			            }
+			            else {
+			                var msg = '결제에 실패하였습니다.\n';
 			                msg += '에러내용 : ' + rsp.error_msg;
 			                $("#errorText").html(rsp.error_msg);
 			                $("#errorModal").trigger("click");
@@ -454,6 +482,7 @@
 			            
 			            alert(msg);
 			        });
+			        
 			});
 		</script>
 

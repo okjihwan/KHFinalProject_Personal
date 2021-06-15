@@ -40,7 +40,7 @@
 	</select>
 	
  	<insert id="insertPaymentInfo" parameterType="Payment">
-		INSERT INTO PAYMENT VALUES(#{orderPerson}, #{orderEmail}, #{orderPhone}, #{receiptPerson}, #{receiptPhone}, #{receiptAddress})	
+		INSERT INTO ORDERLIST VALUES(#{ono}, #{userId} , DEFAULT, #{paidAmount}, #{comment}, #{addressee}, #{address}, #{phone})	
 	</insert>
 	
 	<insert id="insertOneCart" parameterType="Cart">

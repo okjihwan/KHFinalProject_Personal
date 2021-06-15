@@ -11,14 +11,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Payment {
 
-	private int orderId;
-	private String userId;
-	private int pid;
-	private Date oenroll;
-	private int paidAmount;
-	private String pleaseRequest;
-	private String receiptPerson;
-	private String receiptPhone;
-	private String receiptAddress;
 	
+	// == input_form ==
+	private String ono;
+	private int paidAmount;
+	private String userId;
+	private String comment;
+	private String addressee;
+	private String address;
+	private String phone;
+	// == input_form ==
+	
+	private String userName;
+	
+//	private int pid;
+	private Date oenroll;
 }

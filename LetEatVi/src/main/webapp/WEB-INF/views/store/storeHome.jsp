@@ -179,7 +179,7 @@
 				<div class="card-deck bestProduct col-4 mx-auto ${ p.pcName }">
 					<div class="card border-secondary cardSetCss productDiv${p.pno}">
 						<img
-							src="${pageContext.request.contextPath }/resources/images/${p.pname}.jpg"
+							src="${pageContext.request.contextPath}/resources/images/${p.pname}.jpg"
 							class="card-img-top bestProductImg" style="width: 100%;"
 							alt="..." id="img${p.pno}">
 

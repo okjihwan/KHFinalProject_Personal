@@ -171,19 +171,15 @@ public class storeController {
 	// ============================================== //
 	@RequestMapping("/store/insertPaymentInfo.do")
 	@ResponseBody
-	public String insertPaymentInfo() {
-//		System.out.println("결제 정보 : " + p);
-//		
-//		int addPaymentInfo = storeService.insertPaymentInfo(p);
+	public Payment insertPaymentInfo(Payment p) {
+		System.out.println("결제 정보 : " + p);
+		
+		int addPaymentInfo = storeService.insertPaymentInfo(p);
 		
 		System.out.println("결제 완료 test");
 		
-		String msg = "ajax-controller 성공";
-		
-		return msg;
-		
-//		return "redirect:/store/goStore.do";
-//		return null;
+		return p;
+
 	}
 	
 	@RequestMapping("store/goCart.do")
