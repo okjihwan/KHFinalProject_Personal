@@ -82,41 +82,40 @@
 	font-weight: normal;
 	font-style: normal;
 }
+/**/
+#hideme {
+    animation: fadein 2s;
+    -webkit-animation: fadein 5s; /* Safari and Chrome */
+
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
 </style>
 </head>
 <body>
-
-	<!-- 
-
-LAST-UPDATE : 2021-06-02 
-구현 사항 : 기본 틀 ( 메인, 로그인, 회원가입 )
-
- -->
-
-
-
-	<!-- 로그인처리  ( 로그인,회원가입 버튼 ) 지우지 마세요! -->
-
-
 	<%@include file="./views/common/header.jsp"%>
 
 	<div class="main-img">
 		<div class="main-title">
 			<br> <br> <br> <br> <br> <br> <br>
 			<br> <br>
-			<h1>
+			<h1 id="hideme">
 				내 몸에 필요한 영양제 <br> 궁금하세요?
 			</h1>
 		</div>
-		<div style="margin-top: 90px;">
+		<div style="margin-top: 60px;" id="hideme">
 			<a href="#" class="vitamin-btn" style="color: white;">CHECK</a>
 		</div>
 	</div>
 	
-	<!--  -->
-	<div style="height: 100px;"><a href="${pageContext.request.contextPath}/myPage/myPageHome.do">마이페이지</a></div>
-	<!--  -->
-
+	
 	<div class="slide-box">
 		<p class="content-slide-fix">어떻게 선택하셨었나요?</p>
 		<ul class="slider-container simple-list" id="slider">
@@ -200,7 +199,7 @@ LAST-UPDATE : 2021-06-02
 	</div>
 
 	<div class="container fourth-area">
-		<img
+		<img class="hideme"
 			src="${pageContext.request.contextPath}/resources/images/medic-563425.jpg"
 			style="width: 85%;">
 		<p>
@@ -219,7 +218,7 @@ LAST-UPDATE : 2021-06-02
 	<br>
 	<br>
 	<div class="container fourth-area">
-		<img
+		<img class="hideme"
 			src="${pageContext.request.contextPath}/resources/images/vegetables-2977888.jpg"
 			style="width: 85%; height: 500px;">
 		<p>
@@ -245,8 +244,8 @@ LAST-UPDATE : 2021-06-02
 		<div class="row pill-search">
 			<div class="col">
 				<p class="lev-content">
-					<big style="font-size: 60px; font-weight: bolder;"> Let's Eat
-						Vitamin </big><br> 똑똑한 생활 습관 <b> 렛 잇 비 </b>
+					<b style="font-size: 60px; font-weight: bolder;"> Let's Eat
+						Vitamin </b><br> 똑똑한 생활 습관 <b> 렛 잇 비 </b>
 				</p>
 			</div>
 		</div>
@@ -364,6 +363,23 @@ LAST-UPDATE : 2021-06-02
 	</div>
 
 	<%@include file="./views/common/footer.jsp"%>
+	<!-- test -->
+	<script>
+	$(document).ready(function() {
+	    /* 1 */
+	    $(window).scroll( function(){
+	        /* 2 */
+	        $('.hideme').each( function(i){
+	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+	            var bottom_of_window = $(window).scrollTop() + $(window).height();
+	            /* 3 */
+	            if( bottom_of_window > bottom_of_object/2 ){
+	                $(this).animate({'opacity':'1'},1000);
+	            }
+	        }); 
+	    });
+	});
+	</script>
 
 </body>
 </html>
