@@ -160,9 +160,9 @@
 		</div>
 		<br>
 
-<<<<<<< HEAD
+
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
-=======
+
 		<%-- 
         <div class="row">
             <div class="col-1"></div>
@@ -182,13 +182,11 @@
 
 		<div class="card-header payment_title"
 			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
->>>>>>> refs/remotes/origin/Minji
 
-<<<<<<< HEAD
-		<form id="insertFrm">
-=======
-		<form method="post" action="insertPaymentInfo.do" id="insertFrm";">
->>>>>>> refs/remotes/origin/Minji
+
+
+		<form method="post" action="insertPaymentInfo.do" id="insertFrm">
+
 			<div class="row">
 				<div class="col-2"></div>
 
@@ -242,11 +240,7 @@
 
 				<div class="col-8">
 					<br>
-<<<<<<< HEAD
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-4 card-text" style="font-size: 22px; font-weight: bold;">배송지 정보</div>
-=======
+
 					<div class="row" style="text-align: center; margin-top: 30px;">
 						<div class="col" style="font-size: 22px; font-weight: bold;">배송지
 							정보</div>
@@ -256,7 +250,7 @@
 								style="width: 40%; border: 2px solid #3F4B3B; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문자
 								정보와 동일</button>
 						</div>
->>>>>>> refs/remotes/origin/Minji
+
 					</div>
 					<br> <br>
 
@@ -293,7 +287,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="comment" aria-label="With textarea"></textarea>
+								<textarea class="form-control" name="comment" aria-label="With textarea" style="resize: none;"></textarea>
 							</div>
 						</div>
 					</div>
@@ -338,14 +332,11 @@
 						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
-<<<<<<< HEAD
-							<img src="${pageContext.request.contextPath}/resources/images/add.png"
-								style="width: 30px;">
-=======
+
 							<img
 								src="${pageContext.request.contextPath}/resources/images/plus.png"
 								style="width: 15px;">
->>>>>>> refs/remotes/origin/Minji
+
 						</div>
 
 						<div class="col-2 buyProductText">무료</div>
@@ -402,7 +393,7 @@
 		</form>
 	</div>
 	
-	<button type="button" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal">
+	<button type="button" id="jihwanBtn" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal">
 	  Launch demo modal
 	</button>
 	

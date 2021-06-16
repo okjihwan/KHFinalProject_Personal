@@ -70,3 +70,7 @@
 	font-weight: lighter;
 	letter-spacing: 1px;
 }
+
+#jihwanBtn {
+	visibility : hidden;
+}
