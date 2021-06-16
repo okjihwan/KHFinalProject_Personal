@@ -126,7 +126,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/story/goStory.do"
 					class="menu-content">스토리</a></li>
-				<li><a href="" class="menu-content">장바구니</a></li>
+				<li><a href="${pageContext.request.contextPath}/store/goCart.do?userId=${member.userId}" class="menu-content">장바구니</a></li>
 				<c:if test="${empty member}">
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogin.do"

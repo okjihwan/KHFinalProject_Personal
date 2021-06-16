@@ -111,64 +111,66 @@
 
 	<div class="container-fluid" style="margin-top: 50px;">
 		<div class="card-header payment_title"
-		style="background-color: rgba(0, 0, 0, 0); padding-bottom: 20px;">주문 / 결제</div>
-		<div class="row" style="margin-top: 10px;">
-			<div class="col-2"></div>
-			<div class="col-2 buyProductText"></div>
-			<div class="col-2 buyProductText">상품 정보</div>
-			<div class="col-2 buyProductText">수량</div>
-			<div class="col-2 buyProductText">판매가</div>
-			<div class="col-2 buyProductText">최종금액</div>
-			<div class="col-1"></div>
+			style="background-color: rgba(0, 0, 0, 0); padding-bottom: 50px;">주문
+			/ 결제</div>
+
+		<div class="container orderContext" style="margin-top: 10px;">
+			<div class="order-inner">
+				<div class="buyProductText buyTitle">
+					<div class="buyImg" style="width: 400px;"></div>
+					<div class="buyContent" style="margin-top: 5px;">상품정보</div>
+					<div class="buyContent" style="margin-top: 5px;">수량</div>
+					<div class="buyContent" style="margin-top: 5px;">판매가</div>
+					<div class="buyContent" style="margin-top: 5px;">최종금액</div>
+				</div>
+			</div>
 		</div>
 
+		
 		<c:forEach items="${cartList}" var="c" varStatus="st">
-		<div class="row">
-			<div class="col-1"></div>
-			<div class="col-2">
-				<img class="pay_product_img" style="margin-left: 60px;"
-					src="${pageContext.request.contextPath}/resources/images/${c.pname}.jpg">
+		<div class="container orderContext">
+			<div class="order-inner">
+				<div class="buyProductText">
+					<div class="buyImg" style="display: inline-block;">
+						<img class="pay_product_img" src="${pageContext.request.contextPath}/resources/images/${c.pname}.jpg">
+					</div>
+					<div class="buyContent buyText" style="margin-top: 85px; padding-right: 17px;">${c.pcontent}</div>
+					<div class="buyContent buyText" style="margin-top: 85px; padding-left: 5px;">
+						<img src="${pageContext.request.contextPath}/resources/images/remove.png" style="width: 15px;" id="minusQuantity" onclick="minusQuantity(${st.count})">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="quantity${st.count}">${c.cquantity}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src="${pageContext.request.contextPath}/resources/images/plus.png" style="width: 15px;" id="addQuantity" onclick="addQuantity(${st.count})">
+					</div>
+					<div class="buyContent buyText" style="margin-top: 85px;">${c.pprice}</div>
+					<div class="buyContent buyText" id="finalPrice${st.count}" style="margin-top: 85px; padding-left: 12px;">${c.pprice}</div>
+				</div>
 			</div>
-			<div class="col-1"></div>
-			<div class="col-2" style="margin-top: 85px;">${c.pcontent}</div>
-			<div class="col-2" style="margin-top: 85px;">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/minus.png"
-					style="width: 20px;" id="minusQuantity"> &nbsp;<span
-					id="quantity"> ${c.cquantity} </span>&nbsp; <img
-					src="${pageContext.request.contextPath}/resources/images/add.png"
-					style="width: 20px;" id="addQuantity">
-			</div>
-			<div class="col-2" style="margin-top: 85px;">${c.pprice}</div>
-			<div class="col-2" id="finalPrice" style="margin-top: 85px;">${c.pprice}</div>
 		</div>
 		<br>
 		</c:forEach>
+		
+
 
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
+
+		<div class="card-header payment_title"
+			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
+
+
+
 		<form method="post" action="insertPaymentInfo.do" id="insertFrm">
+
 			<div class="row">
 				<div class="col-2"></div>
 
-				<div class="col-8" style="border: 1px solid lightgray;">
+				<div class="col-8">
 					<br>
 
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-3">
-							<button type="button" class="btn btn-dark btn-lg"
-								onclick="equalMemberinfo();">회원 정보와 동일</button>
-						</div>
-					</div>
-					<br> <br>
-
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-4 card-text"
-							style="font-size: 22px; font-weight: bold;">주문자 정보</div>
+					<div class="row" style=" margin-top: 30px;">
+						<div class="col" style="font-size: 22px; font-weight: bold; padding-left: 270px; margin-bottom: 40px;">주문자 정보</div>
 					</div>
 					<br>
+
 
 					<div class="row">
 						<div class="col-1"></div>
@@ -192,7 +194,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="orderPhone"	id="orderPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1" value="">
+							<input type="text" class="form-control" name="orderPhone" id="orderPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1" value="">
 						</div>
 					</div>
 					<br>
@@ -205,20 +207,27 @@
 			<div class="row">
 				<div class="col-2"></div>
 
-				<div class="col-8" style="border: 1px solid lightgray;">
+				<div class="col-8">
 					<br>
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-4 card-text"
-							style="font-size: 22px; font-weight: bold;">배송지 정보</div>
+
+					<div class="row" style="text-align: center; margin-top: 30px;">
+						<div class="col" style="font-size: 22px; font-weight: bold;">배송지
+							정보</div>
+						<div class="col">
+							<button type="button" class="btn btn-dark btn-lg"
+								onclick="equalMemberinfo();"
+								style="width: 40%; border: 2px solid #3F4B3B; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문자
+								정보와 동일</button>
+						</div>
+
 					</div>
-					<br>
+					<br> <br>
 
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">수령인</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPerson" id="receiptPerson" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="addressee" id="addressee" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -227,7 +236,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">연락처</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptPhone" id="receiptPhone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="phone" id="phone" placeholder="연락처" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -236,7 +245,7 @@
 						<div class="col-1"></div>
 						<div class="col-3 card-text" style="margin-top: 8px;">배송지</div>
 						<div class="col-7 card-text">
-							<input type="text" class="form-control" name="receiptAddress" id="receiptAddress" placeholder="배송지" aria-label="Username" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" name="address" id="address" placeholder="배송지" aria-label="Username" aria-describedby="basic-addon1">
 						</div>
 					</div>
 					<br>
@@ -247,7 +256,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="pleaseRequest" aria-label="With textarea"></textarea>
+								<textarea class="form-control" name="comment" aria-label="With textarea" style="resize: none;"></textarea>
 							</div>
 						</div>
 					</div>
@@ -289,20 +298,22 @@
 					<br> <br>
 
 					<div class="row">
-						<div class="col-2 buySumProductPrice">100</div>
+						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
+
 							<img
-								src="${pageContext.request.contextPath}/resources/images/add.png"
-								style="width: 30px;">
+								src="${pageContext.request.contextPath}/resources/images/plus.png"
+								style="width: 15px;">
+
 						</div>
 
 						<div class="col-2 buyProductText">무료</div>
 
 						<div class="col-1">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/minus.png"
-								style="width: 30px;">
+								src="${pageContext.request.contextPath}/resources/images/remove.png"
+								style="width: 15px;">
 						</div>
 
 						<div class="col-2 buyProductText">0</div>
@@ -310,10 +321,10 @@
 						<div class="col-1">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/equal.png"
-								style="width: 30px;">
+								style="width: 15px;">
 						</div>
 
-						<div class="col-2 buyTotalProductPrice">100</div>
+						<div class="col-2 buyTotalProductPrice">42000</div>
 					</div>
 					<br> <br>
 
@@ -331,18 +342,16 @@
 					</div>
 					<br> <br>
 					
-					<input type="hidden" name="orderId" id="setOrderId"/>
-					<input type="hidden" name="paidAmount" id="setPaidAmout"/>
-					<input type="hidden" name="pno" id="pno"/>
-
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-5 card-text">
-							<button type="button" class="btn btn-dark btn-lg" id="payBtnCancle" style="width: 100%">주문취소</button>
+							<button type="button" class="btn btn-dark btn-lg"
+								id="payBtnCancle"
+								style="width: 100%; border: 2px solid #44633F; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문취소</button>
 						</div>
 						<div class="col-5 card-text">
 							<button type="button" class="btn btn-dark btn-lg" id="payBtn"
-								style="width: 100%">주문하기</button>
+								style="width: 100%; border: 2px solid #3F4B3B; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문하기</button>
 						</div>
 						<div class="col-1"></div>
 					</div>
@@ -352,9 +361,8 @@
 			<br>
 		</form>
 	</div>
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal" style="display:none">
+	
+	<button type="button" id="jihwanBtn" class="btn btn-primary paySuccess" data-toggle="modal" data-target="#exampleModal">
 	  Launch demo modal
 	</button>
 	
@@ -363,17 +371,26 @@
 	  <div class="modal-dialog" style="margin-top: 150px;">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">결제 확인</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <!-- 닫기버튼 눌렀을 때 스토어홈으로 돌아간다 -->
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body">
-	       	결제가 완료되었습니다.
+	      <div class="modal-body" style="text-align: center;">
+	       	결제가 성공적으로 완료되었습니다. <br />
+	       	기타 문의사항은 채팅 또는 전화문의로 연락주시면 <br />
+	       	답변 드리겠습니다 <br /><br />
+	       	
+	       	-주문 정보- <br />
+	       	<div id="orderer">주문자 명 : 000. </div><br />
+	       	<div id="orderNo">주문 번호 : 000. </div><br />
+	       	<div id="orderPrice">결제 금액 : 000. </div><br />
+	       	
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;">Store Home</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;">주문 내역 확인</button>
 	      </div>
 	    </div>
 	  </div>
@@ -393,17 +410,28 @@
 			$(function() {
 			    IMP.init('imp77211071');
 			}); 
-			
+			function QueryStringToJSON(str) {
+			    var pairs = str.split('&');
+			    var result = {};
+			    pairs.forEach(function (pair) {
+			        pair = pair.split('=');
+			        var name = pair[0]
+			        var value = pair[1]
+			        if (name.length)
+			            if (result[name] !== undefined) {
+			                if (!result[name].push) {
+			                    result[name] = [result[name]];
+			                }
+			                result[name].push(value || '');
+			            } else {
+			                result[name] = value || '';
+			            }
+			    });
+			    return (result);
+			}
+
 			$('#payBtn').on('click', function(){ 
 				
-/* 				$("#setOrderId").text(orderId);
-                $("#setPaidAmout").text(paidAmount);
-                $("#pno").text(${selectProduct.pno});
-                
-                console.log(orderId);
-                console.log(paidAmount);
-                console.log(${selectProduct.pno});  */
-                
 				console.log("결제 진행");
 			        IMP.request_pay({
 			        	// 필수 항목
@@ -414,36 +442,55 @@
 			            // 추가 항목
 			            name : '${selectProduct.pname}'
 			        }, function(rsp) {
-			            if (rsp.success) {
-			            	
+			          if (rsp.success) {
+			        	    var form = $("#insertFrm");        
+			                console.log(QueryStringToJSON(decodeURIComponent(form.serialize())));
+			                var payment = QueryStringToJSON(decodeURIComponent(form.serialize()));
+			                
 			            	var msg = '결제가 완료되었습니다.';
 			                msg += '고유ID : ' + rsp.imp_uid;
 			                msg += '결제 금액 : ' + rsp.paid_amount;
 			                
-			                var orderId = rsp.imp_uid; 
+			                // 결제 성공 시
+			                // 주문번호와 결제금액 받아와서 hidden 처리된 상태로 입력
+ 			                var orderId = rsp.imp_uid; 
 			                var paidAmount = rsp.paid_amount;
+			                var userId = "${member.userId}";
 			                
-			                console.log(orderId);
+ 			                console.log(orderId);
 			                console.log(paidAmount);
+			                console.log(userId);
 			                
-			                $("#setOrderId").text(roderId);
-			                $("#setPaidAmout").text(paidAmount);
+			                payment['ono'] = orderId;
+			                payment['paidAmount'] = paidAmount;
+			                payment['userId'] = userId;
 			                
-			                $('#insertFrm').submit();
+/* 			                $(".paySuccess").click();
 			                
-			                 $.ajax({
-			                    url : "/store/insertPaymentInfo.do",
-			                    type : 'POST',
-			                    dataType : 'json',
-			                    data : { }, 
+			                $('#insertFrm').submit(); */
+ 
+			                $.ajax({
+			                	url : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
+			                    type : 'POST', 
+			                    data : payment,
 			                    success : function(data){
-					               // 결제 완료 페이지 연결
-			                    	$(".paySuccess").on.trigger("click");
+			                    	console.log("ajax 성공");
+			                    	console.log(data);
+			                    	$("#orderer").text("주문자 명 : " + $("#orderPerson").val());
+			                    	$("#orderNo").text("주문 번호 : " + data.ono);
+			                    	$("#orderPrice").text("결제 금액 : " + data.paidAmount + "￦");
+					                $(".paySuccess").click();
+			                	}, error : function(jqxhr, textStatus, errorThrown){
+					                console.log(jqxhr);
+					                console.log(textStatus);
+					                console.log(errorThrown);
+			                		console.log("ajax 처리 실패");
 			                	}
-			               }); 
+		              	 	});
 			                    
-			            } else {
-			                var msg = '결제에 실패하였습니다. <br>';
+			            }
+			            else {
+			                var msg = '결제에 실패하였습니다.\n';
 			                msg += '에러내용 : ' + rsp.error_msg;
 			                $("#errorText").html(rsp.error_msg);
 			                $("#errorModal").trigger("click");
@@ -451,19 +498,34 @@
 			            
 			            alert(msg);
 			        });
+			        
 			});
 		</script>
 
 	<script>
-			$("#minusQuantity").on("click", function () {
-				
+	
+	function minusQuantity(value){
+		console.log(value);
+		 if($("#quantity" + value).text() > 1){
+			$("#quantity" + value).text($("#quantity" + value).text() - 1);
+			$("#finalPrice" + value).text($("#quantity" + value).text() * ${cartList.get(i - 1).pprice} + "￦"); 
+		}  
+	}
+	function addQuantity(value){
+ 		console.log(value);
+		if($("#quantity" + value).text() > 1){
+			$("#quantity" + value).text(parseInt($("#quantity" + value).text()) + 1);
+			$("#finalPrice" + value).text($("#quantity" + value).text() * ${cartList.get(i - 1).pprice} + "￦"); 
+	} 
+		
+ 			<%--$("#minusQuantity").on("click", function () {
   				if($("#quantity").text() > 1){
 					$("#quantity").text($("#quantity").text() - 1);
 					$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 					$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 					$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 				}  
-			});
+			});--%>
 			
 			$("#addQuantity").on("click", function () {
 				
@@ -471,18 +533,26 @@
 				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 				$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 				$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-			});
+			}); */
 		</script>
-		
-		<script>
+
+	<script>
 			 $(document).ready(function () {
+				 console.log(${cartList.get(0).pno});
+				 console.log(${cartList.size()}); */
+				 
+ 				 for (var i = 1 ; i <= ${cartList.size()} ; i++){
+					 $("#finalPrice" + i).text($("#quantity" + i).text() * ${cartList.get(i - 1).pprice}) + "￦");	 
+				 } */
+				 console.log(${cartList.size()}); 
 				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
-				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
+				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦"); 
 	         });
-		</script>
-		
-		<script>
+	         
+	</script>
+
+	<script>
 			function equalMemberinfo(){
 				console.log("${member.userName}");
 				console.log("${member.email}");
@@ -492,7 +562,7 @@
 				$("#orderEmail").attr("value", "${member.email}");
 				$("#orderPhone").attr("value", "${member.phone}");
 			}
-		</script>
+	</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

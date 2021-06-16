@@ -159,26 +159,9 @@
 			</div>
 		</div>
 		<br>
-
-
+		
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
-		<%-- 
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-2">
-                <img src="${pageContext.request.contextPath}/resources/images/비타민3.jpg" alt="" style="width: 100%; height: 200px;">
-            </div>
-            <div class="col-1"></div>
-            <div class="col-2" style="margin-top: 85px;">상품 정보</div>
-            <div class="col-2" style="margin-top: 85px;">
-                <img src="${pageContext.request.contextPath}/resources/images/minus.png" style="width: 20px;"> &nbsp;
-                1 &nbsp;
-                <img src="${pageContext.request.contextPath}/resources/images/add.png" style="width: 20px;">
-            </div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-        </div> --%>
 
 		<div class="card-header payment_title"
 			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
