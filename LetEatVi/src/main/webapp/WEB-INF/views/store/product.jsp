@@ -185,8 +185,6 @@
 				</div>
 			</div>
 
-			
-
 			<div class="row secondRow">
 				<div class="col">
 					<div class="border-dark mb-3">
@@ -209,8 +207,6 @@
 			</div>
 
 		</div>
-		
-		<%-- <img src="${pageContext.request.contextPath}/resources/images/결제.jpg" alt="" style="margin-left: 35%"/> --%>
 
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br>

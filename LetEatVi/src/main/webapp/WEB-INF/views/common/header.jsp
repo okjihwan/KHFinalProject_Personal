@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,18 +90,32 @@
 					src="${pageContext.request.contextPath}/resources/images/LetEatVi_logo.jpg"
 					style="width: 160px;"></a>
 			</div>
-
+			
 			<!-- 검색창 -->
-			<div class="search-wrapper">
-				<div class="input-holder">
-					<input type="text" class="search-input">
-					<button class="search-icon" onclick="searchToggle(this, event);">
-						<span id="conan"></span>
-					</button>
+			<c:if test="${!empty member }">
+				<div class="search-wrapper loginchk">
+					<div class="input-holder">
+						<input type="text" class="search-input">
+						<button class="search-icon" onclick="searchToggle(this, event);">
+							<span id="conan"></span>
+						</button>
+					</div>
+					<span class="close" id="close" style="visibility: hidden;"
+						onclick="searchToggle(this, event);"></span>
 				</div>
-				<span class="close" id="close" style="visibility: hidden;"
-					onclick="searchToggle(this, event);"></span>
-			</div>
+			</c:if>
+			<c:if test="${empty member }">
+				<div class="search-wrapper loginNone">
+					<div class="input-holder">
+						<input type="text" class="search-input">
+						<button class="search-icon" onclick="searchToggle(this, event);">
+							<span id="conan"></span>
+						</button>
+					</div>
+					<span class="close" id="close" style="visibility: hidden;"
+						onclick="searchToggle(this, event);"></span>
+				</div>
+			</c:if>
 
 			<!-- 메뉴 -->
 			<ul class="navbar__menu">
@@ -108,14 +123,29 @@
 					href="${pageContext.request.contextPath}/store/goStore.do"
 					class="menu-content">스토어</a></li>
 				<li><a href="" class="menu-content">영양제</a></li>
-				<li><a href="${pageContext.request.contextPath}/story/goStory.do" class="menu-content">스토리</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/story/goStory.do"
+					class="menu-content">스토리</a></li>
 				<li><a href="" class="menu-content">장바구니</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/memberLogin.do" class="menu-content">Login</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/memberEnroll.do" class="menu-content">Join</a></li>
+				<c:if test="${empty member}">
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberLogin.do"
+						class="menu-content">Login</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberEnroll.do"
+						class="menu-content">Join</a></li>
+				</c:if>
+				<c:if test="${!empty member}">
+					<li><a
+						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
+						class="menu-content">마이페이지</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberLogout.do"
+						class="menu-content">Logout</a></li>
+				</c:if>
 			</ul>
 		</nav>
 	</header>
 	<!-- header 끝 -->
-
 </body>
 </html>

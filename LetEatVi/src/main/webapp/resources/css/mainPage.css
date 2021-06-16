@@ -1,6 +1,9 @@
+/* fade-in 할 객체들 */
+.hideme { opacity: 0; }
+
 /* 첫번째 영역 */
 .main-img {
-	background-image: url(../images/main_cover.jpeg);
+	background-image: url(../images/lemons-main1.jpg);
 	position: relative;
 	height: 100vh;
 	background-size: cover;
@@ -10,9 +13,9 @@
 	color: black;
 	font-family: 'GongGothicMedium';
 	text-align: right;
-	margin-top: 80px;
+	margin-top: 30px;
 	margin-right: 220px;
-	font-size: 65px;
+	font-size: 70px;
 	line-height: 110px;
 	letter-spacing: 2px;
 }
@@ -25,8 +28,8 @@
 	color: white;
 	font-family: 'Source Sans Pro';
 	text-decoration: none;
-	margin-left: 1400px;
-	padding: 30px 60px;
+	margin-left: 1440px;
+	padding: 20px 50px;
 	font-size: 35px;
 	letter-spacing: 6px;
 	box-shadow: 4px 6px 3px rgb(128, 128, 128);
@@ -300,7 +303,7 @@ input:focus {
 	border: 1px solid rgb(129, 128, 128);
 }
 
-/**/
+/* test */
 .rowarea {
 	margin-left: 200px;
 	margin-right: 200px;

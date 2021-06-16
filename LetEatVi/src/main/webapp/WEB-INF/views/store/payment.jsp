@@ -80,16 +80,21 @@
 	font-weight: bold;
 	font-size: 20px;
 }
+
 @font-face {
-    font-family: 'Eulyoo1945-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Eulyoo1945-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
+
 @font-face {
-	font-family: 'IBMPlexSansKR-Regular'; src :
-	url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
-	format( 'woff');
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
 	font-weight: normal;
 	font-style: normal;
 	src:
@@ -111,62 +116,94 @@
 
 	<div class="container-fluid" style="margin-top: 50px;">
 		<div class="card-header payment_title"
-		style="background-color: rgba(0, 0, 0, 0); padding-bottom: 20px;">주문 / 결제</div>
-		<div class="row" style="margin-top: 10px;">
-			<div class="col-2"></div>
-			<div class="col-2 buyProductText"></div>
-			<div class="col-2 buyProductText">상품 정보</div>
-			<div class="col-2 buyProductText">수량</div>
-			<div class="col-2 buyProductText">판매가</div>
-			<div class="col-2 buyProductText">최종금액</div>
-			<div class="col-1"></div>
+			style="background-color: rgba(0, 0, 0, 0); padding-bottom: 50px;">주문
+			/ 결제</div>
+
+		<div class="container orderContext" style="margin-top: 10px;">
+			<div class="order-inner">
+				<div class="buyProductText buyTitle">
+					<div class="buyImg" style="width: 400px;"></div>
+					<div class="buyContent" style="margin-top: 5px;">상품정보</div>
+					<div class="buyContent" style="margin-top: 5px;">수량</div>
+					<div class="buyContent" style="margin-top: 5px;">판매가</div>
+					<div class="buyContent" style="margin-top: 5px;">최종금액</div>
+				</div>
+			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-1"></div>
-			<div class="col-2">
-				<img class="pay_product_img" style="margin-left: 60px;"
-					src="${pageContext.request.contextPath}/resources/images/${selectProduct.pname}.jpg">
+
+
+		<div class="container orderContext">
+			<div class="order-inner">
+				<div class="buyProductText">
+					<div class="buyImg" style="display: inline-block;">
+						<img class="pay_product_img"
+							src="${pageContext.request.contextPath}/resources/images/${selectProduct.pname}.jpg">
+					</div>
+					<div class="buyContent buyText"
+						style="margin-top: 85px; padding-right: 17px;">${selectProduct.pcontent}</div>
+					<div class="buyContent buyText"
+						style="margin-top: 85px; padding-left: 5px;">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/remove.png"
+							style="width: 15px;" id="minusQuantity">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="quantity"> ${qno} </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img
+							src="${pageContext.request.contextPath}/resources/images/plus.png"
+							style="width: 15px;" id="addQuantity">
+					</div>
+					<div class="buyContent buyText" style="margin-top: 85px;">${selectProduct.pprice}</div>
+					<div class="buyContent buyText" id="finalPrice"
+						style="margin-top: 85px; padding-left: 12px;">${selectProduct.pprice}</div>
+				</div>
 			</div>
-			<div class="col-1"></div>
-			<div class="col-2" style="margin-top: 85px;">${selectProduct.pcontent}</div>
-			<div class="col-2" style="margin-top: 85px;">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/minus.png"
-					style="width: 20px;" id="minusQuantity"> &nbsp;<span
-					id="quantity"> ${qno} </span>&nbsp; <img
-					src="${pageContext.request.contextPath}/resources/images/add.png"
-					style="width: 20px;" id="addQuantity">
-			</div>
-			<div class="col-2" style="margin-top: 85px;">${selectProduct.pprice}</div>
-			<div class="col-2" id="finalPrice" style="margin-top: 85px;">${selectProduct.pprice}</div>
 		</div>
 		<br>
 
+<<<<<<< HEAD
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
+=======
+		<%-- 
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2">
+                <img src="${pageContext.request.contextPath}/resources/images/비타민3.jpg" alt="" style="width: 100%; height: 200px;">
+            </div>
+            <div class="col-1"></div>
+            <div class="col-2" style="margin-top: 85px;">상품 정보</div>
+            <div class="col-2" style="margin-top: 85px;">
+                <img src="${pageContext.request.contextPath}/resources/images/minus.png" style="width: 20px;"> &nbsp;
+                1 &nbsp;
+                <img src="${pageContext.request.contextPath}/resources/images/add.png" style="width: 20px;">
+            </div>
+            <div class="col-2" style="margin-top: 85px;">15000￦</div>
+            <div class="col-2" style="margin-top: 85px;">15000￦</div>
+        </div> --%>
 
+		<div class="card-header payment_title"
+			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
+>>>>>>> refs/remotes/origin/Minji
+
+<<<<<<< HEAD
 		<form id="insertFrm">
+=======
+		<form method="post" action="insertPaymentInfo.do" id="insertFrm";">
+>>>>>>> refs/remotes/origin/Minji
 			<div class="row">
 				<div class="col-2"></div>
 
-				<div class="col-8" style="border: 1px solid lightgray;">
+				<div class="col-8">
 					<br>
 
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-3">
-							<button type="button" class="btn btn-dark btn-lg"
-								onclick="equalMemberinfo();">회원 정보와 동일</button>
-						</div>
-					</div>
-					<br> <br>
-
-					<div class="row">
-						<div class="col-1"></div>
-						<div class="col-4 card-text"
-							style="font-size: 22px; font-weight: bold;">주문자 정보</div>
+					<div class="row" style=" margin-top: 30px;">
+						<div class="col"
+						style="font-size: 22px;
+						font-weight: bold;
+						padding-left: 270px;
+						margin-bottom: 40px;">주문자 정보</div>
 					</div>
 					<br>
+
 
 					<div class="row">
 						<div class="col-1"></div>
@@ -203,13 +240,25 @@
 			<div class="row">
 				<div class="col-2"></div>
 
-				<div class="col-8" style="border: 1px solid lightgray;">
+				<div class="col-8">
 					<br>
+<<<<<<< HEAD
 					<div class="row">
 						<div class="col-1"></div>
 						<div class="col-4 card-text" style="font-size: 22px; font-weight: bold;">배송지 정보</div>
+=======
+					<div class="row" style="text-align: center; margin-top: 30px;">
+						<div class="col" style="font-size: 22px; font-weight: bold;">배송지
+							정보</div>
+						<div class="col">
+							<button type="button" class="btn btn-dark btn-lg"
+								onclick="equalMemberinfo();"
+								style="width: 40%; border: 2px solid #3F4B3B; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문자
+								정보와 동일</button>
+						</div>
+>>>>>>> refs/remotes/origin/Minji
 					</div>
-					<br>
+					<br> <br>
 
 					<div class="row">
 						<div class="col-1"></div>
@@ -289,16 +338,22 @@
 						<div class="col-2 buySumProductPrice">42000</div>
 
 						<div class="col-1">
+<<<<<<< HEAD
 							<img src="${pageContext.request.contextPath}/resources/images/add.png"
 								style="width: 30px;">
+=======
+							<img
+								src="${pageContext.request.contextPath}/resources/images/plus.png"
+								style="width: 15px;">
+>>>>>>> refs/remotes/origin/Minji
 						</div>
 
 						<div class="col-2 buyProductText">무료</div>
 
 						<div class="col-1">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/minus.png"
-								style="width: 30px;">
+								src="${pageContext.request.contextPath}/resources/images/remove.png"
+								style="width: 15px;">
 						</div>
 
 						<div class="col-2 buyProductText">0</div>
@@ -306,7 +361,7 @@
 						<div class="col-1">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/equal.png"
-								style="width: 30px;">
+								style="width: 15px;">
 						</div>
 
 						<div class="col-2 buyTotalProductPrice">42000</div>
@@ -331,11 +386,12 @@
 						<div class="col-1"></div>
 						<div class="col-5 card-text">
 							<button type="button" class="btn btn-dark btn-lg"
-								id="payBtnCancle" style="width: 100%">주문취소</button>
+								id="payBtnCancle"
+								style="width: 100%; border: 2px solid #44633F; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문취소</button>
 						</div>
 						<div class="col-5 card-text">
 							<button type="button" class="btn btn-dark btn-lg" id="payBtn"
-								style="width: 100%">주문하기</button>
+								style="width: 100%; border: 2px solid #3F4B3B; border-radius: 100px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">주문하기</button>
 						</div>
 						<div class="col-1"></div>
 					</div>
@@ -505,16 +561,16 @@
 				$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
 			});
 		</script>
-		
-		<script>
+
+	<script>
 			 $(document).ready(function () {
 				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 	         });
 		</script>
-		
-		<script>
+
+	<script>
 			function equalMemberinfo(){
 				console.log("${member.userName}");
 				console.log("${member.email}");

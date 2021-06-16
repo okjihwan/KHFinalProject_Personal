@@ -15,12 +15,6 @@
 	letter-spacing: 1px;
 }
 
-.buyProductText {
-	text-align: center;
-	font-family: 'IBMPlexSansKR-Regular';
-	letter-spacing: 3px;
-}
-
 .payment_title {
 	text-align: center;
 	font-family: 'IBMPlexSansKR-Regular';
@@ -30,12 +24,49 @@
 	margin-left: 216px;
 }
 
-.pay_product_img {
-	width: 100%;
-	height: 100%;
-}
-
 .card-text {
 	text-align: center;
 	font-family: 'IBMPlexSansKR-Regular';
+}
+
+.orderContext {
+	display: table;
+}
+
+.order-inner {
+	display: table-cell;
+	text-align: center;
+}
+
+.buyTitle {
+	text-align: center;
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 3px;
+	margin-top: 10px;
+}
+
+.buyProductText {
+	display: inline-block;
+	text-align: center;
+	width: 1480px;
+}
+
+.buyImg {
+	display: inline-block;
+	width: 400px;
+}
+
+.buyContent {
+	display: inline-block;
+	width: 250px;
+}
+
+.pay_product_img {
+	width: 40%;
+}
+
+.buyText {
+	font-size: 18px;
+	font-weight: lighter;
+	letter-spacing: 1px;
 }

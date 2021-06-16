@@ -64,7 +64,7 @@ body {
 	top: 50%;
 	left: 50%;
 }
-
+/*
 .search-wrapper .input-holder {
 	height: 35px;
 	width: 35px;
@@ -72,8 +72,9 @@ body {
 	border-radius: 6px;
 	position: relative;
 	transition: all 0.3s ease-in-out;
-	margin-left: 430px; /*이거*/
+	margin-left: 570px; 
 }
+
 
 .search-wrapper.active .input-holder {
 	width: 180px;
@@ -81,8 +82,47 @@ body {
 	top: -3px;
 	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
 	border: 2px solid rgba(63, 62, 62, 0.678);
-	margin-left: 230px; /*이거*/
+	margin-left: 360px; 
 }
+*/
+.search-wrapper.loginchk .input-holder {
+	height: 35px;
+	width: 35px;
+	overflow: hidden;
+	border-radius: 6px;
+	position: relative;
+	transition: all 0.3s ease-in-out;
+	margin-left: 450px; 
+}
+
+.search-wrapper.loginNone .input-holder {
+	height: 35px;
+	width: 35px;
+	overflow: hidden;
+	border-radius: 6px;
+	position: relative;
+	transition: all 0.3s ease-in-out;
+	margin-left: 570px; 
+}
+
+.search-wrapper.active.loginchk .input-holder {
+	width: 180px;
+	border-radius: 50px;
+	top: -3px;
+	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+	border: 2px solid rgba(63, 62, 62, 0.678);
+	margin-left: 240px;
+}
+
+.search-wrapper.active.loginNone .input-holder {
+	width: 180px;
+	border-radius: 50px;
+	top: -3px;
+	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+	border: 2px solid rgba(63, 62, 62, 0.678);
+	margin-left: 360px; 
+}
+
 
 .search-wrapper .input-holder .search-input {
 	width: 200px;
@@ -183,7 +223,7 @@ body {
 }
 
 .search-wrapper.active .close {
-	right: -36px; /*X 버튼*/
+	right: -42px; /*X 버튼*/
 	top: 2px;
 	transform: rotate(45deg);
 	transition: all .6s cubic-bezier(0.000, 0.105, 0.035, 1.570);
