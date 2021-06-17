@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
     <title>Hello, world!</title>
+    <!-- JQeury -->
+    <script
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
     <!-- CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/admin/adminMember.css" rel="stylesheet">
     <!-- FONT AWSOME -->
@@ -54,7 +57,7 @@
             <!-- 상품 검색 서치바 form -->
             <div id="searchProduct">
 
-            <form class="searchForm" action="searchMember.do?userId=">
+            <form class="searchForm">
 <!-- 
             <select id="category" name="category" aria-label="category" class="form-control input_value">
                 <option value="all" selected>전체</option>
@@ -66,14 +69,14 @@
 
             <!-- <h4> 회원 이름 </h4> -->
             <div class="col-sm-8" >
-                <input type="test" class="form-control input_value" placeholder="회원 아이디를 입력하세요." name="userId">
+                <input type="test" class="form-control input_value" placeholder="회원 아이디를 입력하세요." name="userId" id="userId">
             </div>
              
             
 
             
-            <button type="submit" class="btn btn-success"
-            id="search">검색</button>
+            <button type="button" class="btn btn-success"
+            id="search" onclick="searchMember()">검색</button>
             
 			</form>
 			
@@ -98,46 +101,7 @@
 								<th>활동 정지 버튼</th>
 							</tr>
 						</thead>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-secondary"
-                                onclick="modalDelBtn()" >정지</button></td>
-                        </tr>
-
-                        <!-- 데이터베이스 연결 후 삭제할 부분 입니다. -->
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-secondary"
-                                onclick="modalDelBtn()" >정지</button></td>
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-secondary"
-                                onclick="modalDelBtn()" >정지</button></td>
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-secondary"
-                                onclick="modalDelBtn()" >정지</button></td>
-                        </tr>
-	
-                        <!-- 데이터베이스 연결 후 삭제할 부분 입니다. -->
-
-						<tbody id="inputval">
+        						<tbody id="memContent">
 					
 						</tbody>
 	
@@ -149,7 +113,41 @@
 
 </div>
 <!-- 사이드바 끝 -->
-    <!-- JQeury CDN -->
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+<!--  상품조회 비동기통신 시작 -->             
+		<script>
+	        function searchMember(){
+	    		var userId = $("#userId").val();
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/adminSearchMember.do",
+		            data : {userId:userId},
+		            type : "get",
+		            success : function(result){
+
+		            	$('#memContent').empty();
+		                
+		                for(var i = 0 ; i < result.length; i++){
+		                	var searchMember = '<tr><td>' + result[i].userId + '</td>'
+		                	+ '<td>' + result[i].userName + '</td>'
+		                	+ '<td>' + result[i].gender + '</td>'
+		                	+ '<td>' + result[i].age + '</td>'
+		                	+ '<td><button type="button" class="btn btn-secondary" onclick="modalDelBtn()" >삭제</button></td></tr>'
+
+                            
+		                	$('#memContent').append(searchMember);    	                
+		            }
+		            }	            
+	        	}); 
+	    	}   
+        </script>
+    <!--  상품조회 비동기통신 끝 -->   
+
+
+
+
+
+
+
 </body>
 </html>

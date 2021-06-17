@@ -20,6 +20,14 @@ public class AdminDAOImpl implements AdminDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
+	
+
+	// 상품 전체 조회
+	@Override
+	public List<AdminProduct> searchProductAll() {
+		return sqlSession.selectList("admin-mapper.searchProduct");
+	}
+	
 
 	// 상품 조회
 	@Override
@@ -37,9 +45,9 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 회원조회
 	@Override
-	public List<Member> searchMember(String pname) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Member> searchMember(String userId) {
+
+		return sqlSession.selectList("admin-mapper.searchMember", userId);
 	}
 	
 

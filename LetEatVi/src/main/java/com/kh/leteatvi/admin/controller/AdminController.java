@@ -54,7 +54,13 @@ public class AdminController {
 	
 	// 재고 관리, 상품 등록 페이지
 	@RequestMapping("/admin/adminProduct.do")
-	public String adminProduct() {
+	public String adminProduct(Model model) {
+		
+		
+		// 처음에는 모든 상품 정보가 나오도록
+		List<AdminProduct> ap = adminService.searchProductAll();
+		
+		model.addAttribute("ap", ap);
 		
 		return "/admin/adminProduct";
 
@@ -115,12 +121,20 @@ public class AdminController {
 	}
 	
 	// 회원 조회
-	@RequestMapping("/admin/searchMember.do")
+	
+	@RequestMapping("/admin/adminSearchMember.do")
+	@ResponseBody
 	public List<Member> memberSearch(String userId, Model model) {
+		
+		// Debug 1 - Check Parameter
+		System.out.println(userId);		
 		
 		List<Member> mb = adminService.searchMember(userId);
 		
-		model.addAttribute(mb);
+		// Debug 2 - Check Result
+		System.out.println(mb);
+		
+		model.addAttribute("mb", mb);
 		
 		return mb;
 

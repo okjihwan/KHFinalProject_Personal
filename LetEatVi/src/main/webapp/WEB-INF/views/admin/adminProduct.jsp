@@ -128,18 +128,26 @@
                                 onclick="modalDelBtn()" >삭제</button></td>
                                 -->
 						
-                        <tr id="prdContent">
-
-                        </tr>
 						 
 						
 						
 						<!-- //상품 조회 부분 -->
 
-
-						<tbody id="inputval">
+<!-- 상품 조회 부분 시작 -->
+						<c:forEach items="${ap}" var="a">
+						<tbody id="prdContent">
+												                            <td>${a.cname} </td>
+                            <td>${a.pname}</td>
+                            <td>${a.pprice}</td>
+                            <td>${a.pstock}</td>
+                            <td><button type="button" class="btn btn-secondary"
+                                onclick="modalDelBtn()" >삭제</button></td>
+						
 					
 						</tbody>
+	</c:forEach> 
+	
+	<!-- //상품 조회 부분 -->
 	
 					</table>				
 				</div>
@@ -273,11 +281,11 @@
 		            	$('#prdContent').empty();
 		                
 		                for(var i = 0 ; i < result.length; i++){
-		                	var searchProduct = '<td>' + result[i].cname + '</td>'
+		                	var searchProduct = '<tr><td>' + result[i].cname + '</td>'
 		                	+ '<td>' + result[i].pname + '</td>'
 		                	+ '<td>' + result[i].pprice + '</td>'
 		                	+ '<td>' + result[i].pstock + '</td>'
-		                	+ '<td><button type="button" class="btn btn-secondary" onclick="modalDelBtn()" >삭제</button></td>'
+		                	+ '<td><button type="button" class="btn btn-secondary" onclick="modalDelBtn()" >삭제</button></td></tr>'
 
                             
 		                	$('#prdContent').append(searchProduct);    	                
@@ -306,7 +314,12 @@
 		            type : "post",
 		            success : function(result){
 		            	
-		            	console.log("상품등록이 완료되었습니다.");
+		            	alert("상품등록이 완료되었습니다.");
+		            	$("#category").val('');
+		            	$("#pname2").val('');
+		            	$("#pinfo").val('');
+		            	$("#pprice").val('');
+		            	$("#pstock").val('');
 
 		            	 	                
 		            }

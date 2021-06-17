@@ -25,6 +25,12 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	AdminDAO adminDAO;
 	
+	
+	// 상품 전체 조회
+	@Override
+	public List<AdminProduct> searchProductAll() {
+		return adminDAO.searchProductAll();
+	}
 
 	// 상품조회
 	@Override
@@ -42,9 +48,8 @@ public class AdminServiceImpl implements AdminService {
 
 	// 회원조회
 	@Override
-	public List<Member> searchMember(String pname) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Member> searchMember(String userId) {
+		return adminDAO.searchMember(userId);
 	}
 
 

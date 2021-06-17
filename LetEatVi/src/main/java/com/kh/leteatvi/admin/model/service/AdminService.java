@@ -15,7 +15,9 @@ public interface AdminService {
 	  List<AdminProduct> searchProduct(String pname);
 	 // List searchProduct(String pname);
 	  
-	  List<Member> searchMember(String pname);
+	  List<AdminProduct> searchProductAll();
+	  
+	  List<Member> searchMember(String userId);
 	  
 	  int insertProduct(AdminProduct p);
 

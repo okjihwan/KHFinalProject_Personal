@@ -13,9 +13,11 @@ public interface AdminDAO {
 
 	List<AdminProduct> searchProduct(String pname);
 	
+	List<AdminProduct> searchProductAll();
+	
 	 // List searchProduct(String pname);
 	
-	List<Member> searchMember(String pname);
+	List<Member> searchMember(String userId);
 	
 	int insertProduct(AdminProduct p);
 
