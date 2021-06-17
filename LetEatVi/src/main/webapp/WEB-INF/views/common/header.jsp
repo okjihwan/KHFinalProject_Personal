@@ -121,27 +121,30 @@
 			<ul class="navbar__menu">
 				<li><a
 					href="${pageContext.request.contextPath}/store/goStore.do"
-					class="menu-content">스토어</a></li>
-				<li><a href="" class="menu-content">영양제</a></li>
+					class="menu-content">STORE</a></li>
+				<li><a href="" class="menu-content">SURVEY</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/story/goStory.do"
-					class="menu-content">스토리</a></li>
-				<li><a href="" class="menu-content">장바구니</a></li>
+					class="menu-content">STORY</a></li>
+				<li><a href="" class="menu-content">CART</a></li>
 				<c:if test="${empty member}">
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogin.do"
-						class="menu-content">Login</a></li>
+						class="menu-content">LOGIN</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberEnroll.do"
-						class="menu-content">Join</a></li>
+						class="menu-content">JOIN</a></li>
 				</c:if>
 				<c:if test="${!empty member}">
 					<li><a
+						href="${pageContext.request.contextPath}/myPage/orderList.do"
+						class="menu-content">ORDER</a></li>
+					<li><a
 						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
-						class="menu-content">마이페이지</a></li>
+						class="menu-content">MYPAGE</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogout.do"
-						class="menu-content">Logout</a></li>
+						class="menu-content">LOGOUT</a></li>
 				</c:if>
 			</ul>
 		</nav>

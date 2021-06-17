@@ -31,14 +31,8 @@
 	rel="stylesheet" />
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/header.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css" />
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/myPageHome.css">
 
-<script src="${pageContext.request.contextPath}/resources/js/header.js"
-	defer></script>
 
 <style>
 /* font url */
@@ -91,7 +85,6 @@
 		format('truetype');
 }
 </style>
-
 </head>
 
 <body>
@@ -99,77 +92,160 @@
 
 	<div class="top-img"></div>
 
-	<main id="main" class="mypagev-view main" role="main">
 
-		<!-- <h2 class="only-sr">마이페이지</h2> -->
-		<div class="left-menu-layout clearfix">
-			<nav class="left-menu">
-				<h3>
-					<a href="#">My Page</a>
-				</h3>
-				<ul style="text-align: center;">
-					<li class="myPoint"><a
-						href="${pageContext.request.contextPath}/myPage/myPagePoint.do">내포인트</a></li>
-					<li class="survey"><a
-						href="${pageContext.request.contextPath}/myPage/myPageSurvey.do">건강설문관리</a></li>
-					<li class="payment"><a
-						href="${pageContext.request.contextPath}/">결제관리</a></li>
-					<li class="myPoint"><a
-						href="${pageContext.request.contextPath}/">포인트몰</a></li>
-					<li class=""><a href="${pageContext.request.contextPath}/">회원정보관리</a></li>
-				</ul>
-			</nav>
-			<div class="right-contents mypage-contents">
-				<div id="mypagev-home">
-					<section class="mypagev-home-top">
-						<div id="mypagev-home">
-							<section class="mypagev-home-top">
-								<div class="home-top-content">
-									<h2>
-										<mark> 모나리자</mark>
-										님의 <em class="light"> Let Eat Vi </em>
-									</h2>
-									<div class="user-account">monaliza@davinchi.com</div>
-								</div>
-							</section>
-							<section class="mypagev-home-menu">
-								<div class="home-header">
-									<div class="title">
-										<strong>보유 포인트 : </strong><span><strong>
-												&nbsp; 0</strong> P</span>
-									</div>
-								</div>
-							</section>
-							<section class="mypagev-home-latest">
-								<div class="home-latest-header">
-									<em class="title"> 최근 주문 내역 >> </em> <span><a
-										href="/my/payment"></a></span>
-								</div>
-								<div class="home-latest-content fullbox" id="delivery-list-wrap">
-								</div>
-							</section>
-							<hr>
-							<section class="mypagev-home-latest">
-								<div class="home-latest-header">
-									<em class="title"> 최근 결제 내역 >> </em> <a href="/my/payment"></a>
-								</div>
-								<div class="home-latest-content fullbox" id="payment-list-wrap">
-								</div>
-							</section>
-							<hr>
-							<section class="mypagev-home-latest">
-								<div class="home-latest-header">
-									<em class="title"> 최근 영양 추천 >> </em> <a href="/my/survey"></a>
-								</div>
-								<div class="home-latest-content fullbox" id="survey-list-wrap">
-								</div>
-							</section>
-						</div>
-				</div>
-	</main>
+	<div id="mypagev-home">
+		<div class="home-top-content">
+			<h2>
+				<b> ${member.userId} </b> 님의 <em class="light"> Let Eat Vi </em>
+			</h2>
+		</div>
+		<br>
+		<br>
 
-	<%@include file="../common/footer.jsp"%>
-	
+		<h3>회원정보관리</h3>
+		<input type="submit" class="btn btn-outline-success"
+			onclick="location.href='${pageContext.request.contextPath}/myPage/memberView.do?userId=${member.userId}'"
+			value="수정">
+
+		<table border=0 width=100% cellpadding=10 cellspacing=10>
+			<tr>
+				<td>이름 :</td>
+				<td>${member.userName}</td>
+			</tr>
+			<tr>
+				<td>나이 :</td>
+				<td>${member.age}</td>
+			</tr>
+			<tr>
+				<td>성별 :</td>
+				<td>${member.gender}</td>
+			</tr>
+			<tr>
+				<td>전화번호 :</td>
+				<td>${member.phone}</td>
+			</tr>
+			<tr>
+				<td>이메일 :</td>
+				<td>${member.email}</td>
+			</tr>
+			<tr>
+				<td>주소:</td>
+				<td>${member.address}</td>
+			</tr>
+
+		</table>
+
+		<h3>최근주문내역</h3>
+		<table class="list_view">
+			<tbody align=center>
+				<tr style="background: #33ff00">
+					<td>주문번호</td>
+					<td>주문일자</td>
+					<td>주문금액</td>
+					<td>수령인</td>
+					<td>배송현황</td>
+				</tr>
+				<tr style="">
+					<td>${orderList.oId}</td>
+					<td>${orderList.oEnroll}</td>
+					<td>${orderList.totalPrice}</td>
+					<td>${orderList.addressee}</td>
+					<td>배송완료</td>
+				</tr>
+
+				<c:choose>
+					<c:when test="${ empty orderList  }">
+						<tr>
+							<td colspan=5 class="fixed"><strong>주문한 상품이 없습니다.</strong></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="item" items="${orderList }" varStatus="i">
+							<c:choose>
+								<c:when test="${ pre_order_id != item.order_id}">
+									<c:choose>
+										<c:when test="${item.delivery_state=='delivery_prepared' }">
+											<tr bgcolor="lightgreen">
+										</c:when>
+										<c:when test="${item.delivery_state=='finished_delivering' }">
+											<tr bgcolor="lightgray">
+										</c:when>
+										<c:otherwise>
+											<tr bgcolor="orange">
+										</c:otherwise>
+									</c:choose>
+									<tr>
+										<td><a
+											href="${contextPath}/mypage/orderDetail.do?order_id=${item.oId }"><span>${item.order_id }</span>
+										</a></td>
+										<td><span>${item.pay_order_time }</span></td>
+										<td align="left"><strong> <c:forEach var="item2"
+													items="${myOrderList}" varStatus="j">
+													<c:if test="${item.order_id ==item2.order_id}">
+														<a
+															href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }/${item.order_goods_qty }개</a>
+														<br>
+													</c:if>
+												</c:forEach>
+										</strong></td>
+										<td><c:choose>
+												<c:when test="${item.delivery_state=='delivery_prepared' }">
+				       배송준비중
+				    </c:when>
+												<c:when test="${item.delivery_state=='delivering' }">
+				       배송중
+				    </c:when>
+												<c:when
+													test="${item.delivery_state=='finished_delivering' }">
+				       배송완료
+				    </c:when>
+												<c:when test="${item.delivery_state=='cancel_order' }">
+				       주문취소
+				    </c:when>
+												<c:when test="${item.delivery_state=='returning_goods' }">
+				       반품완료
+				    </c:when>
+											</c:choose></td>
+										<td><c:choose>
+												<c:when test="${item.delivery_state=='delivery_prepared'}">
+													<input type="button"
+														onClick="fn_cancel_order('${item.order_id}')" value="주문취소" />
+												</c:when>
+												<c:otherwise>
+													<input type="button"
+														onClick="fn_cancel_order('${item.order_id}')" value="주문취소"
+														disabled />
+												</c:otherwise>
+											</c:choose></td>
+									</tr>
+									<c:set var="pre_order_id" value="${item.order_id}" />
+								</c:when>
+							</c:choose>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+
+			<tr>
+				<td colspan="5" style="align: center";><input type="submit"
+					class="btn btn-outline-success"
+					onclick="location.href='${pageContext.request.contextPath}/myPage/orderDetail.do?oId=${orderList.oId}'"
+					value="수정"></td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+
+		<h3>건강설문관리</h3>
+		<div>
+			<input type="submit" class="btn btn-outline-success"
+				onclick="location.href='${pageContext.request.contextPath}/'"
+				value="바로가기">
+		</div>
+
+
+		<%@include file="../common/footer.jsp"%>
 </body>
 
 </html>

@@ -53,6 +53,10 @@ body {
 	border-radius: 4px;
 }
 
+.navbar__menu a {
+	letter-spacing: 1px;
+}
+
 .navbar__menu a:hover {
 	color: black;
 	text-decoration: none;
@@ -64,37 +68,8 @@ body {
 	top: 50%;
 	left: 50%;
 }
-/*
-.search-wrapper .input-holder {
-	height: 35px;
-	width: 35px;
-	overflow: hidden;
-	border-radius: 6px;
-	position: relative;
-	transition: all 0.3s ease-in-out;
-	margin-left: 570px; 
-}
 
-
-.search-wrapper.active .input-holder {
-	width: 180px;
-	border-radius: 50px;
-	top: -3px;
-	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
-	border: 2px solid rgba(63, 62, 62, 0.678);
-	margin-left: 360px; 
-}
-*/
-.search-wrapper.loginchk .input-holder {
-	height: 35px;
-	width: 35px;
-	overflow: hidden;
-	border-radius: 6px;
-	position: relative;
-	transition: all 0.3s ease-in-out;
-	margin-left: 450px; 
-}
-
+/* 로그인 전 돋보기 아이콘 검색박스 위치 */
 .search-wrapper.loginNone .input-holder {
 	height: 35px;
 	width: 35px;
@@ -102,7 +77,28 @@ body {
 	border-radius: 6px;
 	position: relative;
 	transition: all 0.3s ease-in-out;
-	margin-left: 570px; 
+	margin-left: 560px; 
+}
+
+
+.search-wrapper.active.loginNone .input-holder {
+	width: 180px;
+	border-radius: 50px;
+	top: -3px;
+	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+	border: 2px solid rgba(63, 62, 62, 0.678);
+	margin-left: 350px; 
+}
+
+/* 로그인 후 돋보기 아이콘 검색박스 위치 */
+.search-wrapper.loginchk .input-holder {
+	height: 35px;
+	width: 35px;
+	overflow: hidden;
+	border-radius: 6px;
+	position: relative;
+	transition: all 0.3s ease-in-out;
+	margin-left: 330px; 
 }
 
 .search-wrapper.active.loginchk .input-holder {
@@ -111,16 +107,7 @@ body {
 	top: -3px;
 	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
 	border: 2px solid rgba(63, 62, 62, 0.678);
-	margin-left: 240px;
-}
-
-.search-wrapper.active.loginNone .input-holder {
-	width: 180px;
-	border-radius: 50px;
-	top: -3px;
-	transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
-	border: 2px solid rgba(63, 62, 62, 0.678);
-	margin-left: 360px; 
+	margin-left: 120px;
 }
 
 

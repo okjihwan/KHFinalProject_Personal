@@ -30,12 +30,7 @@
 
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css" />
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/mainPage.css">
-
-<script src="${pageContext.request.contextPath}/resources/js/header.js"
-	defer></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/mainPage.js" defer></script>
 

@@ -161,8 +161,6 @@
 		<br>
 
 
-		<hr style="border: 2px solid gray; margin: 100px 0px;">
-
 		<%-- 
         <div class="row">
             <div class="col-1"></div>
