@@ -44,6 +44,12 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminDAO.insertProduct(p);
 	}
+	
+	// 회원 전체 조회
+	@Override
+	public List<Member> searchMemberAll() {
+		return adminDAO.searchMemberAll();
+	}
 
 
 	// 회원조회

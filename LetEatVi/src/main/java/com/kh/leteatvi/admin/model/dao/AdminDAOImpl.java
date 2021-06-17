@@ -25,7 +25,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// 상품 전체 조회
 	@Override
 	public List<AdminProduct> searchProductAll() {
-		return sqlSession.selectList("admin-mapper.searchProduct");
+		return sqlSession.selectList("admin-mapper.searchProductAll");
 	}
 	
 
@@ -40,6 +40,12 @@ public class AdminDAOImpl implements AdminDAO {
 	public int insertProduct(AdminProduct p) {
 		
 		return sqlSession.insert("admin-mapper.insertProduct", p);
+	}
+	
+	// 회원 전체 조회
+	@Override
+	public List<Member> searchMemberAll() {
+		return sqlSession.selectList("admin-mapper.searchMemberAll");
 	}
 
 

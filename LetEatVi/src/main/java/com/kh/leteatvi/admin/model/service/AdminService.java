@@ -19,6 +19,8 @@ public interface AdminService {
 	  
 	  List<Member> searchMember(String userId);
 	  
+	  List<Member> searchMemberAll();
+	  
 	  int insertProduct(AdminProduct p);
 
 }

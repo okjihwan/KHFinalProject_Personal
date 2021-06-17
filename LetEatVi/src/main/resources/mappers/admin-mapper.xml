@@ -26,6 +26,13 @@
 		VALUES (SEQ_PID.NEXTVAL, #{cid}, #{pname}, #{pprice}, #{pinfo}, #{pstock}, SYSDATE, 0)
 	</insert>
 	
+	
+			<!-- 회원 전체 조회 -->
+	<select id="searchMemberAll" parameterType="string" resultType="Member">
+		SELECT USERID, USERNAME, GENDER, AGE
+		FROM MEMBER
+	</select>
+	
 	<!-- 회원 조회 -->
 		<select id="searchMember" parameterType="string" resultType="Member">
 		SELECT USERID, USERNAME, GENDER, AGE

@@ -114,7 +114,14 @@ public class AdminController {
 	
 	// 회원 관리 페이지
 	@RequestMapping("/admin/adminMember.do")
-	public String adminMember() {
+	public String adminMember(Model model) {
+		
+		// 처음에는 모든 상품 정보가 나오도록
+		List<Member> mb = adminService.searchMemberAll();
+		
+		model.addAttribute("mb", mb);
+		
+		
 		
 		return "/admin/adminMember";
 

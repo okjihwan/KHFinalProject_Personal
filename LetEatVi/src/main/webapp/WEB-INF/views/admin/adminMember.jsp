@@ -101,9 +101,22 @@
 								<th>활동 정지 버튼</th>
 							</tr>
 						</thead>
-        						<tbody id="memContent">
+<!-- 상품 조회 부분 시작 -->
+						<c:forEach items="${mb}" var="m">
+						<tbody id="memContent">
+												                            <td>${a.cname} </td>
+                            <td>${m.userId}</td>
+                            <td>${m.userName}</td>
+                            <td>${m.gender}</td>
+                            <td>${m.age}</td>
+                            <td><button type="button" class="btn btn-secondary"
+                                onclick="modalDelBtn()" >삭제</button></td>
+						
 					
 						</tbody>
+	</c:forEach> 
+	
+	<!-- //상품 조회 부분 -->
 	
 					</table>				
 				</div>
