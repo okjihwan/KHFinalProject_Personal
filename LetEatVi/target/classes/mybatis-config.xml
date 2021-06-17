@@ -12,6 +12,7 @@
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Product" alias="Prod" />
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Cart" />
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Payment" />
+		<typeAlias type="com.kh.leteatvi.admin.model.vo.AdminProduct" alias="AdminProduct" />
 	</typeAliases>
 
 </configuration>

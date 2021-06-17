@@ -14,7 +14,7 @@
 			#{ userId }, 2, #{ password }, #{ userName }, 
 			 #{ age }, #{ gender }, #{ email },
 			#{ phone }, #{ address },
-			 SYSDATE, SYSDATE, 'Y'
+			 SYSDATE, SYSDATE, 'Y', 'Y'
 		)
 	</insert>
 	

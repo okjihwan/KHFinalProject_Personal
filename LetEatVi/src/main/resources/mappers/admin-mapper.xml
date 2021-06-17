@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin-mapper">
+	
+	
+	<!-- 상품 조회 -->
+	<select id="searchProduct" parameterType="string" resultType="AdminProduct">
+		SELECT PID, C.CID, PNAME, PPRICE, PINFO, PSTOCK, PENROLL, PSELL, C.CNAME
+		FROM PRODUCT P, CATEGORY C
+		WHERE P.CID = C.CID
+		AND PNAME = #{ pname }
+	</select>
+	
+	<insert id="insertProduct" parameterType="AdminProduct" >
+		INSERT INTO PRODUCT 
+		VALUES (SEQ_PID.NEXTVAL, #{cid}, #{pname}, #{pprice}, #{pinfo}, #{pstock}, SYSDATE, 0)
+	</insert>
+	
+
+</mapper>
