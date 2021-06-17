@@ -8,29 +8,29 @@
 	</select>
 	
 	<select id="selectProduct" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
+		SELECT PID, PNAME, PPRICE, PINFO, CNAME
+		FROM PRODUCT P, CATEGORY C
+		WHERE P.CID = C.CID
 	</select>
 	
 	<select id="selectOneProduct" parameterType="_int" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-		AND P.PNO = #{pno}
+		SELECT PID, PNAME, PPRICE, PINFO, CNAME
+		FROM PRODUCT P, CATEGORY C
+		WHERE P.CID = C.CID
+		AND P.PID = #{pid}
 	</select>
 
 	<select id="selectCategory" parameterType="_int" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
-		AND C.PCTYPE = #{cno}
+		SELECT PID, PNAME, PPRICE, PINFO, CNAME
+		FROM PRODUCT P, CATEGORY C
+		WHERE P.CID = C.CID
+		AND C.CID = #{cid}
 	</select>
 	
 	<select id="selectAllCategory" resultType="prod">
-		SELECT PNO, PNAME, PPRICE, PCONTENT, PCNAME
-		FROM PRODUCT P, PCATEGORY C
-		WHERE P.PTYPE = C.PCTYPE
+		SELECT PID, PNAME, PPRICE, PINFO, CNAME
+		FROM PRODUCT P, CATEGORY C
+		WHERE P.CID = C.CID
 	</select>
 	
 	<select id="selectOneMember" parameterType="string" resultType="Member">
@@ -40,29 +40,29 @@
 	</select>
 	
  	<insert id="insertPaymentInfo" parameterType="Payment">
-		INSERT INTO ORDERLIST VALUES(#{ono}, #{userId} , DEFAULT, #{paidAmount}, #{comment}, #{addressee}, #{address}, #{phone})	
+		INSERT INTO ORDERLIST VALUES(#{oid}, #{userId} , DEFAULT, #{totalPrice}, #{ocomment}, #{addressee}, #{address}, #{phone})	
 	</insert>
 	
 	<insert id="insertOneCart" parameterType="Cart">
-		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, DEFAULT)
+		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pid}, DEFAULT)
 	</insert>
 	
 	<select id="selectOneCart" parameterType="Cart" resultType="_int">
 		SELECT COUNT(*)
 		FROM CART
 		WHERE USERID = #{userId}
-		AND PNO = #{pno}
+		AND PID = #{pid}
 	</select>
 	
 	<delete id="deleteCart" parameterType="Cart">
 		DELETE 
 		FROM CART
 		WHERE USERID = #{userId}
-		AND PNO = #{pno}
+		AND PID = #{pid}
 	</delete>
 	
 	<insert id="insertOneCartWithQuantity" parameterType="Cart">
-		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pno}, #{cquantity})
+		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pid}, #{cartquantity})
 	</insert>
 
 	
@@ -71,6 +71,6 @@
 		(   SELECT *
     		FROM CART
     		WHERE USERID = #{userId} ) B
-		WHERE P.PNO = B.PNO
+		WHERE P.PID = B.PID
 	</select>
 </mapper>

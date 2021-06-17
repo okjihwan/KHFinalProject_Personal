@@ -14,10 +14,10 @@ public class Payment {
 	
 
 	// == input_form ==
-	private String ono;
-	private int paidAmount;
+	private String oid;
+	private int totalPrice;
 	private String userId;
-	private String comment;
+	private String ocomment;
 	private String addressee;
 	private String address;
 	private String phone;

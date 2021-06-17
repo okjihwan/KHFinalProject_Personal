@@ -111,8 +111,7 @@
 
 	<div class="container-fluid" style="margin-top: 50px;">
 		<div class="card-header payment_title"
-			style="background-color: rgba(0, 0, 0, 0); padding-bottom: 50px;">주문
-			/ 결제</div>
+			style="background-color: rgba(0, 0, 0, 0); padding-bottom: 50px;">주문 / 결제</div>
 
 		<div class="container orderContext" style="margin-top: 10px;">
 			<div class="order-inner">
@@ -134,13 +133,13 @@
 					<div class="buyImg" style="display: inline-block;">
 						<img class="pay_product_img" src="${pageContext.request.contextPath}/resources/images/${c.pname}.jpg">
 					</div>
-					<div class="buyContent buyText" style="margin-top: 85px; padding-right: 17px;">${c.pcontent}</div>
+					<div class="buyContent buyText" style="margin-top: 85px; padding-right: 17px;">${c.pname}</div>
 					<div class="buyContent buyText" style="margin-top: 85px; padding-left: 5px;">
-						<img src="${pageContext.request.contextPath}/resources/images/remove.png" style="width: 15px;" id="minusQuantity" onclick="minusQuantity(${st.count})">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="quantity${st.count}">${c.cquantity}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<img src="${pageContext.request.contextPath}/resources/images/plus.png" style="width: 15px;" id="addQuantity" onclick="addQuantity(${st.count})">
+						<img src="${pageContext.request.contextPath}/resources/images/remove.png" style="width: 15px;" id="minusQuantity" onclick="minusQuantity(${st.count}, ${c.pprice})">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="quantity${st.count}">${c.cartquantity}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src="${pageContext.request.contextPath}/resources/images/plus.png" style="width: 15px;" id="addQuantity" onclick="addQuantity(${st.count}, ${c.pprice})">
 					</div>
-					<div class="buyContent buyText" style="margin-top: 85px;">${c.pprice}</div>
+					<div class="buyContent buyText" style="margin-top: 85px;" id="productPrice${st.count}">${c.pprice}</div>
 					<div class="buyContent buyText" id="finalPrice${st.count}" style="margin-top: 85px; padding-left: 12px;">${c.pprice}</div>
 				</div>
 			</div>
@@ -153,8 +152,7 @@
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
 
-		<div class="card-header payment_title"
-			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
+		<div class="card-header payment_title" style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
 
 
 
@@ -374,7 +372,7 @@
 	        <h5 class="modal-title" id="exampleModalLabel">결제 확인</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <!-- 닫기버튼 눌렀을 때 스토어홈으로 돌아간다 -->
-	          <span aria-hidden="true">&times;</span>
+	          <span aria-hidden="true" onclick="goStore();">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body" style="text-align: center;">
@@ -389,18 +387,14 @@
 	       	
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" style="width: 228px;">Store Home</button>
-	        <button type="button" class="btn btn-secondary" style="width: 228px;">주문 내역 확인</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;" onclick="goStore();">Store Home으로 가기</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;" onclick="goMypage();">주문 내역 확인</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	<br>	<br>	<br>	<br>	<br>
 
 	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -440,7 +434,7 @@
 			            buyer_tel : '${member.phone}',
 			            
 			            // 추가 항목
-			            name : '${selectProduct.pname}'
+			            name : '${cartList.get(0).pname}'
 			        }, function(rsp) {
 			          if (rsp.success) {
 			        	    var form = $("#insertFrm");        
@@ -453,16 +447,16 @@
 			                
 			                // 결제 성공 시
 			                // 주문번호와 결제금액 받아와서 hidden 처리된 상태로 입력
- 			                var orderId = rsp.imp_uid; 
-			                var paidAmount = rsp.paid_amount;
+ 			                var oid = rsp.imp_uid; 
+			                var totalPrice = rsp.paid_amount;
 			                var userId = "${member.userId}";
 			                
- 			                console.log(orderId);
-			                console.log(paidAmount);
+ 			                console.log(oid);
+			                console.log(totalPrice);
 			                console.log(userId);
 			                
-			                payment['ono'] = orderId;
-			                payment['paidAmount'] = paidAmount;
+			                payment['oid'] = oid;
+			                payment['totalPrice'] = totalPrice;
 			                payment['userId'] = userId;
 			                
 /* 			                $(".paySuccess").click();
@@ -477,8 +471,8 @@
 			                    	console.log("ajax 성공");
 			                    	console.log(data);
 			                    	$("#orderer").text("주문자 명 : " + $("#orderPerson").val());
-			                    	$("#orderNo").text("주문 번호 : " + data.ono);
-			                    	$("#orderPrice").text("결제 금액 : " + data.paidAmount + "￦");
+			                    	$("#orderNo").text("주문 번호 : " + data.oid);
+			                    	$("#orderPrice").text("결제 금액 : " + data.totalPrice + "￦");
 					                $(".paySuccess").click();
 			                	}, error : function(jqxhr, textStatus, errorThrown){
 					                console.log(jqxhr);
@@ -503,65 +497,63 @@
 		</script>
 
 	<script>
-	
-	function minusQuantity(value){
-		console.log(value);
+	function minusQuantity(value, price){
+		console.log("value : " + value);
 		 if($("#quantity" + value).text() > 1){
 			$("#quantity" + value).text($("#quantity" + value).text() - 1);
-			$("#finalPrice" + value).text($("#quantity" + value).text() * ${cartList.get(i - 1).pprice} + "￦"); 
-		}  
+			$("#finalPrice" + value).text(Number($("#quantity" + value).text()) * price + "￦"); 
+			$(".buySumProductPrice").text($(".buySumProductPrice").text() - price);
+			$(".buyTotalProductPrice").text($(".buyTotalProductPrice").text() - price);
+		}
 	}
-	function addQuantity(value){
- 		console.log(value);
-		if($("#quantity" + value).text() > 1){
-			$("#quantity" + value).text(parseInt($("#quantity" + value).text()) + 1);
-			$("#finalPrice" + value).text($("#quantity" + value).text() * ${cartList.get(i - 1).pprice} + "￦"); 
+	
+	function addQuantity(value, price){
+ 		console.log("value : " + value);
+		$("#quantity" + value).text(parseInt($("#quantity" + value).text()) + 1);
+		$("#finalPrice" + value).text(Number($("#quantity" + value).text()) * price + "￦");
+		$(".buySumProductPrice").text(Number($(".buySumProductPrice").text()) + price);
+		$(".buyTotalProductPrice").text(Number($(".buyTotalProductPrice").text()) + price);
 	} 
-		
- 			<%--$("#minusQuantity").on("click", function () {
-  				if($("#quantity").text() > 1){
-					$("#quantity").text($("#quantity").text() - 1);
-					$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-					$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-					$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-				}  
-			});--%>
-			
-			$("#addQuantity").on("click", function () {
-				
-				$("#quantity").text(parseInt($("#quantity").text()) + 1);
-				$("#finalPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-				$(".buyTotalProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-				$(".buySumProductPrice").text($("#quantity").text() * ${selectProduct.pprice} + "￦");
-			}); */
-		</script>
+	</script>
 
 	<script>
 			 $(document).ready(function () {
-				 console.log(${cartList.get(0).pno});
-				 console.log(${cartList.size()}); */
 				 
- 				 for (var i = 1 ; i <= ${cartList.size()} ; i++){
-					 $("#finalPrice" + i).text($("#quantity" + i).text() * ${cartList.get(i - 1).pprice}) + "￦");	 
-				 } */
-				 console.log(${cartList.size()}); 
-				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
-				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
-				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦"); 
+				 console.log(${cartList.size()});
+				 var totalPrice = 0;
+				 
+				 for(var i = 1 ; i <= ${cartList.size()} ; i++){
+					 totalPrice += parseInt($("#finalPrice" + i).text());
+					 console.log(totalPrice);
+				 } 
+				 
+				 
+				$("#orderPerson").attr("value", "${member.userName}");
+				$("#orderEmail").attr("value", "${member.email}");
+				$("#orderPhone").attr("value", "${member.phone}");
+			 
+				$(".buySumProductPrice").text(parseInt(first + second));
+				$(".buyTotalProductPrice").text(parseInt(first + second));
+
 	         });
-	         
 	</script>
 
 	<script>
 			function equalMemberinfo(){
-				console.log("${member.userName}");
-				console.log("${member.email}");
-				console.log("${member.phone}");
-				
-				$("#orderPerson").attr("value", "${member.userName}");
-				$("#orderEmail").attr("value", "${member.email}");
-				$("#orderPhone").attr("value", "${member.phone}");
+				$("#addressee").attr("value", "${member.userName}");
+				$("#phone").attr("value", "${member.phone}");
+				$("#address").attr("value", "${member.address}");
 			}
+	</script> 
+	
+	<script>
+		function goStore(){
+			location.href = "${pageContext.request.contextPath}/store/goStore.do";
+		}
+		
+		function goMypage(){
+			location.href = "${pageContext.request.contextPath}/myPage/myPageHome.do";
+		}
 	</script>
 	<%@include file="../common/footer.jsp"%>
 </body>

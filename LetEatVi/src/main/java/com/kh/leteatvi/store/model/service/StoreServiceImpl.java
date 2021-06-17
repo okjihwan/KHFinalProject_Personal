@@ -31,18 +31,18 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public Product selectOneProduct(int pno) {
-		return storeDAO.selectOneProduct(pno);
+	public Product selectOneProduct(int pid) {
+		return storeDAO.selectOneProduct(pid);
 	}
 
 	@Override
-	public Product addCart(int pno) {
-		return storeDAO.selectOneProduct(pno);
+	public Product addCart(int pid) {
+		return storeDAO.selectOneProduct(pid);
 	}
 
 	@Override
-	public List selectCategory(int cno) {
-		return storeDAO.selectCategory(cno);
+	public List selectCategory(int cid) {
+		return storeDAO.selectCategory(cid);
 	}
 
 	@Override

@@ -140,6 +140,9 @@
 						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
 						class="menu-content">마이페이지</a></li>
 					<li><a
+						href="${pageContext.request.contextPath}/myPage/orderList.do"
+						class="menu-content">실험용</a></li>
+					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogout.do"
 						class="menu-content">Logout</a></li>
 				</c:if>

@@ -12,6 +12,10 @@ public class MyPageController {
 		return "myPage/myPageHome";
 	}
 	
-	
+	@RequestMapping(value = "/myPage/orderList.do")
+	public String myOrderList() throws Exception {
+		
+		return "myPage/orderDetail";
+	}
 
 }
