@@ -12,8 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Member implements Serializable{
 	
+	private static final long serialVersionUID = 144L;
+	
 	private String userId;
-	private int auth_id;
+	private int aid;
 	private String password;
 	private String userName;
 	private int age;
@@ -24,6 +26,7 @@ public class Member implements Serializable{
 	private Date enrollDate;
 	private Date lastDate;
 	private String status;
+	private String couponstatus;
 	
 	
 

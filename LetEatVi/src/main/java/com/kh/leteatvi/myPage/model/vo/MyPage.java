@@ -17,16 +17,6 @@ public class MyPage implements Serializable {
 		private String userId;
 		private String email;
 		private int point;
-		
-		public MyPage(String userId, String email) {
-			super();
-			this.userId = userId;
-			this.email = email;
-		}
-		
-		
-
-		
 	
 
 }

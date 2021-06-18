@@ -159,7 +159,6 @@
 			</div>
 		</div>
 		<br>
-
 		<div class="card-header payment_title"
 			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
 
@@ -476,9 +475,6 @@
 			                payment['totalPrice'] = totalPrice;
 			                payment['userId'] = userId;
 			                
-/* 			                $(".paySuccess").click();
-			                
-			                $('#insertFrm').submit(); */
  
 			                $.ajax({
 			                	url : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",

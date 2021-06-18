@@ -73,4 +73,5 @@
     		WHERE USERID = #{userId} ) B
 		WHERE P.PID = B.PID
 	</select>
+
 </mapper>

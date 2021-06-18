@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#searchTitle {
+    margin-top: 30px;
+}
+
+#searchProduct {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 1400px;
+}
+
+.searchForm
+{
+    display: flex;
+}
+
+.submit {
+    display: flex;
+}
+
+#new
+{
+    margin-left: 400px;
+}
+
+/* inner */
+.inner {
+    position: absolute;
+    display: block;
+    left: 350px;
+}
+
+
+
+/* 상품 등록 모달창 */
+.insertProduct {
+    position: absolute;
+    width: 1000px;
+    height:600px;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px gray;
+    padding: 30px;
+    background: white;
+    left: 80px;
+    top: 150px;
+    visibility: hidden;
+}
+
+.insertProduct.active {
+    visibility: visible;
+}
+
+.modalForm {
+    margin-bottom: 30px;
+}
+
+.modalForm div {
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main{
+    /* background: #f6f6f6; */
+    /* background: #d7d7d7; */
+    
+}
+.sidebar {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background: #212529;
+    padding-top: 30px;
+}
+
+/* 사이드바 타이틀 */
+.sidebar_inner h1{
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 70px;
+    background: #212529;
+    user-select: none;
+    padding-left: 40px;
+}
+
+/* 사이드바 메뉴 */
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    font-size: 16px;
+
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+.sidebar ul li:hover a {
+    padding-left: 50px;
+    /* background: #ffcc77; */
+    text-decoration: none;
+} 
+.sidebar ul li.active a {
+    padding-left: 50px;
+    /* background: #ffcc77; */
+    text-decoration: none;
+} 
+.sidebar ul li a i {
+    margin-right: 16px;
+}
