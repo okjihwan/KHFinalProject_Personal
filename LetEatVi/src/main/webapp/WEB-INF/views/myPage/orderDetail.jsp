@@ -33,7 +33,7 @@
 
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/orderList.css">
+	href="${pageContext.request.contextPath}/resources/css/orderDetail.css">
 <style>
 @font-face {
 	font-family: 'IBMPlexSansKR-Regular';
