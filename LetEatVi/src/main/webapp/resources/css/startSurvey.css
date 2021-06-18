@@ -12,8 +12,12 @@
 
 /* 테두리 영역 */
 #survey-content {
-    padding: 40px 10px;
+	padding: 120px 10px;
     vertical-align: top;
+    /* background-color: ghostwhite; */
+    height: 900px;
+    background-image: url(../images/lemons-main1.jpg);
+    background-size: cover;
 }
 
 /* 서베이 전 영역 */
@@ -34,14 +38,14 @@
 
 /* 서베이 네모 틀 */
 #survey-start {
-    padding:30px 150px;
+    padding: 20px 150px;
     text-align: left;
     position: relative;
     margin: auto;
-    width: 600px;
+    width: 800px;
     background-color: white;
     border: 1px solid whitesmoke;
-    height: 650px;
+    box-shadow: 9px 9px 60px 9px lightblue;
 }
 
 

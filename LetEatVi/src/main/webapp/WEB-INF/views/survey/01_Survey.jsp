@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Store</title>
+<title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
@@ -24,6 +24,8 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/surveyProcess.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/footer.css"/>
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
 	crossorigin="anonymous"></script>
@@ -45,19 +47,23 @@
         height: 10px;
         background-color: orange
     }
+    
+    
 </style>
 </head>
 
 <body>
 	
 	<section>
+		<c:import url="../common/header.jsp"/>
+	
 		<div id="survey">
 	        <div id="survey-wrap">
 	            <div id="survey-content">
 	                <div id="survey-inner">
 	                    <div id="survey-start">
 	                        <a href="#" onclick="closeSurvey(''); return false;">
-	                            <img src="${pageContext.request.contextPath}/resources/image/closeCircle.webp" alt="설문닫기 버튼">
+	                            <img src="${pageContext.request.contextPath}/resources/images/surveyImg/x_mark.png" alt="설문닫기 버튼">
 	                        </a>
 	                        <div id="survey-test">
 	                            <nav id="survey-test-header">
@@ -72,33 +78,48 @@
 	                            <div id="survey-progress">
 	                                <div id="survey-progress-rate"></div>
 	                            </div>
-	                            <div id="survey-question">
-	                                <section id="question-section">
-	                                    <em>질문 1</em>
-	                                    <h2>
-	                                        <span>렛잇비에게 이름을 알려주세요.</span>
-	                                    </h2>
-	                                    <br>
-	                                    <ul id="survey-answer">
-	                                        <li>
-	                                            <div id="input-wrap">
-	                                                <input id="content-full" type="text" placeholder="이름 또는 닉네임" maxlength="10" required="true">
-	                                            </div>
-	                                        </li>
-	                                    </ul>
-	                                </section>
-	                            </div>
-	                            <div id="question-btn">
-	                                <button id="prev-btn">이전</button>
-	                                <button id="next-btn">다음</button>
-	                            </div>
+	                            
+	                            <form id="frmFirst" action="/leteatvi/survey/survey2.do">
+		                            <div id="survey-question">
+		                                <section id="question-section">
+		                                    <em>질문 1</em>
+		                                    <h2>
+		                                        <span>렛잇비에게 이름을 알려주세요.</span>
+		                                    </h2>
+		                                    <br>
+		                                    <ul id="survey-answer">
+		                                        <li>
+		                                            <div id="input-wrap">
+		                                                <input id="content-full" type="text" placeholder="이름 또는 닉네임" maxlength="10" value="${gst.userName}" name="userName" required>
+		                                            </div>
+		                                        </li>
+		                                    </ul>
+		                                </section>
+		                            </div>
+		                            <div id="question-btn">
+		                                <button type="button" id="prev-btn" onclick="location.href='/leteatvi/survey/survey.do';">이전</button>
+		                                <button type="submit" id="next-btn">다음</button>
+		                            </div>
+	                            </form>
+	                            
 	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
+	    
+	    <c:import url="../common/footer.jsp"/>
 	</section>
+	<script>
+	$(function(){
+		// 설문조사 초기화
+		sessionStorage.clear();
+		sessionStorage.setItem('q-count', "1");
+	});
+	$('#frmFirst').on('submit', function(){
+		sessionStorage.setItem('userName', $('#content-full').val());
+	});
+	</script>
 </body>
-
 </html>

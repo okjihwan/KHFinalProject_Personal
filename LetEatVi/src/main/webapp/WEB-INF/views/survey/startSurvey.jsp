@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Store</title>
+<title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
@@ -31,15 +31,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
 	rel="stylesheet">
-<style>
-
-</style>
 </head>
-
+<style>
+	
+</style>
 <body>
-	<%@include file="../common/header.jsp"%>
 	
 	<section>
+		<c:import url="../common/header.jsp"/>
+	
 		<div id='survey'>
 	        <div id="survey-wrap">
 	            <div id="survey-content">
@@ -47,7 +47,7 @@
 	                    <div id="survey-start">
 	                        <div id="start-header">
 	                            <a href="#" onclick="closeSurvey(''); return false;">
-	                                <img src="${pageContext.request.contextPath}/resources/images/surveyImg/closeCircle.webp" alt="설문닫기 버튼">
+	                                <img src="${pageContext.request.contextPath}/resources/images/surveyImg/x_mark.png" alt="설문닫기 버튼">
 	                            </a>
 	                            <img class="logo" src="${pageContext.request.contextPath}/resources/images/surveyImg/LetEatVi_logo.png" alt="Let Eat Vi">
 	                            <h2>
@@ -62,19 +62,21 @@
 	                                <br>
 	                                약 1분 정도 소요 됩니다.
 	                            </span>
-	                            <div id="btn-wrap">
-	                                <a href="#" id="btn-start">시작하기</a>
-	                                <span id="mention"> ※ 치료 목적 및 질병의 진단은 전문적인 의료 기간을 이용해주세요.</span>
-	                            </div>
+	                            <form action="/leteatvi/survey/survey1.do">
+		                            <div id="btn-wrap">
+		                                <button type="submit" id="btn-start">시작하기</button>
+		                                <span id="mention"> ※ 치료 목적 및 질병의 진단은 전문적인 의료 기간을 이용해주세요.</span>
+		                            </div>
+		                        </form>
 	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
     	</div>
+    	<c:import url="../common/footer.jsp"/>
 	</section>
 	
-	<%@include file="../common/footer.jsp"%>
 </body>
 
 </html>

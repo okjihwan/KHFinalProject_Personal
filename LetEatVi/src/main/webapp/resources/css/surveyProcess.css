@@ -11,10 +11,12 @@
 
 /* 테두리 영역 */
 #survey-content {
-    padding: 50px 10px;
+    padding: 120px 10px;
     vertical-align: top;
     background-color: ghostwhite;
     height: 900px;
+    background-image: url(../images/lemons-main1.jpg);
+    background-size: cover;
 }
 
 /* 서베이 전 영역 */
@@ -37,9 +39,10 @@
     text-align: left;
     position: relative;
     margin: auto;
-    /* width: 670px; */
+   	width: 1100px;
     background-color: white;
     border: 1px solid whitesmoke;
+    box-shadow: 9px 9px 60px 9px lightslategrey;
 }
 
 /* 윗부분 글 */
@@ -259,7 +262,7 @@
 }
 
 
-/* ------------나이, 성별------------- */
+/* ------------기본정보------------- */
 
 /* 나이 */
 #answer-age {
@@ -283,10 +286,27 @@
     font-size: larger;
 
 }
-#answer-gender {
+.answer-gender {
     margin: 10px;
     height: 20px;
     width: 20px;
+}
+
+/* 신장, 체중 */
+#pContent {
+    font-size: 12px;
+    color: #999;
+    padding-bottom: 15px;
+}
+
+#unit {
+    position: absolute;
+    display: block;
+    right: 236px;
+    font-size: 21px;
+    top: 378px;
+    font-size: 16x;
+    color: #999;
 }
 
 /* ------------건강 관심분야----------------- */
