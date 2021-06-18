@@ -127,7 +127,7 @@
 			style="width: 40px;"></a> <a href="${pageContext.request.contextPath}/store/goStore.do"
 			style="position: fixed; bottom: 124px; right: 29px;"><img
 			src="${pageContext.request.contextPath}/resources/images/store.png"
-			style="width: 35px;"></a> <a href=""
+			style="width: 35px;"></a> <a href="${pageContext.request.contextPath}/store/goCart.do?userId=${member.userId}"
 			style="position: fixed; bottom: 72px; right: 31px;"><img
 			src="${pageContext.request.contextPath}/resources/images/shopping-cart.png"
 			style="width: 35px;"></a>

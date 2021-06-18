@@ -146,11 +146,6 @@
 		</div>
 		<br>
 		</c:forEach>
-		
-
-
-		<hr style="border: 2px solid gray; margin: 100px 0px;">
-
 
 		<div class="card-header payment_title" style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
 
