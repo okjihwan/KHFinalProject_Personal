@@ -76,7 +76,7 @@
 	                                <div id="survey-progress-rate"></div>
 	                            </div>
 	                            
-	                            <form action="">
+	                            <form id="frm10" action="">
 		                            <div id="survey-question">
 		                                <section id="question-section">
 		                                    <em>질문 <b id="q-count"></b></em>
@@ -175,6 +175,17 @@
 			}
 		}	
 	}
+	
+	$('#frm10').on('submit', function(){
+
+    	$('[name=heal06]').each(function(){
+    		answer_q6.push($(this).prop('checked'));
+    	});
+    	sessionStorage.setItem('answer_q6', answer_q6);
+    	
+    	sessionStorage.setItem('interestType', interestType);
+    	$(this).attr('action', '/leteatvi/survey/survey11.do');
+    });
 	
 	</script>
 </body>

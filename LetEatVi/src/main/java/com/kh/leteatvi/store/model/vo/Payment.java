@@ -25,7 +25,7 @@ public class Payment {
 	
 	private String userName;
 	
-//	private int pid;
+	//	private int pid;
 	private Date oenroll;
 }
 

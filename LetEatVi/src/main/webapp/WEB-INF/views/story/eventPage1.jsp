@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 
@@ -126,8 +129,11 @@
 			<img src="${pageContext.request.contextPath}/resources/images/roulettePan.png" id="letteboard">
 			<img src="${pageContext.request.contextPath}/resources/images/niddle.png" id="n_id">
 			<br />
-			<input type='button' value='시작' id='start_btn'></input>
-			
+			<c:if test="${ couponStatus.equals('Y') }">
+				<input type='button' value='시작' id='start_btn'></input>
+			</c:if><c:if test="${ couponStatus.equals('N')}">
+				<input type='button' value='시작' id='start_btn' disabled></input>
+			</c:if>
 			<div id="result_id"></div>
 			<div id="result_id2"></div>
 			<div id="result_id3"></div>
@@ -137,6 +143,7 @@
 				var pArr = ["0:10,000원 할인쿠폰","1:다음 기회에","2:10% 할인쿠폰","3:무료배송 쿠폰","4:다음 기회에","5:무료배송 쿠폰","6:다음 기회에","7:5% 할인쿠폰"];
 			
 				$('#start_btn').click(function(){
+					$('#start_btn').prop('disabled', true);
 					rotation();
 				});
 			
@@ -152,18 +159,21 @@
 								},
 					  duration:5000
 				   });
-				}
+				} // 고고씽
 				
 				
 				// 룰렛이 끝나고 나서 아래 상품범위를 통하여 결과 뽑아내기
 				function endAnimate($scope){
 					var scope = $scope;
+					
 					$('#result_id').html("<p>움직인각도:" + scope + "</p>");
 					var real_angle = scope%360+21;
 					var part = Math.floor(real_angle/45);
 					
 					$('#result_id2').html("<p>상품범위:" + part + "</p>");
-			
+					
+					sendRouletteData(pArr[part].split(':')[1], '${member.userId}');
+					
 					if(part < 1){
 						$('#result_id3').html("<p>당첨내역:" + pArr[0] + "</p>");
 						return;
@@ -177,15 +187,21 @@
 					$('#result_id3').html("<p>당첨내역:" + pArr[part] + "</p>");
 					
 					
-					$.ajax({
-						url:"/story/goEventPage1.do",
-						type:'POST',
-						data: scope, scopePrice
-						success:
-					})
-					
 				}
-			
+				function sendRouletteData(couponType, userId){
+					console.log(couponType + ", " + userId);
+					$.ajax({
+						url : 'ooo.do',
+						data : {
+							couponType : couponType,
+							userId : userId
+						}, success : function(data){
+							
+						}, error : function(){
+							
+						}
+					});
+				}
 				function randomize($min, $max){
 					return Math.floor(Math.random() * ($max - $min + 1)) + $min;
 				}

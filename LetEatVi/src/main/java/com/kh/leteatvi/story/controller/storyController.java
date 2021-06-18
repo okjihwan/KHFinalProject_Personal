@@ -8,15 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.story.model.service.storyService;
+import com.kh.leteatvi.story.model.vo.memberUsed;
 
 
-
-
-
+@SessionAttributes({"member"})
 @Controller
 public class storyController {
+	
+	
+	@Autowired
+	storyService storyService;
 	
 
 	// 스토리페이지로 이동
@@ -51,11 +56,15 @@ public class storyController {
 		return "story/event";
 	}
 	
-	// 룰렛 페이지로 이동
+	// 룰렛 페이지로 이동 시 아이디와 쿠폰획득 여부
 	@RequestMapping("/story/goEventPage1.do")
-	public String goEventPage1(@RequestParam int userId, Model model) {
+	public String goEventPage1(Member member, Model model) {
 		
-		List<Map<String, String>> price = storyService.getPrice("scope", "scopePrice");
+		String couponStatus = storyService.checkRouletteAble(member.getUserId()); 
+
+		model.addAttribute("couponStatus", couponStatus);
+		
+		System.out.println("무야호 : " + couponStatus);
 		
 		return "story/eventPage1";
 	}
