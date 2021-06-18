@@ -176,35 +176,35 @@
 		<div class="container row mx-auto" id="productListDiv"
 			style="max-width: 1600px;">
 			<c:forEach items="${productList}" var="p" varStatus="st">
-				<div class="card-deck bestProduct col-4 mx-auto ${ p.pcName }">
-					<div class="card border-secondary cardSetCss productDiv${p.pno}">
+				<div class="card-deck bestProduct col-4 mx-auto ${ p.cname }">
+					<div class="card border-secondary cardSetCss productDiv${p.pid}">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/${p.pname}.jpg"
 							class="card-img-top bestProductImg" style="width: 100%;"
-							alt="..." id="img${p.pno}">
+							alt="..." id="img${p.pid}">
 
 						<div class="card-body cardText">
 							<p>
-								<b id="name${p.pno}">[${p.pname}]</b>
+								<b id="name${p.pid}">[${p.pname}]</b>
 							</p>
-							<p id="content${p.pno}">${p.pcontent}</p>
+							<p id="content${p.pid}">${p.pinfo}</p>
 							<p>
-								<b id="price${p.pno}">${p.pprice}￦</b>
+								<b id="price${p.pid}">${p.pprice}￦</b>
 							</p>
 						</div>
 
 						<div class="card-footer border-secondary">
 							<div class="row bestProductFooterText">
 								<div class="col-9" style="text-align: left;">
-									<button type="button" onclick="addCart(${p.pno})"
+									<button type="button" onclick="addCart(${p.pid})"
 										class="btn btn-light popover-dismiss" data-container="body"
 										data-toggle="popover" data-placement="bottom"
 										data-content="장바구니에 추가하였습니다." style="width: 250px;">ADD
 										TO CART</button>
 								</div>
 
-								<div class="col-3" onclick="selectProduct(${p.pno})"
-									id="selectProduct${p.pno}" class="test${p.pno}">
+								<div class="col-3" onclick="selectProduct(${p.pid})"
+									id="selectProduct${p.pid}" class="test${p.pid}">
 									<small class="text-muted"> <i
 										class="fas fa-search fa-3x"></i>
 									</small>
@@ -230,13 +230,13 @@
         </script>
 
 		<script>
-			function addCart( pno ){
+			function addCart( pid ){
 				var cart = [];
-				console.log(pno + "번 제품 장바구니 추가");
+				console.log(pid + "번 제품 장바구니 추가");
 				
 				$.ajax({
 		            url  : "${pageContext.request.contextPath}/store/addCart.do",
-		            data : { pno, userId : '${member.userId}' }, 
+		            data : { pid, userId : '${member.userId}' }, 
 		            type : "get",
 		            success : function(data){
 		                console.log(data);
@@ -246,31 +246,31 @@
 		</script>
 
 		<script>
-			function selectCartegory(cno){
+			function selectCartegory(cid){
 				$.ajax({
 			           url  : "${pageContext.request.contextPath}/store/selectCategory.do",
-			           data : { cno },
+			           data : { cid },
 			           type : "get",
 			           success : function(result){
 			        	   $('#productListDiv').empty();
 			                
 			                for(var i = 0 ; i < result.length; i++){
-			                	var productOne = '<div class="card-deck bestProduct col-4 mx-auto ' + result[i].pcName + '">'
-			                				+'<div class="card border-secondary cardSetCss productDiv' + result[i].pno + '">'
+			                	var productOne = '<div class="card-deck bestProduct col-4 mx-auto ' + result[i].cname + '">'
+			                				+'<div class="card border-secondary cardSetCss productDiv' + result[i].pid + '">'
 			                    		    +'<img src="${pageContext.request.contextPath }/resources/images/' + result[i].pname
-			                    		    + '.jpg" class="card-img-top bestProductImg" style="width : 100%;" id="img' + result[i].pno + '">'
-			                    		    + '<div class="card-body cardText"><p><b id="name' + result[i].pno + '">[' + result[i].pname + ']</b></p>'
-											+ '<p id="content' + result[i].pno + '">' + result[i].pcontent + '</p>'
-											+ '<p><b id="price' + result[i].pno + '">' +  result[i].pprice + '￦</b></p>'
+			                    		    + '.jpg" class="card-img-top bestProductImg" style="width : 100%;" id="img' + result[i].pid + '">'
+			                    		    + '<div class="card-body cardText"><p><b id="name' + result[i].pid + '">[' + result[i].pname + ']</b></p>'
+											+ '<p id="content' + result[i].pid + '">' + result[i].pinfo+ '</p>'
+											+ '<p><b id="price' + result[i].pid + '">' +  result[i].pprice + '￦</b></p>'
 									    	+ '</div>'
 									    	+ '<div class="card-footer border-secondary">'
 											+ '<div class="row bestProductFooterText">'
 											+ '<div class="col-9" style="text-align: left;"> '
-											+ '<button type="button" onclick="addCart(' +result[i].pno +')" class="btn btn-light popover-dismiss" data-container="body'
+											+ '<button type="button" onclick="addCart(' +result[i].pid +')" class="btn btn-light popover-dismiss" data-container="body'
 											+ 'data-toggle="popover" data-placement="bottom" data-content="장바구니에 추가하였습니다." style="width: 250px;">ADD TO CART'
 											+ '</button>'
 											+ '</div>'
-											+ '<div class="col-3" onclick="selectProduct(' +result[i].pno + ')" id="selectProduct' +result[i].pno + '" class="test' +result[i].pno + '">'
+											+ '<div class="col-3" onclick="selectProduct(' +result[i].pid + ')" id="selectProduct' +result[i].pid + '" class="test' +result[i].pid + '">'
 											+ '<small class="text-muted">'
 											+ '<i class="fas fa-search fa-3x"></i>'
 											+ '</small>'
@@ -289,8 +289,8 @@
 
 		<script>
 			function selectProduct(value){
-				console.log("onclick pno 값: " + value);
-				location.href="${pageContext.request.contextPath}/store/selectProduct.do?pno=" + value
+				console.log("onclick pid 값: " + value);
+				location.href="${pageContext.request.contextPath}/store/selectProduct.do?pid=" + value
 			}
 		</script>
 

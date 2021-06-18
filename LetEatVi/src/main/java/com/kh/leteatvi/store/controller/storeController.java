@@ -51,11 +51,11 @@ public class storeController {
 	// 스토어 페이지에서 상품 상세보기 버튼 클릭 시
 	// ============================================== //
 	@RequestMapping("/store/selectProduct.do")
-	public String selectProduct(@RequestParam int pno, Model model) {
-		Product p = storeService.selectOneProduct(pno);
+	public String selectProduct(@RequestParam int pid, Model model) {
+		Product p = storeService.selectOneProduct(pid);
 		
 		model.addAttribute("selectProduct", p);
-		model.addAttribute("pno", pno);
+		model.addAttribute("pid", pid);
 		
 		return "store/product";
 	}
@@ -65,8 +65,8 @@ public class storeController {
 	// 결제하기 버튼 클릭 시
 	// ============================================== //
 	@RequestMapping("/store/goPayment.do")
-	public String goPayment(@RequestParam int pno, @RequestParam int qno, @RequestParam String userId, Model model) {
-		Product p = storeService.selectOneProduct(pno);
+	public String goPayment(@RequestParam int pid, @RequestParam int qno, @RequestParam String userId, Model model) {
+		Product p = storeService.selectOneProduct(pid);
 		Member m = storeService.selectOneMember(userId);
 		
 		System.out.println("회원 정보 : " + m);
@@ -83,8 +83,10 @@ public class storeController {
 	// ============================================== //
 	@RequestMapping("/store/addCart.do")
 	@ResponseBody
-	public void addCart(@RequestParam int pno, @RequestParam String userId) {
-		Cart cartProduct = new Cart(userId, pno);
+	public void addCart(@RequestParam int pid, @RequestParam String userId) {
+		Cart cartProduct = new Cart(userId, pid);
+		
+		System.out.println(cartProduct);
 		
 		int selectCart = storeService.selectOneCart(cartProduct);
 		
@@ -106,13 +108,13 @@ public class storeController {
 	// ============================================== //
 	@RequestMapping("/store/addCartWithQuantity.do")
 	@ResponseBody
-	public void addCartWithQuantity(@RequestParam String userId, @RequestParam int pno, @RequestParam int qno) {
+	public void addCartWithQuantity(@RequestParam String userId, @RequestParam int pid, @RequestParam int qno) {
 		System.out.println("qno : " + qno);
 		System.out.println("userId : " + userId);
-		System.out.println("pno : " + pno);
+		System.out.println("pno : " + pid);
 		
-		Cart cartProduct = new Cart(userId, pno);
-		Cart cartCartWithQuantity = new Cart(userId, pno, qno);
+		Cart cartProduct = new Cart(userId, pid);
+		Cart cartCartWithQuantity = new Cart(userId, pid, qno);
 		
 		System.out.println(cartCartWithQuantity);
 		
@@ -137,9 +139,9 @@ public class storeController {
 	// ============================================== //
 	@RequestMapping("/store/selectCategory.do")
 	@ResponseBody
-	public List selectCategory(@RequestParam int cno, @RequestParam(value="cPage", required=false, defaultValue="1") int cPage) {
+	public List selectCategory(@RequestParam int cid, @RequestParam(value="cPage", required=false, defaultValue="1") int cPage) {
 		
-		if(cno == 0) {
+		if(cid == 0) {
 			List cList = storeService.selectAllCategory();
 			
 //			int numPerPage = 9;
@@ -156,7 +158,7 @@ public class storeController {
 		}
 		
 		else {
-			List cList = storeService.selectCategory(cno);
+			List cList = storeService.selectCategory(cid);
 			
 			System.out.println(cList);
 			
@@ -175,6 +177,8 @@ public class storeController {
 		System.out.println("결제 정보 : " + p);
 		
 		int addPaymentInfo = storeService.insertPaymentInfo(p);
+		
+		System.out.println(addPaymentInfo);
 		
 		System.out.println("결제 완료 test");
 		

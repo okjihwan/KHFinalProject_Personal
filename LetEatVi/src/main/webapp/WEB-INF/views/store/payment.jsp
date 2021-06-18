@@ -141,7 +141,7 @@
 							src="${pageContext.request.contextPath}/resources/images/${selectProduct.pname}.jpg">
 					</div>
 					<div class="buyContent buyText"
-						style="margin-top: 85px; padding-right: 17px;">${selectProduct.pcontent}</div>
+						style="margin-top: 85px; padding-right: 17px;">${selectProduct.pinfo}</div>
 					<div class="buyContent buyText"
 						style="margin-top: 85px; padding-left: 5px;">
 						<img
@@ -159,26 +159,9 @@
 			</div>
 		</div>
 		<br>
-
-
+		
 		<hr style="border: 2px solid gray; margin: 100px 0px;">
 
-		<%-- 
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-2">
-                <img src="${pageContext.request.contextPath}/resources/images/비타민3.jpg" alt="" style="width: 100%; height: 200px;">
-            </div>
-            <div class="col-1"></div>
-            <div class="col-2" style="margin-top: 85px;">상품 정보</div>
-            <div class="col-2" style="margin-top: 85px;">
-                <img src="${pageContext.request.contextPath}/resources/images/minus.png" style="width: 20px;"> &nbsp;
-                1 &nbsp;
-                <img src="${pageContext.request.contextPath}/resources/images/add.png" style="width: 20px;">
-            </div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-            <div class="col-2" style="margin-top: 85px;">15000￦</div>
-        </div> --%>
 
 		<div class="card-header payment_title"
 			style="background-color: rgba(0, 0, 0, 0); margin-top: 100px; padding-bottom: 30px;">Information</div>
@@ -287,7 +270,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="comment" aria-label="With textarea" style="resize: none;"></textarea>
+								<textarea class="form-control" name="ocomment" aria-label="With textarea" style="resize: none;"></textarea>
 							</div>
 						</div>
 					</div>
@@ -405,7 +388,7 @@
 	        <h5 class="modal-title" id="exampleModalLabel">결제 확인</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <!-- 닫기버튼 눌렀을 때 스토어홈으로 돌아간다 -->
-	          <span aria-hidden="true">&times;</span>
+	          <span aria-hidden="true" onclick="goStore();">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body" style="text-align: center;">
@@ -420,8 +403,8 @@
 	       	
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" style="width: 228px;">Store Home</button>
-	        <button type="button" class="btn btn-secondary" style="width: 228px;">주문 내역 확인</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;" onclick="goStore();">Store Home으로 가기</button>
+	        <button type="button" class="btn btn-secondary" style="width: 228px;" onclick="goMypage();">주문 내역 확인</button>
 	      </div>
 	    </div>
 	  </div>
@@ -484,16 +467,16 @@
 			                
 			                // 결제 성공 시
 			                // 주문번호와 결제금액 받아와서 hidden 처리된 상태로 입력
- 			                var orderId = rsp.imp_uid; 
-			                var paidAmount = rsp.paid_amount;
+ 			                var oid = rsp.imp_uid; 
+			                var totalPrice = rsp.paid_amount;
 			                var userId = "${member.userId}";
 			                
- 			                console.log(orderId);
-			                console.log(paidAmount);
+ 			                console.log(oid);
+			                console.log(totalPrice);
 			                console.log(userId);
 			                
-			                payment['ono'] = orderId;
-			                payment['paidAmount'] = paidAmount;
+			                payment['oid'] = oid;
+			                payment['totalPrice'] = totalPrice;
 			                payment['userId'] = userId;
 			                
 /* 			                $(".paySuccess").click();
@@ -508,8 +491,8 @@
 			                    	console.log("ajax 성공");
 			                    	console.log(data);
 			                    	$("#orderer").text("주문자 명 : " + $("#orderPerson").val());
-			                    	$("#orderNo").text("주문 번호 : " + data.ono);
-			                    	$("#orderPrice").text("결제 금액 : " + data.paidAmount + "￦");
+			                    	$("#orderNo").text("주문 번호 : " + data.oid);
+			                    	$("#orderPrice").text("결제 금액 : " + data.totalPrice + "￦");
 					                $(".paySuccess").click();
 			                	}, error : function(jqxhr, textStatus, errorThrown){
 					                console.log(jqxhr);
@@ -558,20 +541,30 @@
 				 $("#finalPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 				 $(".buyTotalProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
 				 $(".buySumProductPrice").text((${qno} * ${selectProduct.pprice}) + "￦");
+					
+				$("#orderPerson").attr("value", "${member.userName}");
+				$("#orderEmail").attr("value", "${member.email}");
+				$("#orderPhone").attr("value", "${member.phone}");
 	         });
 		</script>
 
 	<script>
 			function equalMemberinfo(){
-				console.log("${member.userName}");
-				console.log("${member.email}");
-				console.log("${member.phone}");
-				
-				$("#orderPerson").attr("value", "${member.userName}");
-				$("#orderEmail").attr("value", "${member.email}");
-				$("#orderPhone").attr("value", "${member.phone}");
+				$("#addressee").attr("value", "${member.userName}");
+				$("#phone").attr("value", "${member.phone}");
+				$("#address").attr("value", "${member.address}");
 			}
-		</script>
+	</script>
+	
+	<script>
+		function goStore(){
+			location.href = "${pageContext.request.contextPath}/store/goStore.do";
+		}
+		
+		function goMypage(){
+			location.href = "${pageContext.request.contextPath}/myPage/myPageHome.do";
+		}
+	</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

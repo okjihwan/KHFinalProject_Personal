@@ -32,13 +32,13 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public Product selectOneProduct(int pno) {
-		return sqlSession.selectOne("store.selectOneProduct", pno);
+	public Product selectOneProduct(int pid) {
+		return sqlSession.selectOne("store.selectOneProduct", pid);
 	}
 
 	@Override
-	public List selectCategory(int cno) {
-		return sqlSession.selectList("store.selectCategory", cno);
+	public List selectCategory(int cid) {
+		return sqlSession.selectList("store.selectCategory", cid);
 	}
 	
 	@Override

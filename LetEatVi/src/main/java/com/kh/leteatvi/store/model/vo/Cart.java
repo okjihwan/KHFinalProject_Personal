@@ -14,23 +14,23 @@ public class Cart implements Serializable{
 	private static final long serialVersionUID = 2L;
 	
 	private String userId;
-	private int pno;
-	private int cno;
-	private int cquantity;
+	private int pid;
+	private int cid;
+	private int cartquantity;
 	private String pname;
 	private int pprice;
-	private String pcontent;
-	private String pcName;
+	private String pinfo;
+	private String cname;
 	
-	public Cart(String userId, int pno) {
+	public Cart(String userId, int pid) {
 		this.userId = userId;
-		this.pno = pno;
+		this.pid = pid;
 	}
 
-	public Cart(String userId, int pno, int cquantity) {
+	public Cart(String userId, int pid, int cartquantity) {
 		this.userId = userId;
-		this.pno = pno;
-		this.cquantity = cquantity;
+		this.pid = pid;
+		this.cartquantity = cartquantity;
 	}
 
 }

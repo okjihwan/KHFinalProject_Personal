@@ -229,7 +229,7 @@
             function goPayment(){
             	var qno = $("select[name=quantity]").val();
             	console.log(qno);
-            	location.href="${pageContext.request.contextPath}/store/goPayment.do?pno=${pno}&qno="+qno+"&userId=${member.userId}" 
+            	location.href="${pageContext.request.contextPath}/store/goPayment.do?pid=${pid}&qno="+qno+"&userId=${member.userId}" 
             }
         </script>
 
@@ -239,7 +239,7 @@
 	        	
 	        	$.ajax({
 		            url  : "${pageContext.request.contextPath}/store/addCartWithQuantity.do",
-		            data : { pno : ${pno}, userId : '${member.userId}', qno : qno}, 
+		            data : { pid : ${pid}, userId : '${member.userId}', qno : qno}, 
 		            type : "get",
 		            success : function(data){
 		                alert("장바구니에 추가했습니다.");
